@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Siedler.dir/src/main.cpp.o -o Siedler  /usr/lib/x86_64-linux-gnu/libpython3.11.so 

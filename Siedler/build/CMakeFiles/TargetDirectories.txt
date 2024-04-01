@@ -1,0 +1,3 @@
+/home/Zer02c/Documents/BWINF_42_2/Siedler/build/CMakeFiles/Siedler.dir
+/home/Zer02c/Documents/BWINF_42_2/Siedler/build/CMakeFiles/edit_cache.dir
+/home/Zer02c/Documents/BWINF_42_2/Siedler/build/CMakeFiles/rebuild_cache.dir
