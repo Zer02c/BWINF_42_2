@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  2 APR 2024 01:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  2 APR 2024 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -317,7 +317,7 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.35 \newpage
-              [1] [2] [3] (./Siedler.aux)
+              [1] [2] (./Siedler.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -326,9 +326,9 @@ Package rerunfilecheck Info: File `Siedler.out' has not changed.
 (rerunfilecheck)             Checksum: 9564CCF6A0790C9F1271B616F7F261CE;367.
  ) 
 Here is how much of TeX's memory you used:
- 8440 strings out of 474222
- 130919 string characters out of 5748733
- 1924975 words of memory out of 5000000
+ 8439 strings out of 474222
+ 130913 string characters out of 5748733
+ 1925975 words of memory out of 5000000
  30639 multiletter control sequences out of 15000+600000
  559887 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -337,10 +337,10 @@ Here is how much of TeX's memory you used:
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Siedler.pdf (4 pages, 57537 bytes).
+Output written on Siedler.pdf (3 pages, 56782 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
+ 63 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
+ 7 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -9,7 +9,25 @@
 namespace plt = matplotlibcpp;
 
 // Funktion um auf einem kreisumfang punkte zu platzieren
+std::vector<Geometrie::Point> circle_algo(int distance, Geometrie::Point centroid_circle, const Geometrie::Polygon& polygon){
+	std::vector<Geometrie::Point> points;
 
+	for(int radius = 10; radius <= 85; radius += 10){
+		double umfang = 2 * M_PI * radius;
+
+		int anzahl_punkte = static_cast<int>(umfang/distance);
+
+		for(int i = 0; i < anzahl_punkte; ++i){
+			double winkel = (2 * M_PI * i) / anzahl_punkte;
+			double x = centroid_circle.getX() + radius * std::cos(winkel);
+			double y = centroid_circle.getY() + radius * std::sin(winkel);
+			if(polygon.isInsidePolygon(Geometrie::Point(x,y))){
+				points.push_back(Geometrie::Point(x,y));
+			}
+		}
+	}
+	return points;
+}
 
 int main() {
 	// Erstellen eines Polygon Objektes
