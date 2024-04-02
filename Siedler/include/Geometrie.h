@@ -28,6 +28,14 @@ namespace Geometrie{
 		public:
 			Polygon(){}
 
+			std::vector<Point> getPoints() const{
+				return points;
+			}
+			
+			const Point& getPoint(int index) const{
+				return points[index];
+			}
+
 			// Funktion um ein Punkt in das Polygon hinzuzufuegen
 			void addPoint(double x, double y){
 				points.push_back(Point(x,y));
