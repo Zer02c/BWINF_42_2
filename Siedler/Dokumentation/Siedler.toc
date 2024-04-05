@@ -1,4 +1,9 @@
 \contentsline {section}{\numberline {1}Loesungsidee}{2}{section.1}%
 \contentsline {section}{\numberline {2}Umsetzung}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Geometriesche funktionen klasse Point, Polygon}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Der Hauptalgorithmus und seine funktion}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Erweiterung der Plot des Polygons samt punkten}{2}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Beispiele}{2}{section.3}%
 \contentsline {section}{\numberline {4}Quellcode}{2}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Geometrie.h}{2}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}main.cpp}{2}{subsection.4.2}%

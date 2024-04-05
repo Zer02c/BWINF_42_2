@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  2 APR 2024 13:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  5 APR 2024 21:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -322,25 +322,32 @@ l.35 \newpage
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-Package rerunfilecheck Info: File `Siedler.out' has not changed.
-(rerunfilecheck)             Checksum: 9564CCF6A0790C9F1271B616F7F261CE;367.
+
+
+Package rerunfilecheck Warning: File `Siedler.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Siedler.out':
+(rerunfilecheck)             Before: 9564CCF6A0790C9F1271B616F7F261CE;367
+(rerunfilecheck)             After:  560C05E8241B8867E7C073A6B963B5FC;1444.
  ) 
 Here is how much of TeX's memory you used:
- 8439 strings out of 474222
- 130913 string characters out of 5748733
- 1925975 words of memory out of 5000000
- 30639 multiletter control sequences out of 15000+600000
- 559887 words of font info for 42 fonts, out of 8000000 for 9000
+ 8446 strings out of 474222
+ 131012 string characters out of 5748733
+ 1931975 words of memory out of 5000000
+ 30641 multiletter control sequences out of 15000+600000
+ 560492 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,253b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,419b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Siedler.pdf (3 pages, 56782 bytes).
+Output written on Siedler.pdf (3 pages, 66440 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
+ 68 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
