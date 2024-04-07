@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include <sstream>
 #include <vector>
 
 #include <Geometrie.h>
@@ -8,7 +7,30 @@
 
 namespace plt = matplotlibcpp;
 
-// finale funktion
+Geometrie::Point end_point;
+
+std::vector<Geometrie::Point> last_points(const Geometrie::Polygon& polygon){
+	std::vector<Geometrie::Point> umfang_Punkte;
+
+	for(int radius = 10; radius <= 85; radius += 10){
+		double umfang = 2 * M_PI * radius;
+		int anzahl_punkte = static_cast<int>(umfang/distance);
+
+		for(int i = 0; i < anzahl_punkte; ++i){
+			double winkel = (2*M_PI*i)/anzahl_punkte;
+			double x = centroid_circle.getX() + radius * std::cos(winkel);
+			double y = centroid_circle.getY() + radius * std::sin(winkel);
+			if(polygon.isInsidePolygon(Geometrie::Point(x,y))){
+				umfang_Punkte.push_back(Geometrie::Point(x, y));
+			}
+		}
+
+
+	}
+	return umfang_Punkte;
+}
+
+// Funktion zum berechen der Punkte auf dem Umkreis eines Kreises in 10 radius abstaenden bis 85
 std::vector<Geometrie::Point> circle_Points(int distance, Geometrie::Point centroid_circle,const Geometrie::Polygon& polygon){
 	std::vector<Geometrie::Point> umfang_Punkte;
 
@@ -30,58 +52,28 @@ std::vector<Geometrie::Point> circle_Points(int distance, Geometrie::Point centr
 	return umfang_Punkte;
 }
 
-/*
-// Funktion um auf einem kreisumfang punkte zu platzieren
-std::vector<Geometrie::Point> circle_algo(int distance, Geometrie::Point centroid_circle, const Geometrie::Polygon& polygon){
-	std::vector<Geometrie::Point> finale_points;
-	int counter = 0;
-	int start = 0;
-
-	for(int radius = 10; radius <= 85; radius += 10){
-		std::vector<Geometrie::Point> points;
-		double umfang = 2 * M_PI * radius;
-
-		int anzahl_punkte = static_cast<int>(umfang/distance);
-
-		for(int i = 0; i < anzahl_punkte; ++i){
-			double winkel = (2 * M_PI * i) / anzahl_punkte;
-			double x = centroid_circle.getX() + radius * std::cos(winkel);
-			double y = centroid_circle.getY() + radius * std::sin(winkel);
-			if(polygon.isInsidePolygon(Geometrie::Point(x,y))){
-				points.push_back(Geometrie::Point(x,y));
-			}
-		}
-
-		// check mehr punkte in polygon
-		for(int i = 0; i < points.size(); i++){
-			counter = 0;
-			int s = 10;
-			do{
-				double um = 2 * M_PI * s;
-				int an_p = static_cast<int>(um/distance);
-				for(int j = 0; j < an_p; ++j){
-					double winkel = (2 * M_PI * j) / anzahl_punkte;
-					double x_ = points[i].getX() + s * std::cos(winkel);
-					double y_ = points[i].getY() + s * std::sin(winkel);
-
-					if(polygon.isInsidePolygon(Geometrie::Point(x_,y_))){
-						counter++;
-					}else{std::cout << "not" << std::endl;}
-					}
-				s += 10;
-				}while(s <= radius);
-
-			if(counter > start){
-				std::cout << "counter: " << counter << " start value: " << start << std::endl;
-				std::cout << centroid_circle.getX() << "||" << centroid_circle.getY() << std::endl;
-				centroid_circle = points[i];
-				start = counter;
+std::vector<Geometrie::Point> search_algo(int distance, Geometrie::Point centroid_circle, const Geometrie::Polygon& polygon){
+	std::vector<Geometrie::Point> points = circle_Points(distance, centroid_circle, polygon);
+	int start_value = points.size();
+	int end_value = 0;
+	Geometrie::Point centroid = centroid_circle;
+	do{
+		for(const Geometrie::Point& p: points){
+			std::cout << "jetzt" << std::endl;
+			std::vector<Geometrie::Point> test_points = circle_Points(distance, p, polygon);
+			if(test_points.size() > start_value){
+				start_value = test_points.size();
+				centroid = p;
 				}
+			if(start_value == end_value){
+				end_point = p;
+				return circle_Points(distance, centroid, polygon);
 			}
-	}
-	std::cout << "end point: " << centroid_circle.getX() << "||" << centroid_circle.getY() << std::endl;
-	return circle_Points(distance, centroid_circle, polygon);
-}*/
+			end_value = start_value;
+
+		}
+	}while(true);
+}
 
 
 int main() {
@@ -93,29 +85,20 @@ int main() {
 
 	// bestimmen des centroid
 	Geometrie::Point centroid = polygon.centroid();
-	//std::cout << centroid.getX() << "||" << centroid.getY() << std::endl;
 
-	// test funktion
-	//std::vector<Geometrie::Point> list = circle_algo(10, centroid, polygon);
-	//std::cout << "groese mit algo: " << list.size() << std::endl;
-	std::vector<Geometrie::Point> test = circle_Points(10, centroid, polygon);
-	std::vector<Geometrie::Point> finale_points;
-	int start = test.size();
-	Geometrie::Point current_point;
-	for(const Geometrie::Point p : test){
-		std::vector<Geometrie::Point> ak = circle_Points(10,p,polygon);
-		if(ak.size() > start){
-			current_point = p;
-			finale_points = ak;
-		}
-	}
-	std::cout << "best place: " << "(" <<current_point.getX() << "|" << current_point.getY() << ")" << std::endl;
-	std::cout << "anzahl der doerfer alt: " << test.size() << std::endl;
-	std::cout << "anzahl der doerfer new: " << finale_points.size() << std::endl;
+	std::vector<Geometrie::Point> end_points = search_algo(10, centroid, polygon);
+	std::cout << "size algo: " << end_points.size() << std::endl;
+	std::cout << "size normal: " << circle_Points(10, centroid, polygon).size() << std::endl;
+	std::cout << end_point.getX() << std::endl;
+
+
+
+
+
 	//std::cout << "groesse ohne algo: " << test.size() << std::endl;
 	std::vector<double>x_werte;
 	std::vector<double>y_werte;
-	for(Geometrie::Point p : test){
+	for(Geometrie::Point p : end_points){
 		x_werte.push_back(p.getX());
 		y_werte.push_back(p.getY());
 	}
@@ -143,7 +126,6 @@ int main() {
 
 	// Plot anzeigen
 	plt::show();
-
 
 	return 0;
 }
