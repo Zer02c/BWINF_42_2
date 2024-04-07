@@ -81,7 +81,8 @@ namespace Geometrie{
 					double xi1 = points[(i + 1) % points.size()].getX();
 					double yi1 = points[(i + 1) % points.size()].getY();
 
-					if((yi > p.getY()) != (yi1 > p.getY()) && p.getX() < (xi1 - xi) * (p.getY() - yi) / (yi1 - yi) + xi){
+					if((yi > p.getY()) != (yi1 > p.getY()) && p.getX() < (xi1 - xi) *
+					 (p.getY() - yi) / (yi1 - yi) + xi){
 						intersectioncount++;
 					}
 				}
