@@ -7,29 +7,33 @@
 
 namespace plt = matplotlibcpp;
 
-Geometrie::Point end_point;
-
-std::vector<Geometrie::Point> last_points(const Geometrie::Polygon& polygon){
+std::vector<Geometrie::Point> umfang_punkte_eins(const Geometrie::Polygon& polygon, Geometrie::Point centroid, int radius){
 	std::vector<Geometrie::Point> umfang_Punkte;
+	double umfang = 2 * M_PI * radius;
+	int anzahl_punkte = static_cast<int>(umfang/20);
 
-	for(int radius = 10; radius <= 85; radius += 10){
-		double umfang = 2 * M_PI * radius;
-		int anzahl_punkte = static_cast<int>(umfang/distance);
-
-		for(int i = 0; i < anzahl_punkte; ++i){
-			double winkel = (2*M_PI*i)/anzahl_punkte;
-			double x = centroid_circle.getX() + radius * std::cos(winkel);
-			double y = centroid_circle.getY() + radius * std::sin(winkel);
-			if(polygon.isInsidePolygon(Geometrie::Point(x,y))){
-				umfang_Punkte.push_back(Geometrie::Point(x, y));
-			}
+	for(int i = 0; i < anzahl_punkte; ++i){
+		double winkel = (2*M_PI*i)/anzahl_punkte;
+		double x = centroid.getX() + radius * std::cos(winkel);
+		double y = centroid.getY() + radius * std::sin(winkel);
+		if(polygon.isInsidePolygon(Geometrie::Point(x,y))){
+			umfang_Punkte.push_back(Geometrie::Point(x, y));
 		}
-
-
 	}
 	return umfang_Punkte;
 }
 
+std::vector<Geometrie::Point> last_points(const Geometrie::Polygon& polygon, const Geometrie::Point& center_point) {
+	int radius = 100;
+	std::vector<Geometrie::Point> end_points;
+	std::vector<Geometrie::Point> points = umfang_punkte_eins(polygon, center_point, radius);
+	while(points.size() > 0){
+		end_points.insert(end_points.end(), points.begin(), points.end());
+		radius += 20;
+		points = umfang_punkte_eins(polygon, center_point, radius);
+	}
+	return end_points;
+}
 // Funktion zum berechen der Punkte auf dem Umkreis eines Kreises in 10 radius abstaenden bis 85
 std::vector<Geometrie::Point> circle_Points(int distance, Geometrie::Point centroid_circle,const Geometrie::Polygon& polygon){
 	std::vector<Geometrie::Point> umfang_Punkte;
@@ -52,8 +56,9 @@ std::vector<Geometrie::Point> circle_Points(int distance, Geometrie::Point centr
 	return umfang_Punkte;
 }
 
-std::vector<Geometrie::Point> search_algo(int distance, Geometrie::Point centroid_circle, const Geometrie::Polygon& polygon){
+Geometrie::Point gesundheitszentrum (int distance, Geometrie::Point centroid_circle, const Geometrie::Polygon& polygon){
 	std::vector<Geometrie::Point> points = circle_Points(distance, centroid_circle, polygon);
+	Geometrie::Point end_point;
 	int start_value = points.size();
 	int end_value = 0;
 	Geometrie::Point centroid = centroid_circle;
@@ -67,7 +72,7 @@ std::vector<Geometrie::Point> search_algo(int distance, Geometrie::Point centroi
 				}
 			if(start_value == end_value){
 				end_point = p;
-				return circle_Points(distance, centroid, polygon);
+				return p;
 			}
 			end_value = start_value;
 
@@ -86,19 +91,27 @@ int main() {
 	// bestimmen des centroid
 	Geometrie::Point centroid = polygon.centroid();
 
-	std::vector<Geometrie::Point> end_points = search_algo(10, centroid, polygon);
-	std::cout << "size algo: " << end_points.size() << std::endl;
+	Geometrie::Point gesundheitszent = gesundheitszentrum(10, centroid, polygon);
+	std::vector<Geometrie::Point> gesundheitszentrum_Points = circle_Points(10, gesundheitszent, polygon);
+	std::cout << "size algo: " << gesundheitszentrum_Points.size() << std::endl;
 	std::cout << "size normal: " << circle_Points(10, centroid, polygon).size() << std::endl;
-	std::cout << end_point.getX() << std::endl;
+
+	std::vector<Geometrie::Point> end_points = last_points(polygon, gesundheitszent);
 
 
 
 
+	std::vector<double> _x_werte;
+	std::vector<double> _y_werte;
+	for(const Geometrie::Point p : end_points){
+		_x_werte.push_back(p.getX());
+		_y_werte.push_back(p.getY());
+	}
 
 	//std::cout << "groesse ohne algo: " << test.size() << std::endl;
 	std::vector<double>x_werte;
 	std::vector<double>y_werte;
-	for(Geometrie::Point p : end_points){
+	for(Geometrie::Point p : gesundheitszentrum_Points){
 		x_werte.push_back(p.getX());
 		y_werte.push_back(p.getY());
 	}
@@ -114,8 +127,7 @@ int main() {
 	y_points.push_back(y_points[0]);
 
 	// Plot erstellen und Polygon plotten
-	plt::plot(x_points, y_points, "r-", x_werte, y_werte,"bo");
-	plt::plot(x_points, y_points, "r-", x_werte, y_werte,"bo");
+	plt::plot(x_points, y_points, "r-", x_werte, y_werte,"bo", _x_werte, _y_werte, "ro");
 
 	// Optional: Fülle das Polygon
 	plt::xlabel("X-Achse");
