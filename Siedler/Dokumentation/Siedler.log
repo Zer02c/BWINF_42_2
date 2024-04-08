@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  7 APR 2024 20:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  8 APR 2024 10:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -441,99 +441,92 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.40 \newpage
-              [1] [2] [3] [4] [5]
-Overfull \hbox (0.46465pt too wide) in paragraph at lines 396--396
+              [1] [2] [3] [4] [5] [6]
+Overfull \hbox (0.46465pt too wide) in paragraph at lines 419--419
 [] \OT1/cmtt/m/n/10 std::vector<Geometrie::Point> points = umfang_punkte_eins(p
 olygon, center_point, radius);[] 
  []
 
 
-Overfull \hbox (31.96437pt too wide) in paragraph at lines 396--396
+Overfull \hbox (31.96437pt too wide) in paragraph at lines 419--419
 []\OT1/cmtt/m/n/10 // Funktion zum berechen der Punkte auf dem Umkreis eines Kr
 eises in 10 radius abstaenden bis 85[] 
  []
 
 
-Overfull \hbox (5.7146pt too wide) in paragraph at lines 396--396
+Overfull \hbox (5.7146pt too wide) in paragraph at lines 419--419
 []\OT1/cmtt/m/n/10 std::vector<Geometrie::Point> circle_Points(int distance, Ge
 ometrie::Point centroid_circle,[] 
  []
 
-[6]
-Overfull \hbox (0.46465pt too wide) in paragraph at lines 396--396
+[7]
+Overfull \hbox (0.46465pt too wide) in paragraph at lines 419--419
 [] \OT1/cmtt/m/n/10 std::vector<Geometrie::Point> points = circle_Points(distan
 ce, centroid_circle, polygon);[] 
  []
 
-
-Overfull \hbox (68.71405pt too wide) in paragraph at lines 396--396
+[8]
+Overfull \hbox (68.71405pt too wide) in paragraph at lines 419--419
 [] \OT1/cmtt/m/n/10 std::vector<Geometrie::Point> gesundheitszentrum_Points = c
 ircle_Points(10, gesundheitszent, polygon);[] 
  []
 
 
-Overfull \hbox (163.21323pt too wide) in paragraph at lines 396--396
+Overfull \hbox (163.21323pt too wide) in paragraph at lines 419--419
 [] \OT1/cmtt/m/n/10 std::cout << "Gesundheitszentrum: " << "(" << gesundheitsze
 nt.getX() <<"|" << gesundheitszent.getY() << ")"<< std::endl;[] 
  []
 
-[7]
-Overfull \hbox (31.96437pt too wide) in paragraph at lines 396--396
+
+Overfull \hbox (31.96437pt too wide) in paragraph at lines 419--419
 []  \OT1/cmtt/m/n/10 std::cout << "Das " << counter << "Dorf liegt bei den koor
 dinaten: " << "(" << p.getX() << "|"[] 
  []
 
 
-Overfull \hbox (37.21432pt too wide) in paragraph at lines 396--396
+Overfull \hbox (37.21432pt too wide) in paragraph at lines 419--419
 [] \OT1/cmtt/m/n/10 std::cout << "Restliche doerfer ausserhalb des Radiuses des
  gesundheitszentrums: " << std::endl;[] 
  []
 
 
-Overfull \hbox (31.96437pt too wide) in paragraph at lines 396--396
+Overfull \hbox (31.96437pt too wide) in paragraph at lines 419--419
 []  \OT1/cmtt/m/n/10 std::cout << "Das " << counter << "Dorf liegt bei den koor
 dinaten: " << "(" << p.getX() << "|"[] 
  []
 
-[8] [9] (./Siedler.aux)
+[9] [10] (./Siedler.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-
-Package rerunfilecheck Warning: File `Siedler.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Siedler.out':
-(rerunfilecheck)             Before: 7127AA7B9A3A7A5B6C18C388B6F17076;2527
-(rerunfilecheck)             After:  B7E9759AEEFB69E18AC5518B96EBFDB3;2879.
+Package rerunfilecheck Info: File `Siedler.out' has not changed.
+(rerunfilecheck)             Checksum: 3928BD21215C728AF00BBAB1BD79A56F;2900.
  ) 
 Here is how much of TeX's memory you used:
- 11446 strings out of 474222
- 172714 string characters out of 5748733
- 1937975 words of memory out of 5000000
- 33579 multiletter control sequences out of 15000+600000
+ 11449 strings out of 474222
+ 172763 string characters out of 5748733
+ 1938975 words of memory out of 5000000
+ 33581 multiletter control sequences out of 15000+600000
  561460 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,600b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,739b,599s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
-fb>
-Output written on Siedler.pdf (10 pages, 167209 bytes).
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Siedler.pdf (11 pages, 182476 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

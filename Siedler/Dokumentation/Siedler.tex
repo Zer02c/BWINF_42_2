@@ -12,14 +12,14 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{Aufgabe 1}
+\fancyhead[L]{Aufgabe 3}
 \fancyhead[R]{Teilnehmer-ID:}
 \fancyfoot[C]{\thepage}
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand*\contentsname{Inhaltsverzeichnis}
 
-\title{\Huge{\textbf{Aufgabe 1 Siedler}} \\ \centering{\LARGE{Teilnahme-ID: ?????}}}
+\title{\Huge{\textbf{Aufgabe 3 Siedler}} \\ \centering{\LARGE{Teilnahme-ID: ?????}}}
 \author{Bearbeiter dieser Aufgabe: \\ Daniel Hohmann}
 \date{\today}
 
@@ -90,15 +90,37 @@ cx = \frac{1}{6 \cdot \text{area}} \sum_{i=0}^{n-1} (x_i + x_{i+1}) \cdot (x_i y
 cy = \frac{1}{6 \cdot \text{area}} \sum_{i=0}^{n-1} (y_i + y_{i+1}) \cdot (x_i y_{i+1} - x_{i+1} y_i)
 \]
 
-Hierbei wird $P_{n}$ als $P_0$ behandelt, d.h., $x_{n} = x_0$ und $y_{n} = y_0$.
+Hierbei wird $P_{n}$ als $P_0$ behandelt, d.h., $x_{n} = x_0$ und $y_{n} = y_0$. 
 \end{center}
 \subsubsection{\textcolor{blue}{Funktion isInsidePolygon}}
+\begin{center}
+Die naechste wichtige funktion der Klasse Polygon ist die Funktion \textit{isInsidePolygon}. Diese funktion schaut ob ein punkt innerhalb des Polygons liegt. Dies tut die Funktion mithilfe eines raycastalgorithmus. Die funktions idee ist das ich ein punkt habe und von diesem punkt aus versende ich strahlen(rays), dann schaue ich wie oft dieser strahl die kanten meines polygons schneidet. wenn die Anzahl ungrade ist, liegt der Punkt innerhalb des Polygons. Ist die annzahl jedoch Grade liegt der Punkt ausserhalb des Polygons. Das heisst gegeben muessen sein, mein Punkt den ich pruefen will $p(x_p|y_p)$ und mein Polygon \( \{ (x_i, y_i) \}_{i=0}^{n-1} \), hier steht $n$ fuer die anzahl der Eckpunkte.
+\par\medskip
+als naechstes inzinalisiere ich mein counter intersectionCount mit 0.
+\\
+Als naechstes lassen wir eine schleife ueber alle kanten des Polygons laufen, fuer jede kante des Polygons gilt $(P_i,P_i+1)$, wobei $P_i = (x_i,y_i)$, $P_i+1 = (x_i+1, y_i+1)$: 
+\\
+Jetzt ueberpruefen wir jede kante ob die horizontale linie durch $p$ schneidet.
+\\
+Danach Bestimmen wir die $y$-Koordinaten der Kantenenden: $y_i, y_i+1$.
+\\
+Nun ueberpruefen wir ob $p$ zwischen $P_i$ und $P_i+1$ liegt oder andersherum $(y_i > y_p) \neq (y_i+1 > y_p)$.
+\\
+Wenn nun die kannte die Horizontale linie schneidet berechne ich den $x$-wert des Schnittpunkts der kante $x_\text{intersect}$ was die horizontale Linie durch $p$ ist:
+\\
+$x_\text{intersect} = x_i + (y_i+1 - y_i)\frac{(x_i+1 - x_i) * (y_p - y_i)}{y_i+1 - y_i}$
+\\
+Als naechstes schauen wir das wenn $x_\text{intersect} > x_p$ zaehlen wir unseren intersectionCount um eins hoch.
+\\
+Zum schluss schauen wir dann wie hoch unser intersectionCount ist.  wenn er ungrade ist liegt der Punkt im Polygon ist der Grade liegt der Punkt nicht im polygon.
+\end{center}
 \subsubsection{\textcolor{blue}{Der Hauptalgorithmus und seine funktion}}
-\subsubsection{\textcolor{blue}{Erweiterung der Plot des Polygons samt punkten}}
+\subsubsection{\textcolor{blue}{Erweiterung des Programms, der Plot des Polygons samt doerfern}}
 \begin{center}
 
 \end{center}
-\section{textcolor{blue}{Beispiele}}
+\newpage
+\section{\textcolor{blue}{Beispiele}}
 \begin{center}
 
 \end{center}
@@ -219,6 +241,7 @@ namespace Geometrie{
 	};
 };
 \end{verbatim}
+\newpage
 \subsection{\textcolor{blue}{main.cpp}}
 \begin{verbatim}
 #include <iostream>

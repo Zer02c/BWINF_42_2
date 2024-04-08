@@ -10,8 +10,8 @@
 \contentsline {subsubsection}{\numberline {2.3.1}\textcolor {blue}{Funktion: centroid}}{3}{subsubsection.2.3.1}%
 \contentsline {subsubsection}{\numberline {2.3.2}\textcolor {blue}{Funktion isInsidePolygon}}{3}{subsubsection.2.3.2}%
 \contentsline {subsubsection}{\numberline {2.3.3}\textcolor {blue}{Der Hauptalgorithmus und seine funktion}}{3}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}\textcolor {blue}{Erweiterung der Plot des Polygons samt punkten}}{3}{subsubsection.2.3.4}%
-\contentsline {section}{\numberline {3}textcolor{blue}{Beispiele}}{3}{section.3}%
-\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{3}{section.4}%
-\contentsline {subsection}{\numberline {4.1}\textcolor {blue}{Geometrie.h}}{3}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}\textcolor {blue}{main.cpp}}{5}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {2.3.4}\textcolor {blue}{Erweiterung des Programms, der Plot des Polygons samt doerfern}}{3}{subsubsection.2.3.4}%
+\contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{4}{section.3}%
+\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}\textcolor {blue}{Geometrie.h}}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}\textcolor {blue}{main.cpp}}{7}{subsection.4.2}%
