@@ -98,7 +98,7 @@ int main() {
 	Geometrie::Polygon polygon;
 
 	// Punkte aus einer .txt file einlesen
-	polygon.readPointsFromFile("../inputs/siedler1.txt");
+	polygon.readPointsFromFile("../inputs/siedler5.txt");
 
 	// bestimmen des centroid
 	Geometrie::Point centroid = polygon.centroid();

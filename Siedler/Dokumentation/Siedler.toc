@@ -6,12 +6,15 @@
 \contentsline {subsection}{\numberline {2.2}\textcolor {blue}{Die End Umsetzung}}{2}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}\textcolor {blue}{Geometrie.h: Geometriesche funktionen klasse Point, Polygon}}{2}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}\textcolor {blue}{Klasse Point}}{2}{subsubsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.3}\textcolor {blue}{Klasse Polygon}}{3}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}\textcolor {blue}{Funktion: centroid}}{3}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}\textcolor {blue}{Funktion isInsidePolygon}}{3}{subsubsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.3.3}\textcolor {blue}{Der Hauptalgorithmus und seine funktion}}{3}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}\textcolor {blue}{Erweiterung des Programms, der Plot des Polygons samt doerfern}}{3}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.2.3}\textcolor {blue}{Klasse Polygon}}{3}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}\textcolor {blue}{Hauptprogramm/Hauptalgorithmus}}{3}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}\textcolor {blue}{Erweiterung des Programms, der Plot des Polygons samt doerfern}}{3}{subsubsection.2.2.5}%
 \contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{4}{section.3}%
-\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}\textcolor {blue}{Geometrie.h}}{4}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}\textcolor {blue}{main.cpp}}{7}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {3.0.1}\textcolor {blue}{siedler1.txt}}{4}{subsubsection.3.0.1}%
+\contentsline {subsubsection}{\numberline {3.0.2}\textcolor {blue}{siedler2.txt}}{7}{subsubsection.3.0.2}%
+\contentsline {subsubsection}{\numberline {3.0.3}\textcolor {blue}{siedler3.txt}}{9}{subsubsection.3.0.3}%
+\contentsline {subsubsection}{\numberline {3.0.4}\textcolor {blue}{siedler4.txt}}{14}{subsubsection.3.0.4}%
+\contentsline {subsubsection}{\numberline {3.0.5}\textcolor {blue}{sielder5.txt}}{18}{subsubsection.3.0.5}%
+\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{22}{section.4}%
+\contentsline {subsection}{\numberline {4.1}\textcolor {blue}{Geometrie.h}}{22}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}\textcolor {blue}{main.cpp}}{25}{subsection.4.2}%
