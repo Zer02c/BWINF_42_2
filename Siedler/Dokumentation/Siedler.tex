@@ -26,20 +26,6 @@
 \date{\today}
 
 \begin{document}
-% Konfiguration für C++-Code
-\lstset{
-    language=C++, % Sprache des Codes
-    basicstyle=\small\ttfamily, % Grundschriftart und -größe
-    keywordstyle=\color{blue}\bfseries, % Stil für Schlüsselwörter
-    commentstyle=\color{green!60!black}, % Stil für Kommentare
-    stringstyle=\color{red}, % Stil für Zeichenketten
-    breaklines=true, % Automatischer Zeilenumbruch
-    showstringspaces=false, % Keine Leerzeichen in Zeichenketten anzeigen
-    tabsize=2, % Tabulatorgröße
-    numbers=left, % Zeilennummern links anzeigen
-    numberstyle=\tiny\color{gray}, % Stil für Zeilennummern
-    captionpos=b % Position der Beschriftung (unten)
-}
 
 \thispagestyle{empty}
 \begin{center}
@@ -56,13 +42,90 @@
 \tableofcontents
 \newpage
 \section{\textcolor{blue}{Loesungsidee}}
-\begin{center}
-Ich habe mir die Aufgabe durchgelesen, und dabei gemerkt, dass die Hauptaufgabe im Endefekt nichts anderes ist, wie die den Punkt im polygon zu finden, der wen ich mein radius von 85km platziere, die meisten Doerfer im abstand von 10km halten kann. Danach muss ich im endefekt nur noch die restlichen Doerfer im abstand von 20km platzieren.
-\end{center}
+\subsection{\textcolor{blue}{platzieren der Doerfer}}
+Wen ich den besten platz gefunden habe, kann ich die doerfer in abstaenden von 10km platzieren, indem ich bei einem radius von 10 anfange und bis zu einem radius von 80 hochzaehle in 10er schritten. Um nun die Punkte des Kreises zu berechen:
+\\
+$u = 2 * \pi * r$
+\\
+$a = \frac{u}{10}$
+\\
+$winkel |i = 0,1,2,3...a-1$
+\\
+$winkel = \frac{2 * \pi * i}{a}$
+\\
+$x = punkt.x + r * \cos(winkel)$
+\\
+$y = punkt.y + r * \sin(winkel)$
+\\
+so bekommen wir die punkte die auf dem umkreis des kreises liegen. Um die Punkte fuer die naechsten Radin zu bestimmen, muessen wir legendlich den radius erhoehen um 10 solange bis wir bei 80 angekommen sind.
+\subsection{\textcolor{blue}{Geometrisches Optimierungsproblem}}
+Bei der Aufgabe handelt es sich um ein Geometrisches optimierungsproblem. Wo das Problem darin liegt, den Besten Punkt innerhalb eines Polygons zu finden wo man ein Gesundheitszentrum erichten kann. Der Punkt muss die Bedingung erfuellen. Wenn ich ihn als mittelpunkt eines kreises benutze. Und ich ein radius von 85km um ihn herumziehe, und den kreis mit doerfern fuelle. Die alle einen abstand von 10km zueinander haben, und im Polygon liegen Damit sich die Krankheiten nicht uebertragen werden.
+\\
+Die naechste Aufgabe waere dann das Restliche Polygon noch mit doerfern zu fuellen fuer die aber gilt das sie einen abstand von 20km zueinander haben muessen.
+\subsection{\textcolor{blue}{Bruteforce}}
+Der vermutlich einfachste weg der Mir einfaellt, waere es so lange zufaellige zahlen im bereich der min $x$,$y$ und max $x$,$y$ Koordinaten des Polygons zu generieren, bis man zweimal hintereinander Koordinaten generiert hat die wo sich der wert der punkte die innerhalb des Polygons liegen nicht aendert.
+\vspace{5pt}
+\hrule
+\vspace{1.5pt}
+\large{\textbf{Algorithmus 1} Brutforce}
+\vspace{1.5pt}
+\hrule
+\begin{verbatim}
+funktion brutforce(x,y)
+	counter = 0
+	do while true
+		x = zufaelliger wert > min x && < max x
+		y = zufaelliger wert > min y && max y
+		counter = aufruf funktion zum Berechnen der anzahl der Punkte(x,y)
+		
+		wenn counter == counter, zweimal hintereinander
+		return x,y 
+\end{verbatim}
+\hrule
+\vspace{5pt}
+Das Problem an dem ansatz ist natuerlich das ich wen ich pech habe zweimal den gleichen Punkt bekomme, oder aber ein punkt der sehr nahe am anderen liegt. Und der algorithmus deshalb nicht funktioniert. Abgesehen davon haben wir im worst case eine extrem lange laufzeit.
+\subsection{\textcolor{blue}{Innenkreis}}
+eine Theoretisch bessere Idee die ich gefunden habe, ist es den innenkreis eines Polygons zu Berechnen. Der Innenkreis eines Polygons ist der kreis, mit dem groest moeglichen radius der innerhalb eines polygons liegt. Das Problem daran ist aber, das es nur bei regelmaessigen Polygonen funktioniert. Und bei unregelmaessigen Polygonen sogut wie unmoeglich ist den Innenkreis zu berechnen. damit ist die Idee sofort weckgefallen da min. zwei der Bsp. Polygone unregelmaessig sind.
+\subsection{\textcolor{blue}{Raster algorithmus}}
+Ein weitaus besserer ansatz war meiner meinung nach der Rasteralgorithmus. Also ein Raster ueber das Polygon zu legen, und dann einfach den Punkt zu finden der am meisten Punkte mit einem radius von 85 Einheiten halten kann.
+\vspace{5pt}
+\hrule
+\vspace{1.5pt}
+\large{\textbf{Algorithmus 2} Raster}
+\vspace{1.5pt}
+\hrule
+\begin{verbatim}
+funktion raster(polygon)
+	points_x = []
+	points_y = []
+	x_werte = []
+	y_werte = []
+	for i in reichweite anzahl x werte der kanten des polygon
+		x_werte.append(polygon.x)
+	for i in reichweite anzahl y werte der kanten des polygon
+		y_werte.append(polygon.y)
+	min_x = min(x_werte)
+	min_y = min(y_werte)
+	max_x = max(x_werte)
+	max_y = max(y_werte)
+	
+	for min_x in reichweite max_x step Bsp. 10
+		points_x.append(min_x)
+	for min_y in reichweite max_y step Bsp. 10
+		points_x.append(min_y)
+		
+	jezt nur noch schauen ob der punkt im polygon liegt wen ja lass ihn in der liste wenn
+	nein nimm ihn raus 
+\end{verbatim}
+\hrule
+\vspace{5pt}
+Am ende erhalten wir ein raster von Punkten, die ueber das Polygon im abstand von 10 Einheiten verteilt sind. jetzt koennte man die punkte alle durchgehen, und schauen welcher punkt die meisten punkte im radius von 85 Einheiten halten kann, und diesen punkt als Gesundheitszentrum setzen. Das Problem an diesem Ansatz ist das je geanuer wir den optimalen punkt haben wollen, desto kleiner muss der abstand zwischen den Rasterpunkten werden. Je kleiner die Rasterpunkte werden je laenger dauert es sie alle durch zu iterieren. Das heist im volgeschluss das der Algorithmus nur fuer kleinste Polygone geeignet waere wenn ueberhaupt.
+
+\subsection{\textcolor{blue}{End Algorithmus idee}}
+
 \section{\textcolor{blue}{Umsetzung}}
 \subsection{\textcolor{blue}{Erste schritte und fehler}}
 \subsubsection{\textcolor{blue}{raster algorithmus}}
-\begin{center}
 ich habe viele probleme mit der umsetzung. Das groeste problem ist es, den optimalsten punkt innerhalb des polygons zu finden. So das ich moeglichst viele doerfer im abstand von 10km platzieren kann.
 \par\medskip
  Meine erste idee war es, irgendwie ein raster ueber das polygon zu legen. So das ich nur noch schauen muss bei welchem rasterpunkt ich am meisten rasterpunkte im radius von 85km habe. Dass muestte dann auch der Beste platz sein, wo ich das Gesundheitszentrum platzieren kann.
@@ -73,28 +136,22 @@ Der ansatz hat auch am Ende funktioniert aber das Problem ist das wenn ich den a
 \\
  Je geringer ich den abstand der punkte mache, desto genauer ist logischerweise auch das ergebnis geworden. Aber um so laenger war auch die rechenzeit, die mein Rechner gebraucht hat. So das ich irgendwann bei einem Rasterpunkte abstand von 0.001 bei weit ueber einer stunde war. zudem muss ich nach dem rastern noch schauen, welcher der Punkte nun wirklich im Polygon lag und welcher eben nicht.
 \par\medskip
-\end{center}
 \subsubsection{\textcolor{blue}{kreis algorihtmus}}
-\begin{center}
 Ich habe versucht Bei meiner anderen umsetzung, den Besten platz mithilfe von Kreisen zu finden. Auf die idee bin ich gekommen als ich im Internet geschaut habe, was man alles beim polygon berechen kann. Dabei bin ich auf den Innenkreis des Polygons gestossen, der den groesten kreis innerhalb eines polygons darstellt.
 \par\medskip
  wen ich es dann noch schaffen wuerde den mittelpunkt des kreises zu bestimmen habe ich gewonnen. Das ganze hat am ende nicht so gut funktioniert, da ein paar der Bsp. Polygone unregelmaessige polygone sind. wo es schwer bis gar unmoeglich ist den innernkreis zu berechen. Zudem ist mir als Problem aufgefallen das wenn ich versuche den mittelpunkt zu bestimme der punkt nie ganz genau ist.
-\end{center}
 \subsection{\textcolor{blue}{Die End Umsetzung}}
 \subsubsection{\textcolor{blue}{Geometrie.h: Geometriesche funktionen klasse Point, Polygon}}
 \subsubsection{\textcolor{blue}{Klasse Point}}
-\begin{center}
 Um alles auch ordentlich darzustellen im code habe ich eine Geometrie.h datei erstellt, die alle Funktionen fuer die verarbeitung und die darstellund von Polygonen und Punkten enthaelt
 \\
 Die Datei enthaelt eine klasse \textit{Point}, die Aufgabe dieser klasse ist es, einfach ein Punkt darzustellen also zwei werte vom typ double. zudem hat die klasse \textit{Point} zwei funktionen, die Erste ist es den x-wert eines punktes wiederzugeben(\textit{getX()}), die zweite funktion soll den y-wert eines punktes wiedergeben (\textit{getY()}).  
-\end{center}
 \subsubsection{\textcolor{blue}{Klasse Polygon}}
-\begin{center}
 Die Klasse \textit{Polygon} hat im Grunde die Aufgabe, ein Polygon darzustellen. wobei hier das Polygon im endefekt nichts anderes ist wie ein vector aus Point's. mit eine der wichtigsten Funktionen ist die Funktion \textit{centroid} Bestimmt den schwerpunkt des Polygons das ich spaeter fuer den Hauptalgorithmus brauche die Funktion \textit{centroid} macht im endefekt nicht anderes als als erstes die flaeche des polygons mithilfe der Gauss'schen Trapezformel zu Berechen. fuer die gilt:
 \[
 \text{area} = \frac{1}{2} \left| \sum_{i=1}^{n} (x_i y_{i+1} - x_{i+1} y_i) \right|
 \]
-
+\\
 Hierbei wird $P_{n+1}$ als $P_1$ behandelt, d.h., $x_{n+1} = x_1$ und $y_{n+1} = y_1$.
 \\
 Der Schwerpunkt $(cx, cy)$ des Polygons wird dann berechnet als:
@@ -109,7 +166,7 @@ cy = \frac{1}{6 \cdot \text{area}} \sum_{i=0}^{n-1} (y_i + y_{i+1}) \cdot (x_i y
 Hierbei wird $P_{n}$ als $P_0$ behandelt, d.h., $x_{n} = x_0$ und $y_{n} = y_0$. 
 \par\medskip
 Die naechste wichtige funktion der Klasse Polygon ist die Funktion \textit{isInsidePolygon}. Diese funktion schaut ob ein punkt innerhalb des Polygons liegt. Dies tut die Funktion mithilfe eines raycastalgorithmus. Die funktions idee ist das ich ein punkt habe und von diesem punkt aus versende ich strahlen(rays), dann schaue ich wie oft dieser strahl die kanten meines polygons schneidet. wenn die Anzahl ungrade ist, liegt der Punkt innerhalb des Polygons. Ist die annzahl jedoch Grade liegt der Punkt ausserhalb des Polygons. Das heisst gegeben muessen sein, mein Punkt den ich pruefen will $p(x_p|y_p)$ und mein Polygon \( \{ (x_i, y_i) \}_{i=0}^{n-1} \), hier steht $n$ fuer die anzahl der Eckpunkte.
-\par\medskip
+\\
 als naechstes inzinalisiere ich mein counter intersectionCount mit 0.
 \\
 Als naechstes lassen wir eine schleife ueber alle kanten des Polygons laufen, fuer jede kante des Polygons gilt $(P_i,P_i+1)$, wobei $P_i = (x_i,y_i)$, $P_i+1 = (x_i+1, y_i+1)$: 
@@ -127,15 +184,11 @@ $x_\text{intersect} = x_i + (y_i+1 - y_i)\frac{(x_i+1 - x_i) * (y_p - y_i)}{y_i+
 Als naechstes schauen wir das wenn $x_\text{intersect} > x_p$ zaehlen wir unseren intersectionCount um eins hoch.
 \\
 Zum schluss schauen wir dann wie hoch unser intersectionCount ist.  wenn er ungrade ist liegt der Punkt im Polygon ist der Grade liegt der Punkt nicht im polygon. Das sind alle wichtigen wesentlichen Funktionen, die fuer mein Algorithmus wichtig sind.
-\end{center}
 \subsubsection{\textcolor{blue}{Hauptprogramm/Hauptalgorithmus}}
 Mein Hauptprogramm ist jezt so Aufgeabaut das ich als erstes die Daten vom Polygon aus einer .txt datei auslese, das erspart mir viel arbeit. Die funktion \textit{readPointsFromfile} steht ebenfalls in meiner klasse Polygon. Die Funktion macht nichts anderes, wie zu der angegebenen datei zu gehen, von jeder zeile die $x$ und $y$ koordinaten zu nehmen und diese als Punkt in das Polygon zu speichern. 
 \\
 als naechstes suche ich mir ein punkt der relativ zentral im Polygon liegt! Meine wahl ist hier auf den Centroid(Masseschwerpunkt) gefallen da er je nach Polygon der Mittelpunkt sein kann, und wenn nicht liegt er denoch relativ zentral in der mitte. die $x$ und $y$ werte des Centroid(die Werte bekomme ich durch meine funktion \textit{centroid} aus der Klasse Polygon) speichere ich mir als meinen startwert ab.
 \subsubsection{\textcolor{blue}{Erweiterung des Programms, der Plot des Polygons samt doerfern}}
-\begin{center}
-
-\end{center}
 \newpage
 \section{\textcolor{blue}{Beispiele}}
 \subsubsection{\textcolor{blue}{siedler1.txt}}

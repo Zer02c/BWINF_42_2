@@ -74,7 +74,6 @@ Geometrie::Point gesundheitszentrum (int distance, Geometrie::Point centroid_cir
 	// durch ob er ein besserer centroid waere
 	do{
 		for(const Geometrie::Point& p: points){
-			std::cout << "jetzt" << std::endl;
 			std::vector<Geometrie::Point> test_points = circle_Points(distance, p, polygon);
 			if(test_points.size() > start_value){
 				start_value = test_points.size();

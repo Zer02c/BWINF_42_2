@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  8 APR 2024 20:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  10 APR 2024 20:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -468,15 +468,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-) [1
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./Siedler.toc)
 \tf@toc=\write4
@@ -487,98 +479,176 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.57 \newpage
-              [1] [2] [3]
+l.43 \newpage
+              [1] [2]
+Overfull \hbox (59.01903pt too wide) in paragraph at lines 119--119
+[] \OT1/cmtt/m/n/12 jezt nur noch schauen ob der punkt im polygon liegt wen ja 
+lass ihn in der liste wenn[] 
+ []
+
+[3] [4]
+Overfull \hbox (1.56456pt too wide) in paragraph at lines 168--187
+\OT1/cmr/m/n/12 Wenn nun die kan-nte die Hor-i-zon-tale linie schnei-det berech
+ne ich den $\OML/cmm/m/it/12 x$\OT1/cmr/m/n/12 -wert des Schnittpunkts
+ []
+
+[5] [6]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 141.
+(hyperref)                than one, level fixed on input line 194.
 
-[4] [5] [6]
-<Bilder/Figure_1.png, id=146, 1977.3072pt x 1156.32pt>
+[7] [8] [9]
+<Bilder/Figure_1.png, id=194, 1977.3072pt x 1156.32pt>
 File: Bilder/Figure_1.png Graphic file (type png)
 <use Bilder/Figure_1.png>
-Package pdftex.def Info: Bilder/Figure_1.png  used on input line 277.
+Package pdftex.def Info: Bilder/Figure_1.png  used on input line 330.
 (pdftex.def)             Requested size: 472.03123pt x 276.04037pt.
- [7 <./Bilder/Figure_1.png>] [8]
-<Bilder/Figure_2.png, id=159, 1977.3072pt x 1156.32pt>
+ [10 <./Bilder/Figure_1.png>] [11]
+<Bilder/Figure_2.png, id=206, 1977.3072pt x 1156.32pt>
 File: Bilder/Figure_2.png Graphic file (type png)
 <use Bilder/Figure_2.png>
-Package pdftex.def Info: Bilder/Figure_2.png  used on input line 346.
+Package pdftex.def Info: Bilder/Figure_2.png  used on input line 399.
 (pdftex.def)             Requested size: 472.03123pt x 276.04037pt.
- [9 <./Bilder/Figure_2.png>]
-[10] [11] [12] [13]
-<Bilder/Figure_3.png, id=183, 462.528pt x 346.896pt>
+ [12 <./Bilder/Figure_2.png>]
+[13] [14] [15] [16] [17]
+<Bilder/Figure_3.png, id=234, 462.528pt x 346.896pt>
 File: Bilder/Figure_3.png Graphic file (type png)
 <use Bilder/Figure_3.png>
-Package pdftex.def Info: Bilder/Figure_3.png  used on input line 564.
+Package pdftex.def Info: Bilder/Figure_3.png  used on input line 617.
 (pdftex.def)             Requested size: 472.03123pt x 354.04095pt.
- [14 <./Bilder/Figure_3.png>] [15] [16] [17]
-<Bilder/Figure_4.png, id=202, 1977.3072pt x 1156.32pt>
+ [18 <./Bilder/Figure_3.png>] [19] [20] [21]
+<Bilder/Figure_4.png, id=254, 1977.3072pt x 1156.32pt>
 File: Bilder/Figure_4.png Graphic file (type png)
 <use Bilder/Figure_4.png>
-Package pdftex.def Info: Bilder/Figure_4.png  used on input line 713.
+Package pdftex.def Info: Bilder/Figure_4.png  used on input line 766.
 (pdftex.def)             Requested size: 472.03123pt x 276.04037pt.
- [18 <./Bilder/Figure_4.png>] [19] [20] [21]
-<Bilder/Figure_5.png, id=222, 462.528pt x 346.896pt>
+ [22 <./Bilder/Figure_4.png>] [23] [24] [25]
+<Bilder/Figure_5.png, id=274, 462.528pt x 346.896pt>
 File: Bilder/Figure_5.png Graphic file (type png)
 <use Bilder/Figure_5.png>
-Package pdftex.def Info: Bilder/Figure_5.png  used on input line 877.
+Package pdftex.def Info: Bilder/Figure_5.png  used on input line 930.
 (pdftex.def)             Requested size: 472.03123pt x 354.04095pt.
- [22 <./Bilder/Figure_5.png>] [23] [24]
-Overfull \hbox (0.46465pt too wide) in paragraph at lines 1173--1173
-[] \OT1/cmtt/m/n/10 std::vector<Geometrie::Point> points = umfang_punkte_eins(p
+ [26 <./Bilder/Figure_5.png>]
+Overfull \hbox (9.619pt too wide) in paragraph at lines 1051--1051
+[]   \OT1/cmtt/m/n/12 // Funktion zum Bestimmen des Schwerpunktes oder auch Cen
+troid des Polygons[] 
+ []
+
+[27]
+Overfull \hbox (9.619pt too wide) in paragraph at lines 1051--1051
+[]  \OT1/cmtt/m/n/12 // Funktion zum schauen ob der punkt innerhalb des polygon
+s liegt oder nicht[] 
+ []
+
+[28] [29]
+Overfull \hbox (40.49402pt too wide) in paragraph at lines 1226--1226
+[]\OT1/cmtt/m/n/12 std::vector<Geometrie::Point> umfang_punkte_eins(const Geome
+trie::Polygon& polygon,[] 
+ []
+
+
+Overfull \hbox (83.71904pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 std::vector<Geometrie::Point> points = umfang_punkte_eins(p
 olygon, center_point, radius);[] 
  []
 
 
-Overfull \hbox (31.96437pt too wide) in paragraph at lines 1173--1173
-[]\OT1/cmtt/m/n/10 // Funktion zum berechen der Punkte auf dem Umkreis eines Kr
+Overfull \hbox (77.54404pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 // endet wenn der kreis so gros ist das kein punkt mehr im 
+polygon platziert werden kann[] 
+ []
+
+
+Overfull \hbox (120.76906pt too wide) in paragraph at lines 1226--1226
+[]\OT1/cmtt/m/n/12 // Funktion zum berechen der Punkte auf dem Umkreis eines Kr
 eises in 10 radius abstaenden bis 85[] 
  []
 
 
-Overfull \hbox (5.7146pt too wide) in paragraph at lines 1173--1173
-[]\OT1/cmtt/m/n/10 std::vector<Geometrie::Point> circle_Points(int distance, Ge
+Overfull \hbox (89.89404pt too wide) in paragraph at lines 1226--1226
+[]\OT1/cmtt/m/n/12 std::vector<Geometrie::Point> circle_Points(int distance, Ge
 ometrie::Point centroid_circle,[] 
  []
 
-[25]
-Overfull \hbox (0.46465pt too wide) in paragraph at lines 1173--1173
-[] \OT1/cmtt/m/n/10 std::vector<Geometrie::Point> points = circle_Points(distan
+[30]
+Overfull \hbox (46.66902pt too wide) in paragraph at lines 1226--1226
+[]\OT1/cmtt/m/n/12 Geometrie::Point gesundheitszentrum (int distance, Geometrie
+::Point centroid_circle,[] 
+ []
+
+
+Overfull \hbox (83.71904pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 std::vector<Geometrie::Point> points = circle_Points(distan
 ce, centroid_circle, polygon);[] 
  []
 
 
-Overfull \hbox (68.71405pt too wide) in paragraph at lines 1173--1173
-[] \OT1/cmtt/m/n/10 std::vector<Geometrie::Point> gesundheitszentrum_Points = c
+Overfull \hbox (59.01903pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 // wir gehen gehen unsere 1 liste von punkten(doerfern) dur
+ch und schauen jeden punkt[] 
+ []
+
+
+Overfull \hbox (40.49402pt too wide) in paragraph at lines 1226--1226
+[]   \OT1/cmtt/m/n/12 std::vector<Geometrie::Point> test_points = circle_Points
+(distance, p, polygon);[] 
+ []
+
+
+Overfull \hbox (46.66902pt too wide) in paragraph at lines 1226--1226
+[]    \OT1/cmtt/m/n/12 // wen der wert vom vorherigem durchlauf gleich dem 2 du
+rchlauf ist returnen wir[] 
+ []
+
+[31]
+Overfull \hbox (9.619pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 Geometrie::Point gesundheitszent = gesundheitszentrum(10, c
+entroid, polygon);[] 
+ []
+
+
+Overfull \hbox (163.99408pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 std::vector<Geometrie::Point> gesundheitszentrum_Points = c
 ircle_Points(10, gesundheitszent, polygon);[] 
  []
 
-[26]
-Overfull \hbox (163.21323pt too wide) in paragraph at lines 1173--1173
-[] \OT1/cmtt/m/n/10 std::cout << "Gesundheitszentrum: " << "(" << gesundheitsze
+
+Overfull \hbox (34.31902pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 std::vector<Geometrie::Point> end_points = last_points(poly
+gon, gesundheitszent);[] 
+ []
+
+
+Overfull \hbox (275.14413pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 std::cout << "Gesundheitszentrum: " << "(" << gesundheitsze
 nt.getX() <<"|" << gesundheitszent.getY() << ")"<< std::endl;[] 
  []
 
 
-Overfull \hbox (31.96437pt too wide) in paragraph at lines 1173--1173
-[]  \OT1/cmtt/m/n/10 std::cout << "Das " << counter << "Dorf liegt bei den koor
+Overfull \hbox (77.54404pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 std::cout << "Doerfer innerhalb des Radiuses von dem Gesund
+heitszentrum: " << std::endl;[] 
+ []
+
+
+Overfull \hbox (120.76906pt too wide) in paragraph at lines 1226--1226
+[]  \OT1/cmtt/m/n/12 std::cout << "Das " << counter << "Dorf liegt bei den koor
 dinaten: " << "(" << p.getX() << "|"[] 
  []
 
 
-Overfull \hbox (37.21432pt too wide) in paragraph at lines 1173--1173
-[] \OT1/cmtt/m/n/10 std::cout << "Restliche doerfer ausserhalb des Radiuses des
+Overfull \hbox (126.94406pt too wide) in paragraph at lines 1226--1226
+[] \OT1/cmtt/m/n/12 std::cout << "Restliche doerfer ausserhalb des Radiuses des
  gesundheitszentrums: " << std::endl;[] 
  []
 
 
-Overfull \hbox (31.96437pt too wide) in paragraph at lines 1173--1173
-[]  \OT1/cmtt/m/n/10 std::cout << "Das " << counter << "Dorf liegt bei den koor
+Overfull \hbox (120.76906pt too wide) in paragraph at lines 1226--1226
+[]  \OT1/cmtt/m/n/12 std::cout << "Das " << counter << "Dorf liegt bei den koor
 dinaten: " << "(" << p.getX() << "|"[] 
  []
 
-[27] [28] (./Siedler.aux)
+[32] [33] (./Siedler.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -587,39 +657,38 @@ L3 programming layer <2024-01-22>
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `Siedler.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Siedler.out':
-(rerunfilecheck)             Before: EB9644BC6EAFD7559277E741661A195C;3213
-(rerunfilecheck)             After:  BB599D598C9B9DB8357DDF26434BEAB7;3156.
+Package rerunfilecheck Info: File `Siedler.out' has not changed.
+(rerunfilecheck)             Checksum: 61F115CA0FE815CE243FD2AB891C9D4E;4087.
  ) 
 Here is how much of TeX's memory you used:
- 11921 strings out of 474222
- 181071 string characters out of 5748733
- 1937975 words of memory out of 5000000
- 34001 multiletter control sequences out of 15000+600000
- 561460 words of font info for 48 fonts, out of 8000000 for 9000
+ 11915 strings out of 474222
+ 180518 string characters out of 5748733
+ 1936975 words of memory out of 5000000
+ 33983 multiletter control sequences out of 15000+600000
+ 564574 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,739b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,739b,596s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Siedler.pdf (29 pages, 579198 bytes).
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Siedler.pdf (34 pages, 637405 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 254 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 403 PDF objects out of 1000 (max. 8388607)
+ 317 compressed objects within 4 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 234 words of extra memory for PDF output out of 10000 (max. 10000000)
 
