@@ -6,22 +6,7 @@
 \contentsline {subsection}{\numberline {1.4}\textcolor {blue}{Innenkreis}}{4}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}\textcolor {blue}{Raster algorithmus}}{4}{subsection.1.5}%
 \contentsline {subsection}{\numberline {1.6}\textcolor {blue}{End Algorithmus idee}}{5}{subsection.1.6}%
-\contentsline {section}{\numberline {2}\textcolor {blue}{Umsetzung}}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}\textcolor {blue}{Erste schritte und fehler}}{5}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}\textcolor {blue}{raster algorithmus}}{5}{subsubsection.2.1.1}%
-\contentsline {subsubsection}{\numberline {2.1.2}\textcolor {blue}{kreis algorihtmus}}{6}{subsubsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.2}\textcolor {blue}{Die End Umsetzung}}{7}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}\textcolor {blue}{Geometrie.h: Geometriesche funktionen klasse Point, Polygon}}{7}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}\textcolor {blue}{Klasse Point}}{7}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}\textcolor {blue}{Klasse Polygon}}{7}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}\textcolor {blue}{Hauptprogramm/Hauptalgorithmus}}{8}{subsubsection.2.2.4}%
-\contentsline {subsubsection}{\numberline {2.2.5}\textcolor {blue}{Erweiterung des Programms, der Plot des Polygons samt doerfern}}{9}{subsubsection.2.2.5}%
-\contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{10}{section.3}%
-\contentsline {subsubsection}{\numberline {3.0.1}\textcolor {blue}{siedler1.txt}}{10}{subsubsection.3.0.1}%
-\contentsline {subsubsection}{\numberline {3.0.2}\textcolor {blue}{siedler2.txt}}{14}{subsubsection.3.0.2}%
-\contentsline {subsubsection}{\numberline {3.0.3}\textcolor {blue}{siedler3.txt}}{17}{subsubsection.3.0.3}%
-\contentsline {subsubsection}{\numberline {3.0.4}\textcolor {blue}{siedler4.txt}}{24}{subsubsection.3.0.4}%
-\contentsline {subsubsection}{\numberline {3.0.5}\textcolor {blue}{sielder5.txt}}{29}{subsubsection.3.0.5}%
-\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{34}{section.4}%
-\contentsline {subsection}{\numberline {4.1}\textcolor {blue}{Geometrie.h}}{34}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}\textcolor {blue}{main.cpp}}{38}{subsection.4.2}%
+\contentsline {subsection}{\numberline {1.7}\textcolor {blue}{Quellen:}}{6}{subsection.1.7}%
+\contentsline {section}{\numberline {2}\textcolor {blue}{Umsetzung}}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}\textcolor {blue}{Die End Umsetzung}}{6}{subsection.2.1}%
+\contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{6}{section.3}%
