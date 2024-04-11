@@ -42,26 +42,62 @@
 \tableofcontents
 \newpage
 \section{\textcolor{blue}{Loesungsidee}}
-\subsection{\textcolor{blue}{platzieren der Doerfer}}
-Wen ich den besten platz gefunden habe, kann ich die doerfer in abstaenden von 10km platzieren, indem ich bei einem radius von 10 anfange und bis zu einem radius von 80 hochzaehle in 10er schritten. Um nun die Punkte des Kreises zu berechen:
-\\
-$u = 2 * \pi * r$
-\\
-$a = \frac{u}{10}$
-\\
-$winkel |i = 0,1,2,3...a-1$
-\\
-$winkel = \frac{2 * \pi * i}{a}$
-\\
-$x = punkt.x + r * \cos(winkel)$
-\\
-$y = punkt.y + r * \sin(winkel)$
-\\
-so bekommen wir die punkte die auf dem umkreis des kreises liegen. Um die Punkte fuer die naechsten Radin zu bestimmen, muessen wir legendlich den radius erhoehen um 10 solange bis wir bei 80 angekommen sind.
 \subsection{\textcolor{blue}{Geometrisches Optimierungsproblem}}
 Bei der Aufgabe handelt es sich um ein Geometrisches optimierungsproblem. Wo das Problem darin liegt, den Besten Punkt innerhalb eines Polygons zu finden wo man ein Gesundheitszentrum erichten kann. Der Punkt muss die Bedingung erfuellen. Wenn ich ihn als mittelpunkt eines kreises benutze. Und ich ein radius von 85km um ihn herumziehe, und den kreis mit doerfern fuelle. Die alle einen abstand von 10km zueinander haben, und im Polygon liegen Damit sich die Krankheiten nicht uebertragen werden.
 \\
 Die naechste Aufgabe waere dann das Restliche Polygon noch mit doerfern zu fuellen fuer die aber gilt das sie einen abstand von 20km zueinander haben muessen.
+\subsection{\textcolor{blue}{platzieren der Doerfer}}
+Wen ich den besten platz gefunden habe, kann ich die doerfer in abstaenden von 10km platzieren, indem ich bei einem radius von 10 anfange und bis zu einem radius von 80 hochzaehle in 10er schritten. Um nun die Punkte des Kreises zu berechen:
+\vspace{5pt}
+\hrule
+\vspace{1.5pt}
+\large{\textbf{Algorithmus umfang Punkte 1} Trigonomische funktionen}
+\vspace{1.5pt}
+\hrule
+\begin{verbatim}
+funktion punkte(centroid, polygon, distance)
+	umfang_punkte = []
+	for radius = 10 solange radius kleiner als 85 addiere zum radius 10
+		umfang = 2 * pi * radius
+		anzahl_punkte = (umfang/distance)
+		
+		for i solange i kleinr der anzahl_punkte addiere zu i 1
+			winkel = (2 * pi * i)/anzahl_punkte
+			x = centroid.x + radius * cos(winkel)
+			y = centroid.y + radius * sin(winkel)
+			wen der punkt(x,y) im polygon liegt
+				umfang_punkte.append(punkt(x,y))
+\end{verbatim}
+\hrule
+\vspace{5pt}
+so bekommen wir die punkte die auf dem umkreis des kreises liegen. Um die Punkte fuer die naechsten Radin zu bestimmen, muessen wir legendlich den radius erhoehen um 10 solange bis wir bei 80 angekommen sind. So wie in dem pseudo code veranschaulicht. Um die restlichen Doerfer danach im abstand von 20km zu platzieren, kann ich auch die obrige funktion benutzen nur das ich eben bei dem radius von 100 anfange. Darduch ereiche ich das der abstand 20 ist und kann so weitermachen. Das einzige was ich im code noch ergaenzen muesste ist ein weiteres if-Statement das schaut ob der kreis noch das Polygon schneidet. Oder alternativ schauen ob ich noch ein punkt auf dem Polygon mit dem gegeben radius platzieren kann, wen nicht brich das Programm ab. Das wuerde mann dann aber eher mit einer while-do schleife realisieren. 
+\subsubsection{\textcolor{blue}{Raycastalgorithmus}}
+Ein wichtiges Problem was bis jezt entsteht ist, wie kann ich schauen ob eben ein Punkt innerhalb des Polygons liegt oder nicht?. das Problem kann man mit hilfe des raycastalgorithmus Behoben werden man schaut ob ein punkt innerhalb des Polygons liegt. Die funktions idee ist, das ich ein punkt habe und von diesem punkt aus versende ich strahlen(rays), dann schaue ich wie oft dieser strahl die kanten meines polygons schneidet. wenn die Anzahl ungrade ist, liegt der Punkt innerhalb des Polygons. Ist die annzahl jedoch Grade liegt der Punkt ausserhalb des Polygons. Das heisst gegeben muessen sein, mein Punkt den ich pruefen will $p(x_p|y_p)$ und mein Polygon \( \{ (x_i, y_i) \}_{i=0}^{n-1} \), hier steht $n$ fuer die anzahl der Eckpunkte.
+\\
+als naechstes inzinalisiere ich mein counter intersectionCount mit 0.
+\\
+Als naechstes lassen wir eine schleife ueber alle kanten des Polygons laufen, fuer jede kante des Polygons gilt $(P_i,P_i+1)$, wobei $P_i = (x_i,y_i)$, $P_i+1 = (x_i+1, y_i+1)$: 
+\\
+Jetzt ueberpruefen wir jede kante ob die horizontale linie durch $p$ schneidet.
+\\
+Danach Bestimmen wir die $y$-Koordinaten der Kantenenden: $y_i, y_i+1$.
+\\
+Nun ueberpruefen wir ob $p$ zwischen $P_i$ und $P_i+1$ liegt oder andersherum $(y_i > y_p) \neq (y_i+1 > y_p)$.
+\\
+Wenn nun die kannte die Horizontale linie schneidet berechne ich den $x$-wert des Schnittpunkts der kante $x_\text{intersect}$ was die horizontale Linie durch $p$ ist:
+\\
+$x_\text{intersect} = x_i + (y_i+1 - y_i)\frac{(x_i+1 - x_i) * (y_p - y_i)}{y_i+1 - y_i}$
+\\
+Als naechstes schauen wir das wenn $x_\text{intersect} > x_p$ zaehlen wir unseren intersectionCount um eins hoch.
+\\
+Zum schluss schauen wir dann wie hoch unser intersectionCount ist.  wenn er ungrade ist liegt der Punkt im Polygon ist der Grade liegt der Punkt nicht im polygon. Das sind alle wichtigen wesentlichen Funktionen, die fuer mein Algorithmus wichtig sind. zum visuellen verstaendnis habe ich noch eine veranschaulischungs Bild.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Bilder/raycasting_polygon_3.png}
+    \caption{Darstellung Raycastalgorithmus innerhalb eines Polygons, Quelle: https://kennycason.com/posts/2017-04-11-ray-casting.html}
+    \label{fig:example}
+\end{figure}
+
 \subsection{\textcolor{blue}{Bruteforce}}
 Der vermutlich einfachste weg der Mir einfaellt, waere es so lange zufaellige zahlen im bereich der min $x$,$y$ und max $x$,$y$ Koordinaten des Polygons zu generieren, bis man zweimal hintereinander Koordinaten generiert hat die wo sich der wert der punkte die innerhalb des Polygons liegen nicht aendert.
 \vspace{5pt}
@@ -122,7 +158,13 @@ funktion raster(polygon)
 Am ende erhalten wir ein raster von Punkten, die ueber das Polygon im abstand von 10 Einheiten verteilt sind. jetzt koennte man die punkte alle durchgehen, und schauen welcher punkt die meisten punkte im radius von 85 Einheiten halten kann, und diesen punkt als Gesundheitszentrum setzen. Das Problem an diesem Ansatz ist das je geanuer wir den optimalen punkt haben wollen, desto kleiner muss der abstand zwischen den Rasterpunkten werden. Je kleiner die Rasterpunkte werden je laenger dauert es sie alle durch zu iterieren. Das heist im volgeschluss das der Algorithmus nur fuer kleinste Polygone geeignet waere wenn ueberhaupt.
 
 \subsection{\textcolor{blue}{End Algorithmus idee}}
-
+Meine End idee um den bestenpunkt innerhalb eins polygons zu bestimmen
+\\
+\Large{\textbf{Quellen:}}
+\begin{itemize}
+\item[\normalsize{[1]}] \normalsize{Raycasting, https://de.wikipedia.org/wiki/Raycasting}
+\item[\normalsize{[2]}] \normalsize{Checking if a point is inside a polygon is RIDICULOUSLY simple (Ray casting algorithm) - Inside code (YouTube video), https://www.youtube.com/watch?v=RSXM9bgqxJM}
+\end{itemize}
 \section{\textcolor{blue}{Umsetzung}}
 \subsection{\textcolor{blue}{Erste schritte und fehler}}
 \subsubsection{\textcolor{blue}{raster algorithmus}}
