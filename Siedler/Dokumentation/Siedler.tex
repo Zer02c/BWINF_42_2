@@ -10,21 +10,18 @@
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{tabu} % tabu als letztes laden
+\usepackage{float}
 
 
 
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{Aufgabe 3}
-\fancyhead[R]{Teilnehmer-ID:}
+\fancyhead[R]{Teilnehmer-ID: 72867}
 \fancyfoot[C]{\thepage}
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \renewcommand*\contentsname{Inhaltsverzeichnis}
-
-\title{\Huge{\textbf{Aufgabe 3 Siedler}} \\ \centering{\LARGE{Teilnahme-ID: ?????}}}
-\author{Bearbeiter dieser Aufgabe: \\ Daniel Hohmann}
-\date{\today}
 
 \begin{document}
 
@@ -32,7 +29,7 @@
 \begin{center}
 \Huge{\textbf{Aufgabe 1 Siedler}}
 \\
-\LARGE{Teilnehmer-ID: ???}
+\LARGE{Teilnehmer-ID: 72867}
 \\
 \LARGE{Bearbeiter dieser Aufgabe: \\ Daniel Hohmann}
 \\
@@ -70,7 +67,9 @@ funktion punkte(centroid, polygon, distance)
 				umfang_punkte.append(punkt(x,y))
 \end{verbatim}
 \hrule
+vorstellung der funktionsweise des Algorithmus\par
 \vspace{5pt}
+\raggedright 
 so bekommen wir die punkte die auf dem umkreis des kreises liegen. Um die Punkte fuer die naechsten Radin zu bestimmen, muessen wir legendlich den radius erhoehen um 10 solange bis wir bei 80 angekommen sind. So wie in dem pseudo code veranschaulicht. Um die restlichen Doerfer danach im abstand von 20km zu platzieren, kann ich auch die obrige funktion benutzen nur das ich eben bei dem radius von 100 anfange. Darduch ereiche ich das der abstand 20 ist und kann so weitermachen. Das einzige was ich im code noch ergaenzen muesste ist ein weiteres if-Statement das schaut ob der kreis noch das Polygon schneidet. Oder alternativ schauen ob ich noch ein punkt auf dem Polygon mit dem gegeben radius platzieren kann, wen nicht brich das Programm ab. Das wuerde mann dann aber eher mit einer while-do schleife realisieren. 
 \subsubsection{\textcolor{blue}{Raycastalgorithmus}}
 Ein wichtiges Problem was bis jezt entsteht ist, wie kann ich schauen ob eben ein Punkt innerhalb des Polygons liegt oder nicht?. das Problem kann man mit hilfe des raycastalgorithmus Behoben werden man schaut ob ein punkt innerhalb des Polygons liegt. Die funktions idee ist, das ich ein punkt habe und von diesem punkt aus versende ich strahlen(rays), dann schaue ich wie oft dieser strahl die kanten meines polygons schneidet. wenn die Anzahl ungrade ist, liegt der Punkt innerhalb des Polygons. Ist die annzahl jedoch Grade liegt der Punkt ausserhalb des Polygons. Das heisst gegeben muessen sein, mein Punkt den ich pruefen will $p(x_p|y_p)$ und mein Polygon \( \{ (x_i, y_i) \}_{i=0}^{n-1} \), hier steht $n$ fuer die anzahl der Eckpunkte.
@@ -120,7 +119,9 @@ funktion brutforce(x,y)
 		return x,y 
 \end{verbatim}
 \hrule
+vorstellung der funktionsweise des Algorithmus\par
 \vspace{5pt}
+\raggedright 
 Das Problem an dem ansatz ist natuerlich das ich wen ich pech habe zweimal den gleichen Punkt bekomme, oder aber ein punkt der sehr nahe am anderen liegt. Und der algorithmus deshalb nicht funktioniert. Abgesehen davon haben wir im worst case eine extrem lange laufzeit.
 \subsection{\textcolor{blue}{Innenkreis}}
 eine Theoretisch bessere Idee die ich gefunden habe, ist es den innenkreis eines Polygons zu Berechnen. Der Innenkreis eines Polygons ist der kreis, mit dem groest moeglichen radius der innerhalb eines polygons liegt. Das Problem daran ist aber, das es nur bei regelmaessigen Polygonen funktioniert. Und bei unregelmaessigen Polygonen sogut wie unmoeglich ist den Innenkreis zu berechnen. damit ist die Idee sofort weckgefallen da min. zwei der Bsp. Polygone unregelmaessig sind.
@@ -156,10 +157,12 @@ funktion raster(polygon)
 	nein nimm ihn raus 
 \end{verbatim}
 \hrule
+vorstellung der funktionsweise des Algorithmus\par
 \vspace{5pt}
+\raggedright 
 Am ende erhalten wir ein raster von Punkten, die ueber das Polygon im abstand von 10 Einheiten verteilt sind. jetzt koennte man die punkte alle durchgehen, und schauen welcher punkt die meisten punkte im radius von 85 Einheiten halten kann, und diesen punkt als Gesundheitszentrum setzen. Das Problem an diesem Ansatz ist das je geanuer wir den optimalen punkt haben wollen, desto kleiner muss der abstand zwischen den Rasterpunkten werden. Je kleiner die Rasterpunkte werden je laenger dauert es sie alle durch zu iterieren. Das heist im volgeschluss das der Algorithmus nur fuer kleinste Polygone geeignet waere wenn ueberhaupt.
 
-\subsection{\textcolor{blue}{End Algorithmus idee}}
+\subsection{\textcolor{blue}{End Algorithmus idee}}\label{sec:End}
 Meine End idee um den bestenpunkt innerhalb des Polygons zu suchen um das Gesundheitszentrum zu platzieren ist, Ich fange an den centroid zu bestimmen. Warum der centroid weil der centroid der masseschwerpunkt eines objektes ist. Im fall des polygons ist es zwar nur eine annaeherung aber wir bekommen trozdem jedes mal einen relativ centralen punkt Innerhalb des Polygons. um den centroid zu berechnen benutzen wir einfach die Formel:
 \[
 \text{area} = \frac{1}{2} \left| \sum_{i=1}^{n} (x_i y_{i+1} - x_{i+1} y_i) \right|
@@ -207,8 +210,12 @@ Die Eingabe erfolgt ueber die programm datei selbst indem man den path zu der ge
 \begin{itemize}
 \item[$^1$] \text{https://github.com/Cryoris/matplotlib-cpp/blob/master/matplotlibcpp.h}
 \end{itemize}
-\subsection{\textcolor{blue}{Die datei \text{\normalsize{Geometrie.h}}}}
-Die Datei \texttt{Geometrie.h} enthaelt zwei klassen die Klasse Point und die Klasse Polygon. Die funktionen dieser Objekte treten recht haufig innerhalb des Quellcodes auf da sie essenzielle algorithmen wie den raycastalgorithmus enthalten. Hier eine Uebersicht ueber die Funktionen.
+\subsection{\textcolor{blue}{Aufbau}}
+Das Program ist unterteilt in 3 Programme wobei ich hier nur auf 2 eingehe. Da das dritte Program wie erwaehnt das \texttt{matplotlibcpp.h} Programm ist. in der Datei \texttt{Geometrie.h} befinden sich 2 Klassen \texttt{Polygon}, \texttt{Point} diese klassen enthalten alle wichtigen funktionen die fuer die Geometrischen operationen des Algorithmus notwendig sind.
+\\
+Das heist mein Programm startet mit der Datei \texttt{main.cpp} die als erstes eine funktion
+\subsection{\textcolor{blue}{Die datei \texttt{Geometrie.h}}}
+Die Datei \texttt{Geometrie.h} enthaelt zwei klassen die Klasse \texttt{Point} und die Klasse \texttt{Polygon}. Die funktionen dieser Objekte treten recht haufig innerhalb des Quellcodes auf da sie essenzielle algorithmen wie den raycastalgorithmus enthalten. Hier eine Uebersicht ueber die Funktionen.
 \par\medskip
 \begin{center}\Large{ Polygon}\end{center}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|p{11.5cm}|}
@@ -223,9 +230,2179 @@ Die Datei \texttt{Geometrie.h} enthaelt zwei klassen die Klasse Point und die Kl
 \texttt{isInsidePolygon()} &
 Ueberprueft ob ein Punkt innerhalb des Gegebenen Polygons liegt. mithilfe eines raycastalgorihmuses. Der von einem Punkt einen strahl schiesst, und schaut wie oft er die Kanten des Polygons schneidet. Wenn die Anzahl ungrade ist liegt der Punkt innerhalb des Polygons ist die Zahl grade liegt er ausserhalb. \\
 \hline
-% Weitere Zeilen hier einfügen...
+\texttt{getPoints()} & gibt die Eckpunkte des Polygons als vector of Point zurueck.
+\\
+\hline
+\texttt{addPoint()} & nimmt ein x und ein y wert an, und speichert es als punkt in das Polygon.
+\\
+\hline
+\texttt{centroid()} & Gibt als rueckgabewert den centroid des Polygons als ein Point zurueck der centroid wird berechnet wie in \ref{sec:End}.
+\\
+\hline
+\small{\texttt{readPointsFromFile()}} & Diese funktion wird ein string uebergeben, mit einem path zu einer .txt datei. Diese wird ausgelesen und wenn sie so vormatiert ist wie die Bsp. Aufgaben aus dem wettbewerb, dann werden die x und y werte in das Polygon gespeichert.
+\\
+\hline
 \end{longtable}
-
+\par\medskip
+\begin{center}\Large{ Point}\end{center}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|p{11.5cm}|}
+\hline
+\textbf{Funktion} & \textbf{Beschreibung} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Funktion} & \textbf{Beschreibung} \\
+\hline
+\endhead
+\texttt{getX()} & Gibt den x-wert eines Punktes zurueck.
+\\
+\hline
+\texttt{getY()} & Gibt den y-wert eines Punktes zurueck.
+\\
+\hline
+\end{longtable}
+\subsection{\textcolor{blue}{Die datei \texttt{main.cpp}}}
+In der Datei \texttt{main.cpp} befindet sich unserer Algorithmus und zusatz Das Plotting.
+hier wird die vorgehensweise aus \ref{sec:End} umgesetzt und implementiert.
 \section{\textcolor{blue}{Beispiele}}
+\Large{\textbf{Laufzeit}} 
+\\
+\vspace{5pt}
+\begin{tabular}{|l|c|r|}
+\hline
+Beispiel & Anzahl der Doerfer & Laufzeit (ca.) \\
+\hline
+siedler1.txt & 127 & 2 Millisekunden\\
+siedler2.txt & 54 & 3 Millisekunden \\
+siedler3.txt & 202 & 3 Millisekunden \\
+siedler4.txt & 133 & 19 Millisekunden \\
+siedler4.txt & 149 & 19 Millisekunden\\
+meine1.txt & 389 & 5 Millisekunden\\
+meine2.txt & 680 & 28 Millisekunden \\
+\hline
+\end{tabular}
+\vspace{5pt}
+\\
+Die laufzeit, wurde mit der standart C++ libary chronos gemessen. die Zeit wurde bis vor das Plotting gemessen, das heist das der plot selbst nicht mit in die Berechnung mit einfliest. Da Das Programm erst dann stopt wen der plot geschlossen wird.
+\\
+Die laufzeit wurde mit einem Surface Pro 7 mit einem intel i5-1035G4 und 8GB LPDDR4x Ram unter dem Betriebssystem Linux(Debian) Durchgefuehrt.
+\\
+Zu den Bsp. ist algeimein zu sagen, Das der Plot jeweils das Polygon Rot darstellt, die Doerfer im radius Blau und die restlichen Doerfer Rot.
+\subsection{\textcolor{blue}{\texttt{siedler1.txt}}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Bilder/Figure_1.png}
+    \caption{Plot siedler1.txt}
+\end{figure}
+\vspace{5pt}
+\begin{verbatim}
+Gesundheitszentrum: (137.308|74.0449)
+Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: 
+Das 1Dorf liegt bei den koordinaten: (147.308|74.0449)
+Das 2Dorf liegt bei den koordinaten: (142.308|82.7051)
+Das 3Dorf liegt bei den koordinaten: (132.308|82.7051)
+Das 4Dorf liegt bei den koordinaten: (127.308|74.0449)
+Das 5Dorf liegt bei den koordinaten: (132.308|65.3846)
+Das 6Dorf liegt bei den koordinaten: (142.308|65.3846)
+Das 7Dorf liegt bei den koordinaten: (157.308|74.0449)
+Das 8Dorf liegt bei den koordinaten: (154.628|84.0449)
+Das 9Dorf liegt bei den koordinaten: (147.308|91.3654)
+Das 10Dorf liegt bei den koordinaten: (117.308|74.0449)
+Das 11Dorf liegt bei den koordinaten: (119.987|64.0449)
+Das 12Dorf liegt bei den koordinaten: (127.308|56.7244)
+Das 13Dorf liegt bei den koordinaten: (137.308|54.0449)
+Das 14Dorf liegt bei den koordinaten: (147.308|56.7244)
+Das 15Dorf liegt bei den koordinaten: (154.628|64.0449)
+Das 16Dorf liegt bei den koordinaten: (167.308|74.0449)
+Das 17Dorf liegt bei den koordinaten: (165.498|84.3055)
+Das 18Dorf liegt bei den koordinaten: (160.289|93.3285)
+Das 19Dorf liegt bei den koordinaten: (152.308|100.026)
+Das 20Dorf liegt bei den koordinaten: (109.117|63.7843)
+Das 21Dorf liegt bei den koordinaten: (114.326|54.7612)
+Das 22Dorf liegt bei den koordinaten: (122.308|48.0641)
+Das 23Dorf liegt bei den koordinaten: (132.098|44.5006)
+Das 24Dorf liegt bei den koordinaten: (142.517|44.5006)
+Das 25Dorf liegt bei den koordinaten: (152.308|48.0641)
+Das 26Dorf liegt bei den koordinaten: (160.289|54.7612)
+Das 27Dorf liegt bei den koordinaten: (165.498|63.7843)
+Das 28Dorf liegt bei den koordinaten: (177.308|74.0449)
+Das 29Dorf liegt bei den koordinaten: (176.051|83.9925)
+Das 30Dorf liegt bei den koordinaten: (172.36|93.315)
+Das 31Dorf liegt bei den koordinaten: (166.466|101.427)
+Das 32Dorf liegt bei den koordinaten: (158.741|107.818)
+Das 33Dorf liegt bei den koordinaten: (100.117|59.3199)
+Das 34Dorf liegt bei den koordinaten: (104.947|50.5335)
+Das 35Dorf liegt bei den koordinaten: (111.811|43.2243)
+Das 36Dorf liegt bei den koordinaten: (120.277|37.8518)
+Das 37Dorf liegt bei den koordinaten: (129.812|34.7534)
+Das 38Dorf liegt bei den koordinaten: (139.819|34.1238)
+Das 39Dorf liegt bei den koordinaten: (149.668|36.0026)
+Das 40Dorf liegt bei den koordinaten: (158.741|40.2718)
+Das 41Dorf liegt bei den koordinaten: (166.466|46.663)
+Das 42Dorf liegt bei den koordinaten: (172.36|54.7747)
+Das 43Dorf liegt bei den koordinaten: (176.051|64.0973)
+Das 44Dorf liegt bei den koordinaten: (187.308|74.0449)
+Das 45Dorf liegt bei den koordinaten: (186.284|84.1098)
+Das 46Dorf liegt bei den koordinaten: (183.256|93.7627)
+Das 47Dorf liegt bei den koordinaten: (178.346|102.608)
+Das 48Dorf liegt bei den koordinaten: (171.756|110.285)
+Das 49Dorf liegt bei den koordinaten: (163.756|116.477)
+Das 50Dorf liegt bei den koordinaten: (89.6007|59.0767)
+Das 51Dorf liegt bei den koordinaten: (93.5904|49.7798)
+Das 52Dorf liegt bei den koordinaten: (99.3698|41.4762)
+Das 53Dorf liegt bei den koordinaten: (106.702|34.5061)
+Das 54Dorf liegt bei den koordinaten: (115.288|29.1546)
+Das 55Dorf liegt bei den koordinaten: (124.775|25.641)
+Das 56Dorf liegt bei den koordinaten: (134.775|24.109)
+Das 57Dorf liegt bei den koordinaten: (144.879|24.6215)
+Das 58Dorf liegt bei den koordinaten: (154.673|27.1573)
+Das 59Dorf liegt bei den koordinaten: (163.756|31.6127)
+Das 60Dorf liegt bei den koordinaten: (171.756|37.8052)
+Das 61Dorf liegt bei den koordinaten: (178.346|45.4815)
+Das 62Dorf liegt bei den koordinaten: (183.256|54.3271)
+Das 63Dorf liegt bei den koordinaten: (186.284|63.9799)
+Das 64Dorf liegt bei den koordinaten: (197.308|74.0449)
+Das 65Dorf liegt bei den koordinaten: (196.445|84.1849)
+Das 66Dorf liegt bei den koordinaten: (193.88|94.0333)
+Das 67Dorf liegt bei den koordinaten: (189.689|103.307)
+Das 68Dorf liegt bei den koordinaten: (183.99|111.738)
+Das 69Dorf liegt bei den koordinaten: (176.948|119.085)
+Das 70Dorf liegt bei den koordinaten: (168.766|125.137)
+Das 71Dorf liegt bei den koordinaten: (82.634|49.3308)
+Das 72Dorf liegt bei den koordinaten: (87.5971|40.4464)
+Das 73Dorf liegt bei den koordinaten: (93.9903|32.5285)
+Das 74Dorf liegt bei den koordinaten: (101.63|25.805)
+Das 75Dorf liegt bei den koordinaten: (110.295|20.4693)
+Das 76Dorf liegt bei den koordinaten: (119.738|16.6749)
+Das 77Dorf liegt bei den koordinaten: (129.687|14.5308)
+Das 78Dorf liegt bei den koordinaten: (139.854|14.0989)
+Das 79Dorf liegt bei den koordinaten: (149.948|15.3916)
+Das 80Dorf liegt bei den koordinaten: (159.679|18.3715)
+Das 81Dorf liegt bei den koordinaten: (168.766|22.9531)
+Das 82Dorf liegt bei den koordinaten: (176.948|29.0045)
+Das 83Dorf liegt bei den koordinaten: (183.99|36.3517)
+Das 84Dorf liegt bei den koordinaten: (189.689|44.7832)
+Das 85Dorf liegt bei den koordinaten: (193.88|54.0565)
+Das 86Dorf liegt bei den koordinaten: (196.445|63.9048)
+Das 87Dorf liegt bei den koordinaten: (195.688|112.669)
+Das 88Dorf liegt bei den koordinaten: (189.442|120.757)
+Das 89Dorf liegt bei den koordinaten: (182.085|127.85)
+Das 90Dorf liegt bei den koordinaten: (173.774|133.796)
+Das 91Dorf liegt bei den koordinaten: (164.685|138.469)
+Das 92Dorf liegt bei den koordinaten: (76.2642|39.7856)
+Das 93Dorf liegt bei den koordinaten: (81.9029|31.2627)
+Das 94Dorf liegt bei den koordinaten: (88.7225|23.6516)
+Das 95Dorf liegt bei den koordinaten: (96.5776|17.1146)
+Das 96Dorf liegt bei den koordinaten: (105.301|11.7909)
+Das 97Dorf liegt bei den koordinaten: (114.706|7.79409)
+Das 98Dorf liegt bei den koordinaten: (124.593|5.20927)
+Das 99Dorf liegt bei den koordinaten: (134.751|4.09157)
+Das 100Dorf liegt bei den koordinaten: (144.964|4.4648)
+Das 101Dorf liegt bei den koordinaten: (155.013|6.32101)
+Das 102Dorf liegt bei den koordinaten: (164.685|9.62064)
+Das 103Dorf liegt bei den koordinaten: (173.774|14.2934)
+Das 104Dorf liegt bei den koordinaten: (182.085|20.2396)
+Das 105Dorf liegt bei den koordinaten: (189.442|27.3326)
+Das 106Dorf liegt bei den koordinaten: (195.688|35.4211)
+Das 107Dorf liegt bei den koordinaten: (195.625|128.809)
+Das 108Dorf liegt bei den koordinaten: (188.302|135.686)
+Das 109Dorf liegt bei den koordinaten: (180.174|141.591)
+Das 110Dorf liegt bei den koordinaten: (171.37|146.431)
+Das 111Dorf liegt bei den koordinaten: (67.2032|35.5046)
+Das 112Dorf liegt bei den koordinaten: (72.5863|27.022)
+Das 113Dorf liegt bei den koordinaten: (78.9902|19.2811)
+Das 114Dorf liegt bei den koordinaten: (86.3138|12.4038)
+Das 115Dorf liegt bei den koordinaten: (94.4415|6.49864)
+Das 116Dorf liegt bei den koordinaten: (103.245|1.65871)
+Das 117Dorf liegt bei den koordinaten: (171.37|1.65871)
+Das 118Dorf liegt bei den koordinaten: (180.174|6.49864)
+Das 119Dorf liegt bei den koordinaten: (188.302|12.4038)
+Das 120Dorf liegt bei den koordinaten: (195.625|19.2811)
+Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: 
+Das 121Dorf liegt bei den koordinaten: (190.204|158.909)
+Das 122Dorf liegt bei den koordinaten: (49.873|25.5147)
+Das 123Dorf liegt bei den koordinaten: (61.4319|8.90762)
+Das 124Dorf liegt bei den koordinaten: (182.05|185.392)
+Das 125Dorf liegt bei den koordinaten: (37.8865|6.8479)
+Das 126Dorf liegt bei den koordinaten: (192.062|202.893)
+Das 127Dorf liegt bei den koordinaten: (15.2208|5.52637)
+
+\end{verbatim}
+
+\subsection{\textcolor{blue}{\texttt{siedler2.txt}}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Bilder/Figure_2.png}
+    \caption{Plot siedler2.txt}
+\end{figure}
+\begin{verbatim}
+Gesundheitszentrum: (5|8.66025)
+Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: 
+Das 1Dorf liegt bei den koordinaten: (15|8.66025)
+Das 2Dorf liegt bei den koordinaten: (10|17.3205)
+Das 3Dorf liegt bei den koordinaten: (2.66454e-15|17.3205)
+Das 4Dorf liegt bei den koordinaten: (-5|8.66025)
+Das 5Dorf liegt bei den koordinaten: (-3.55271e-15|1.77636e-15)
+Das 6Dorf liegt bei den koordinaten: (10|0)
+Das 7Dorf liegt bei den koordinaten: (22.3205|18.6603)
+Das 8Dorf liegt bei den koordinaten: (5|28.6603)
+Das 9Dorf liegt bei den koordinaten: (-12.3205|18.6603)
+Das 10Dorf liegt bei den koordinaten: (-15|8.66025)
+Das 11Dorf liegt bei den koordinaten: (-12.3205|-1.33975)
+Das 12Dorf liegt bei den koordinaten: (-5|-8.66025)
+Das 13Dorf liegt bei den koordinaten: (5|-11.3397)
+Das 14Dorf liegt bei den koordinaten: (15|-8.66025)
+Das 15Dorf liegt bei den koordinaten: (22.3205|-1.33975)
+Das 16Dorf liegt bei den koordinaten: (35|8.66025)
+Das 17Dorf liegt bei den koordinaten: (27.9813|27.9439)
+Das 18Dorf liegt bei den koordinaten: (-17.9813|27.9439)
+Das 19Dorf liegt bei den koordinaten: (-25|8.66025)
+Das 20Dorf liegt bei den koordinaten: (-23.1908|-1.60035)
+Das 21Dorf liegt bei den koordinaten: (-17.9813|-10.6234)
+Das 22Dorf liegt bei den koordinaten: (-10|-17.3205)
+Das 23Dorf liegt bei den koordinaten: (-0.209445|-20.884)
+Das 24Dorf liegt bei den koordinaten: (10.2094|-20.884)
+Das 25Dorf liegt bei den koordinaten: (20|-17.3205)
+Das 26Dorf liegt bei den koordinaten: (27.9813|-10.6234)
+Das 27Dorf liegt bei den koordinaten: (45|8.66025)
+Das 28Dorf liegt bei den koordinaten: (34.1587|36.0421)
+Das 29Dorf liegt bei den koordinaten: (-20.497|39.4808)
+Das 30Dorf liegt bei den koordinaten: (-34.6846|13.6736)
+Das 31Dorf liegt bei den koordinaten: (-32.1911|-6.06473)
+Das 32Dorf liegt bei den koordinaten: (-20.497|-22.1603)
+Das 33Dorf liegt bei den koordinaten: (-2.49525|-30.6312)
+Das 34Dorf liegt bei den koordinaten: (17.3607|-29.382)
+Das 35Dorf liegt bei den koordinaten: (34.1587|-18.7216)
+Das 36Dorf liegt bei den koordinaten: (39.4483|44.8999)
+Das 37Dorf liegt bei den koordinaten: (2.46754|58.5961)
+Das 38Dorf liegt bei den koordinaten: (-42.707|-6.3079)
+Das 39Dorf liegt bei den koordinaten: (-25.6053|-30.8785)
+Das 40Dorf liegt bei den koordinaten: (-7.53263|-39.7436)
+Das 41Dorf liegt bei den koordinaten: (22.3653|-38.2274)
+Das 42Dorf liegt bei den koordinaten: (46.0382|-19.9032)
+Das 43Dorf liegt bei den koordinaten: (64.137|18.8003)
+Das 44Dorf liegt bei den koordinaten: (-30.678|-39.5796)
+Das 45Dorf liegt bei den koordinaten: (-2.62107|-50.8538)
+Das 46Dorf liegt bei den koordinaten: (27.3714|-47.0131)
+Das 47Dorf liegt bei den koordinaten: (57.3808|-20.6014)
+Das 48Dorf liegt bei den koordinaten: (2.44346|78.6136)
+Das 49Dorf liegt bei den koordinaten: (-63.3253|23.8804)
+Das 50Dorf liegt bei den koordinaten: (-60.3811|-16.3459)
+Das 51Dorf liegt bei den koordinaten: (-35.7301|-48.27)
+Das 52Dorf liegt bei den koordinaten: (-69.3821|-20.7897)
+Das 53Dorf liegt bei den koordinaten: (-0.0232416|-71.1819)
+Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: 
+Das 54Dorf liegt bei den koordinaten: (-0.0649169|-91.2114)
+\end{verbatim}
+\subsection{\textcolor{blue}{\texttt{siedler3.txt}}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Bilder/Figure_3.png}
+    \caption{Plot siedler3.txt}
+\end{figure}
+\begin{verbatim}
+Gesundheitszentrum: (80|83.6603)
+Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: 
+Das 1Dorf liegt bei den koordinaten: (90|83.6603)
+Das 2Dorf liegt bei den koordinaten: (85|92.3205)
+Das 3Dorf liegt bei den koordinaten: (75|92.3205)
+Das 4Dorf liegt bei den koordinaten: (70|83.6603)
+Das 5Dorf liegt bei den koordinaten: (75|75)
+Das 6Dorf liegt bei den koordinaten: (85|75)
+Das 7Dorf liegt bei den koordinaten: (100|83.6603)
+Das 8Dorf liegt bei den koordinaten: (97.3205|93.6603)
+Das 9Dorf liegt bei den koordinaten: (90|100.981)
+Das 10Dorf liegt bei den koordinaten: (80|103.66)
+Das 11Dorf liegt bei den koordinaten: (70|100.981)
+Das 12Dorf liegt bei den koordinaten: (62.6795|93.6603)
+Das 13Dorf liegt bei den koordinaten: (60|83.6603)
+Das 14Dorf liegt bei den koordinaten: (62.6795|73.6603)
+Das 15Dorf liegt bei den koordinaten: (70|66.3397)
+Das 16Dorf liegt bei den koordinaten: (80|63.6603)
+Das 17Dorf liegt bei den koordinaten: (90|66.3397)
+Das 18Dorf liegt bei den koordinaten: (97.3205|73.6603)
+Das 19Dorf liegt bei den koordinaten: (110|83.6603)
+Das 20Dorf liegt bei den koordinaten: (108.191|93.9209)
+Das 21Dorf liegt bei den koordinaten: (102.981|102.944)
+Das 22Dorf liegt bei den koordinaten: (95|109.641)
+Das 23Dorf liegt bei den koordinaten: (85.2094|113.204)
+Das 24Dorf liegt bei den koordinaten: (74.7906|113.204)
+Das 25Dorf liegt bei den koordinaten: (65|109.641)
+Das 26Dorf liegt bei den koordinaten: (57.0187|102.944)
+Das 27Dorf liegt bei den koordinaten: (51.8092|93.9209)
+Das 28Dorf liegt bei den koordinaten: (50|83.6603)
+Das 29Dorf liegt bei den koordinaten: (51.8092|73.3996)
+Das 30Dorf liegt bei den koordinaten: (57.0187|64.3766)
+Das 31Dorf liegt bei den koordinaten: (65|57.6795)
+Das 32Dorf liegt bei den koordinaten: (74.7906|54.116)
+Das 33Dorf liegt bei den koordinaten: (85.2094|54.116)
+Das 34Dorf liegt bei den koordinaten: (95|57.6795)
+Das 35Dorf liegt bei den koordinaten: (102.981|64.3766)
+Das 36Dorf liegt bei den koordinaten: (108.191|73.3996)
+Das 37Dorf liegt bei den koordinaten: (120|83.6603)
+Das 38Dorf liegt bei den koordinaten: (118.743|93.6078)
+Das 39Dorf liegt bei den koordinaten: (115.052|102.93)
+Das 40Dorf liegt bei den koordinaten: (109.159|111.042)
+Das 41Dorf liegt bei den koordinaten: (101.433|117.433)
+Das 42Dorf liegt bei den koordinaten: (92.3607|121.703)
+Das 43Dorf liegt bei den koordinaten: (82.5116|123.581)
+Das 44Dorf liegt bei den koordinaten: (72.5047|122.952)
+Das 45Dorf liegt bei den koordinaten: (62.9688|119.853)
+Das 46Dorf liegt bei den koordinaten: (54.503|114.481)
+Das 47Dorf liegt bei den koordinaten: (47.6393|107.172)
+Das 48Dorf liegt bei den koordinaten: (42.8089|98.3852)
+Das 49Dorf liegt bei den koordinaten: (40.3154|88.6736)
+Das 50Dorf liegt bei den koordinaten: (40.3154|78.6469)
+Das 51Dorf liegt bei den koordinaten: (42.8089|68.9353)
+Das 52Dorf liegt bei den koordinaten: (47.6393|60.1488)
+Das 53Dorf liegt bei den koordinaten: (54.503|52.8397)
+Das 54Dorf liegt bei den koordinaten: (62.9688|47.4672)
+Das 55Dorf liegt bei den koordinaten: (72.5047|44.3688)
+Das 56Dorf liegt bei den koordinaten: (82.5116|43.7392)
+Das 57Dorf liegt bei den koordinaten: (92.3607|45.618)
+Das 58Dorf liegt bei den koordinaten: (101.433|49.8871)
+Das 59Dorf liegt bei den koordinaten: (109.159|56.2784)
+Das 60Dorf liegt bei den koordinaten: (115.052|64.3901)
+Das 61Dorf liegt bei den koordinaten: (118.743|73.7127)
+Das 62Dorf liegt bei den koordinaten: (130|83.6603)
+Das 63Dorf liegt bei den koordinaten: (128.976|93.7252)
+Das 64Dorf liegt bei den koordinaten: (125.948|103.378)
+Das 65Dorf liegt bei den koordinaten: (121.038|112.224)
+Das 66Dorf liegt bei den koordinaten: (114.448|119.9)
+Das 67Dorf liegt bei den koordinaten: (106.448|126.092)
+Das 68Dorf liegt bei den koordinaten: (97.3653|130.548)
+Das 69Dorf liegt bei den koordinaten: (87.5714|133.084)
+Das 70Dorf liegt bei den koordinaten: (77.4675|133.596)
+Das 71Dorf liegt bei den koordinaten: (67.4674|132.064)
+Das 72Dorf liegt bei den koordinaten: (57.9803|128.55)
+Das 73Dorf liegt bei den koordinaten: (49.3947|123.199)
+Das 74Dorf liegt bei den koordinaten: (42.0621|116.229)
+Das 75Dorf liegt bei den koordinaten: (36.2827|107.925)
+Das 76Dorf liegt bei den koordinaten: (32.293|98.6284)
+Das 77Dorf liegt bei den koordinaten: (30.2565|88.7187)
+Das 78Dorf liegt bei den koordinaten: (30.2565|78.6018)
+Das 79Dorf liegt bei den koordinaten: (32.293|68.6921)
+Das 80Dorf liegt bei den koordinaten: (36.2827|59.3952)
+Das 81Dorf liegt bei den koordinaten: (42.0621|51.0916)
+Das 82Dorf liegt bei den koordinaten: (49.3947|44.1215)
+Das 83Dorf liegt bei den koordinaten: (57.9803|38.77)
+Das 84Dorf liegt bei den koordinaten: (67.4674|35.2564)
+Das 85Dorf liegt bei den koordinaten: (77.4675|33.7244)
+Das 86Dorf liegt bei den koordinaten: (87.5714|34.2368)
+Das 87Dorf liegt bei den koordinaten: (97.3653|36.7726)
+Das 88Dorf liegt bei den koordinaten: (106.448|41.228)
+Das 89Dorf liegt bei den koordinaten: (114.448|47.4206)
+Das 90Dorf liegt bei den koordinaten: (121.038|55.0968)
+Das 91Dorf liegt bei den koordinaten: (125.948|63.9425)
+Das 92Dorf liegt bei den koordinaten: (128.976|73.5953)
+Das 93Dorf liegt bei den koordinaten: (140|83.6603)
+Das 94Dorf liegt bei den koordinaten: (139.137|93.8003)
+Das 95Dorf liegt bei den koordinaten: (136.573|103.649)
+Das 96Dorf liegt bei den koordinaten: (132.381|112.922)
+Das 97Dorf liegt bei den koordinaten: (126.682|121.353)
+Das 98Dorf liegt bei den koordinaten: (119.64|128.701)
+Das 99Dorf liegt bei den koordinaten: (111.458|134.752)
+Das 100Dorf liegt bei den koordinaten: (102.371|139.334)
+Das 101Dorf liegt bei den koordinaten: (92.6408|142.314)
+Das 102Dorf liegt bei den koordinaten: (82.5465|143.606)
+Das 103Dorf liegt bei den koordinaten: (72.3789|143.174)
+Das 104Dorf liegt bei den koordinaten: (62.4306|141.03)
+Das 105Dorf liegt bei den koordinaten: (52.9878|137.236)
+Das 106Dorf liegt bei den koordinaten: (44.322|131.9)
+Das 107Dorf liegt bei den koordinaten: (36.6826|125.177)
+Das 108Dorf liegt bei den koordinaten: (30.2894|117.259)
+Das 109Dorf liegt bei den koordinaten: (25.3263|108.374)
+Das 110Dorf liegt bei den koordinaten: (21.936|98.7789)
+Das 111Dorf liegt bei den koordinaten: (20.2162|88.7486)
+Das 112Dorf liegt bei den koordinaten: (20.2162|78.5719)
+Das 113Dorf liegt bei den koordinaten: (21.936|68.5416)
+Das 114Dorf liegt bei den koordinaten: (25.3263|58.9462)
+Das 115Dorf liegt bei den koordinaten: (30.2894|50.0618)
+Das 116Dorf liegt bei den koordinaten: (36.6826|42.1439)
+Das 117Dorf liegt bei den koordinaten: (44.322|35.4204)
+Das 118Dorf liegt bei den koordinaten: (52.9878|30.0847)
+Das 119Dorf liegt bei den koordinaten: (62.4306|26.2902)
+Das 120Dorf liegt bei den koordinaten: (72.3789|24.1462)
+Das 121Dorf liegt bei den koordinaten: (82.5465|23.7143)
+Das 122Dorf liegt bei den koordinaten: (92.6408|25.0069)
+Das 123Dorf liegt bei den koordinaten: (102.371|27.9869)
+Das 124Dorf liegt bei den koordinaten: (111.458|32.5685)
+Das 125Dorf liegt bei den koordinaten: (119.64|38.6199)
+Das 126Dorf liegt bei den koordinaten: (126.682|45.9671)
+Das 127Dorf liegt bei den koordinaten: (132.381|54.3986)
+Das 128Dorf liegt bei den koordinaten: (136.573|63.6719)
+Das 129Dorf liegt bei den koordinaten: (139.137|73.5202)
+Das 130Dorf liegt bei den koordinaten: (149.254|93.8523)
+Das 131Dorf liegt bei den koordinaten: (147.032|103.827)
+Das 132Dorf liegt bei den koordinaten: (143.381|113.372)
+Das 133Dorf liegt bei den koordinaten: (138.38|122.284)
+Das 134Dorf liegt bei den koordinaten: (132.134|130.373)
+Das 135Dorf liegt bei den koordinaten: (124.777|137.466)
+Das 136Dorf liegt bei den koordinaten: (116.466|143.412)
+Das 137Dorf liegt bei den koordinaten: (107.377|148.084)
+Das 138Dorf liegt bei den koordinaten: (57.3984|149.911)
+Das 139Dorf liegt bei den koordinaten: (47.993|145.914)
+Das 140Dorf liegt bei den koordinaten: (39.2699|140.591)
+Das 141Dorf liegt bei den koordinaten: (31.4148|134.053)
+Das 142Dorf liegt bei den koordinaten: (24.5952|126.442)
+Das 143Dorf liegt bei den koordinaten: (18.9565|117.92)
+Das 144Dorf liegt bei den koordinaten: (14.6189|108.666)
+Das 145Dorf liegt bei den koordinaten: (11.6747|98.8804)
+Das 146Dorf liegt bei den koordinaten: (10.1867|88.7699)
+Das 147Dorf liegt bei den koordinaten: (10.1867|78.5506)
+Das 148Dorf liegt bei den koordinaten: (11.6747|68.4401)
+Das 149Dorf liegt bei den koordinaten: (14.6189|58.6541)
+Das 150Dorf liegt bei den koordinaten: (18.9565|49.401)
+Das 151Dorf liegt bei den koordinaten: (24.5952|40.8781)
+Das 152Dorf liegt bei den koordinaten: (31.4148|33.267)
+Das 153Dorf liegt bei den koordinaten: (39.2699|26.73)
+Das 154Dorf liegt bei den koordinaten: (47.993|21.4063)
+Das 155Dorf liegt bei den koordinaten: (57.3984|17.4095)
+Das 156Dorf liegt bei den koordinaten: (67.2854|14.8247)
+Das 157Dorf liegt bei den koordinaten: (77.4435|13.707)
+Das 158Dorf liegt bei den koordinaten: (87.656|14.0802)
+Das 159Dorf liegt bei den koordinaten: (97.7053|15.9364)
+Das 160Dorf liegt bei den koordinaten: (107.377|19.236)
+Das 161Dorf liegt bei den koordinaten: (116.466|23.9087)
+Das 162Dorf liegt bei den koordinaten: (124.777|29.855)
+Das 163Dorf liegt bei den koordinaten: (132.134|36.9479)
+Das 164Dorf liegt bei den koordinaten: (138.38|45.0365)
+Das 165Dorf liegt bei den koordinaten: (143.381|53.9483)
+Das 166Dorf liegt bei den koordinaten: (147.032|63.4933)
+Das 167Dorf liegt bei den koordinaten: (149.254|73.4682)
+Das 168Dorf liegt bei den koordinaten: (144.721|130.683)
+Das 169Dorf liegt bei den koordinaten: (138.317|138.424)
+Das 170Dorf liegt bei den koordinaten: (130.994|145.301)
+Das 171Dorf liegt bei den koordinaten: (29.0061|145.301)
+Das 172Dorf liegt bei den koordinaten: (21.6825|138.424)
+Das 173Dorf liegt bei den koordinaten: (15.2786|130.683)
+Das 174Dorf liegt bei den koordinaten: (9.89547|122.201)
+Das 175Dorf liegt bei den koordinaten: (5.61788|113.11)
+Das 176Dorf liegt bei den koordinaten: (2.51335|103.555)
+Das 177Dorf liegt bei den koordinaten: (0.630824|93.6869)
+Das 178Dorf liegt bei den koordinaten: (0|83.6603)
+Das 179Dorf liegt bei den koordinaten: (0.630824|73.6336)
+Das 180Dorf liegt bei den koordinaten: (2.51335|63.7651)
+Das 181Dorf liegt bei den koordinaten: (5.61788|54.2103)
+Das 182Dorf liegt bei den koordinaten: (9.89547|45.12)
+Das 183Dorf liegt bei den koordinaten: (15.2786|36.6374)
+Das 184Dorf liegt bei den koordinaten: (21.6825|28.8965)
+Das 185Dorf liegt bei den koordinaten: (29.0061|22.0192)
+Das 186Dorf liegt bei den koordinaten: (37.1339|16.114)
+Das 187Dorf liegt bei den koordinaten: (45.9377|11.2741)
+Das 188Dorf liegt bei den koordinaten: (55.2786|7.57573)
+Das 189Dorf liegt bei den koordinaten: (65.0095|5.07727)
+Das 190Dorf liegt bei den koordinaten: (74.9768|3.81812)
+Das 191Dorf liegt bei den koordinaten: (85.0232|3.81812)
+Das 192Dorf liegt bei den koordinaten: (94.9905|5.07727)
+Das 193Dorf liegt bei den koordinaten: (104.721|7.57573)
+Das 194Dorf liegt bei den koordinaten: (114.062|11.2741)
+Das 195Dorf liegt bei den koordinaten: (122.866|16.114)
+Das 196Dorf liegt bei den koordinaten: (130.994|22.0192)
+Das 197Dorf liegt bei den koordinaten: (138.317|28.8965)
+Das 198Dorf liegt bei den koordinaten: (144.721|36.6374)
+Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: 
+Das 199Dorf liegt bei den koordinaten: (4.12419|148.798)
+Das 200Dorf liegt bei den koordinaten: (4.12419|18.523)
+Das 201Dorf liegt bei den koordinaten: (18.7894|4.58268)
+Das 202Dorf liegt bei den koordinaten: (148.897|11.181)
+
+\end{verbatim}
+\subsection{\textcolor{blue}{\texttt{siedler4.txt}}}
+
+\textbf{\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Bilder/Figure_4.png}
+    \caption{Plot siedler4.txt}
+\end{figure}}
+\begin{verbatim}
+Gesundheitszentrum: (100.897|31.7372)
+Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: 
+Das 1Dorf liegt bei den koordinaten: (110.897|31.7372)
+Das 2Dorf liegt bei den koordinaten: (105.897|40.3974)
+Das 3Dorf liegt bei den koordinaten: (90.8974|31.7372)
+Das 4Dorf liegt bei den koordinaten: (95.8974|23.0769)
+Das 5Dorf liegt bei den koordinaten: (105.897|23.0769)
+Das 6Dorf liegt bei den koordinaten: (120.897|31.7372)
+Das 7Dorf liegt bei den koordinaten: (110.897|49.0577)
+Das 8Dorf liegt bei den koordinaten: (100.897|51.7372)
+Das 9Dorf liegt bei den koordinaten: (90.8974|49.0577)
+Das 10Dorf liegt bei den koordinaten: (83.5769|41.7372)
+Das 11Dorf liegt bei den koordinaten: (80.8974|31.7372)
+Das 12Dorf liegt bei den koordinaten: (83.5769|21.7372)
+Das 13Dorf liegt bei den koordinaten: (90.8974|14.4167)
+Das 14Dorf liegt bei den koordinaten: (100.897|11.7372)
+Das 15Dorf liegt bei den koordinaten: (110.897|14.4167)
+Das 16Dorf liegt bei den koordinaten: (118.218|21.7372)
+Das 17Dorf liegt bei den koordinaten: (130.897|31.7372)
+Das 18Dorf liegt bei den koordinaten: (129.088|41.9978)
+Das 19Dorf liegt bei den koordinaten: (123.879|51.0208)
+Das 20Dorf liegt bei den koordinaten: (106.107|61.2814)
+Das 21Dorf liegt bei den koordinaten: (85.8974|57.7179)
+Das 22Dorf liegt bei den koordinaten: (72.7067|41.9978)
+Das 23Dorf liegt bei den koordinaten: (70.8974|31.7372)
+Das 24Dorf liegt bei den koordinaten: (72.7067|21.4766)
+Das 25Dorf liegt bei den koordinaten: (77.9161|12.4535)
+Das 26Dorf liegt bei den koordinaten: (85.8974|5.75642)
+Das 27Dorf liegt bei den koordinaten: (95.688|2.19294)
+Das 28Dorf liegt bei den koordinaten: (106.107|2.19294)
+Das 29Dorf liegt bei den koordinaten: (115.897|5.75642)
+Das 30Dorf liegt bei den koordinaten: (123.879|12.4535)
+Das 31Dorf liegt bei den koordinaten: (129.088|21.4766)
+Das 32Dorf liegt bei den koordinaten: (140.897|31.7372)
+Das 33Dorf liegt bei den koordinaten: (130.056|59.1191)
+Das 34Dorf liegt bei den koordinaten: (122.331|65.5103)
+Das 35Dorf liegt bei den koordinaten: (103.409|71.6582)
+Das 36Dorf liegt bei den koordinaten: (83.8663|67.9303)
+Das 37Dorf liegt bei den koordinaten: (68.5368|55.2486)
+Das 38Dorf liegt bei den koordinaten: (63.7064|46.4622)
+Das 39Dorf liegt bei den koordinaten: (61.2128|36.7505)
+Das 40Dorf liegt bei den koordinaten: (61.2128|26.7238)
+Das 41Dorf liegt bei den koordinaten: (63.7064|17.0122)
+Das 42Dorf liegt bei den koordinaten: (68.5368|8.22577)
+Das 43Dorf liegt bei den koordinaten: (75.4005|0.916647)
+Das 44Dorf liegt bei den koordinaten: (83.8663|-4.4559)
+Das 45Dorf liegt bei den koordinaten: (93.4022|-7.55431)
+Das 46Dorf liegt bei den koordinaten: (103.409|-8.18389)
+Das 47Dorf liegt bei den koordinaten: (113.258|-6.30508)
+Das 48Dorf liegt bei den koordinaten: (122.331|-2.03594)
+Das 49Dorf liegt bei den koordinaten: (130.056|4.35529)
+Das 50Dorf liegt bei den koordinaten: (135.95|12.467)
+Das 51Dorf liegt bei den koordinaten: (150.897|31.7372)
+Das 52Dorf liegt bei den koordinaten: (149.874|41.8021)
+Das 53Dorf liegt bei den koordinaten: (146.845|51.455)
+Das 54Dorf liegt bei den koordinaten: (141.936|60.3006)
+Das 55Dorf liegt bei den koordinaten: (62.9595|64.3058)
+Das 56Dorf liegt bei den koordinaten: (53.1905|46.7053)
+Das 57Dorf liegt bei den koordinaten: (51.154|36.7956)
+Das 58Dorf liegt bei den koordinaten: (51.154|26.6788)
+Das 59Dorf liegt bei den koordinaten: (53.1905|16.769)
+Das 60Dorf liegt bei den koordinaten: (57.1801|7.47208)
+Das 61Dorf liegt bei den koordinaten: (62.9595|-0.831447)
+Das 62Dorf liegt bei den koordinaten: (70.2921|-7.80161)
+Das 63Dorf liegt bei den koordinaten: (78.8777|-13.153)
+Das 64Dorf liegt bei den koordinaten: (88.3648|-16.6667)
+Das 65Dorf liegt bei den koordinaten: (98.365|-18.1986)
+Das 66Dorf liegt bei den koordinaten: (108.469|-17.6862)
+Das 67Dorf liegt bei den koordinaten: (118.263|-15.1504)
+Das 68Dorf liegt bei den koordinaten: (127.346|-10.695)
+Das 69Dorf liegt bei den koordinaten: (135.346|-4.50246)
+Das 70Dorf liegt bei den koordinaten: (141.936|3.17377)
+Das 71Dorf liegt bei den koordinaten: (146.845|12.0194)
+Das 72Dorf liegt bei den koordinaten: (149.874|21.6723)
+Das 73Dorf liegt bei den koordinaten: (160.897|31.7372)
+Das 74Dorf liegt bei den koordinaten: (160.034|41.8772)
+Das 75Dorf liegt bei den koordinaten: (147.58|69.4304)
+Das 76Dorf liegt bei den koordinaten: (140.538|76.7775)
+Das 77Dorf liegt bei den koordinaten: (46.2237|56.4513)
+Das 78Dorf liegt bei den koordinaten: (42.8335|46.8559)
+Das 79Dorf liegt bei den koordinaten: (41.1136|36.8255)
+Das 80Dorf liegt bei den koordinaten: (41.1136|26.6488)
+Das 81Dorf liegt bei den koordinaten: (42.8335|16.6185)
+Das 82Dorf liegt bei den koordinaten: (46.2237|7.0231)
+Das 83Dorf liegt bei den koordinaten: (51.1869|-1.86131)
+Das 84Dorf liegt bei den koordinaten: (57.5801|-9.77916)
+Das 85Dorf liegt bei den koordinaten: (65.2194|-16.5027)
+Das 86Dorf liegt bei den koordinaten: (132.356|-19.3546)
+Das 87Dorf liegt bei den koordinaten: (140.538|-13.3032)
+Das 88Dorf liegt bei den koordinaten: (147.58|-5.95602)
+Das 89Dorf liegt bei den koordinaten: (153.278|2.47548)
+Das 90Dorf liegt bei den koordinaten: (157.47|11.7488)
+Das 91Dorf liegt bei den koordinaten: (160.034|21.5971)
+Das 92Dorf liegt bei den koordinaten: (170.897|31.7372)
+Das 93Dorf liegt bei den koordinaten: (170.151|41.9293)
+Das 94Dorf liegt bei den koordinaten: (167.929|51.9041)
+Das 95Dorf liegt bei den koordinaten: (164.279|61.4491)
+Das 96Dorf liegt bei den koordinaten: (60.1673|88.6675)
+Das 97Dorf liegt bei den koordinaten: (45.4927|74.5193)
+Das 98Dorf liegt bei den koordinaten: (32.5721|46.9573)
+Das 99Dorf liegt bei den koordinaten: (31.0842|36.8468)
+Das 100Dorf liegt bei den koordinaten: (31.0842|26.6275)
+Das 101Dorf liegt bei den koordinaten: (32.5721|16.5171)
+Das 102Dorf liegt bei den koordinaten: (35.5163|6.73101)
+Das 103Dorf liegt bei den koordinaten: (39.854|-2.52207)
+Das 104Dorf liegt bei den koordinaten: (45.4927|-11.045)
+Das 105Dorf liegt bei den koordinaten: (52.3122|-18.6561)
+Das 106Dorf liegt bei den koordinaten: (153.031|-14.9751)
+Das 107Dorf liegt bei den koordinaten: (159.277|-6.88656)
+Das 108Dorf liegt bei den koordinaten: (164.279|2.02521)
+Das 109Dorf liegt bei den koordinaten: (167.929|11.5702)
+Das 110Dorf liegt bei den koordinaten: (170.151|21.5451)
+Das 111Dorf liegt bei den koordinaten: (180.897|31.7372)
+Das 112Dorf liegt bei den koordinaten: (180.267|41.7638)
+Das 113Dorf liegt bei den koordinaten: (42.5799|86.5009)
+Das 114Dorf liegt bei den koordinaten: (26.5153|61.1871)
+Das 115Dorf liegt bei den koordinaten: (23.4108|51.6324)
+Das 116Dorf liegt bei den koordinaten: (21.5283|41.7638)
+Das 117Dorf liegt bei den koordinaten: (20.8974|31.7372)
+Das 118Dorf liegt bei den koordinaten: (21.5283|21.7105)
+Das 119Dorf liegt bei den koordinaten: (23.4108|11.842)
+Das 120Dorf liegt bei den koordinaten: (26.5153|2.28721)
+Das 121Dorf liegt bei den koordinaten: (30.7929|-6.80312)
+Das 122Dorf liegt bei den koordinaten: (36.1761|-15.2856)
+Das 123Dorf liegt bei den koordinaten: (165.619|-15.2856)
+Das 124Dorf liegt bei den koordinaten: (171.002|-6.80312)
+Das 125Dorf liegt bei den koordinaten: (175.28|2.28721)
+Das 126Dorf liegt bei den koordinaten: (178.384|11.842)
+Das 127Dorf liegt bei den koordinaten: (180.267|21.7105)
+Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: 
+Das 128Dorf liegt bei den koordinaten: (5.48351|61.6735)
+Das 129Dorf liegt bei den koordinaten: (1.4105|41.854)
+Das 130Dorf liegt bei den koordinaten: (1.4105|21.6203)
+Das 131Dorf liegt bei den koordinaten: (5.48351|1.80086)
+Das 132Dorf liegt bei den koordinaten: (13.4628|-16.793)
+Das 133Dorf liegt bei den koordinaten: (192.793|-7.69841)
+
+\end{verbatim}
+\subsection{\textcolor{blue}{\texttt{siedler5.txt}}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Bilder/Figure_5.png}
+    \caption{Plot siedler5.txt}
+\end{figure}
+\begin{verbatim}
+Gesundheitszentrum: (110|58.7149)
+Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: 
+Das 1Dorf liegt bei den koordinaten: (120|58.7149)
+Das 2Dorf liegt bei den koordinaten: (115|67.3752)
+Das 3Dorf liegt bei den koordinaten: (115|50.0547)
+Das 4Dorf liegt bei den koordinaten: (130|58.7149)
+Das 5Dorf liegt bei den koordinaten: (127.321|68.7149)
+Das 6Dorf liegt bei den koordinaten: (120|76.0354)
+Das 7Dorf liegt bei den koordinaten: (110|78.7149)
+Das 8Dorf liegt bei den koordinaten: (92.6795|68.7149)
+Das 9Dorf liegt bei den koordinaten: (90|58.7149)
+Das 10Dorf liegt bei den koordinaten: (92.6795|48.7149)
+Das 11Dorf liegt bei den koordinaten: (100|41.3944)
+Das 12Dorf liegt bei den koordinaten: (110|38.7149)
+Das 13Dorf liegt bei den koordinaten: (120|41.3944)
+Das 14Dorf liegt bei den koordinaten: (127.321|48.7149)
+Das 15Dorf liegt bei den koordinaten: (140|58.7149)
+Das 16Dorf liegt bei den koordinaten: (138.191|68.9755)
+Das 17Dorf liegt bei den koordinaten: (132.981|77.9986)
+Das 18Dorf liegt bei den koordinaten: (125|84.6957)
+Das 19Dorf liegt bei den koordinaten: (115.209|88.2592)
+Das 20Dorf liegt bei den koordinaten: (95|84.6957)
+Das 21Dorf liegt bei den koordinaten: (87.0187|77.9986)
+Das 22Dorf liegt bei den koordinaten: (81.8092|68.9755)
+Das 23Dorf liegt bei den koordinaten: (80|58.7149)
+Das 24Dorf liegt bei den koordinaten: (81.8092|48.4543)
+Das 25Dorf liegt bei den koordinaten: (87.0187|39.4313)
+Das 26Dorf liegt bei den koordinaten: (95|32.7342)
+Das 27Dorf liegt bei den koordinaten: (115.209|29.1707)
+Das 28Dorf liegt bei den koordinaten: (125|32.7342)
+Das 29Dorf liegt bei den koordinaten: (132.981|39.4313)
+Das 30Dorf liegt bei den koordinaten: (138.191|48.4543)
+Das 31Dorf liegt bei den koordinaten: (150|58.7149)
+Das 32Dorf liegt bei den koordinaten: (148.743|68.6625)
+Das 33Dorf liegt bei den koordinaten: (145.052|77.9851)
+Das 34Dorf liegt bei den koordinaten: (139.159|86.0968)
+Das 35Dorf liegt bei den koordinaten: (131.433|92.488)
+Das 36Dorf liegt bei den koordinaten: (122.361|96.7572)
+Das 37Dorf liegt bei den koordinaten: (112.512|98.636)
+Das 38Dorf liegt bei den koordinaten: (102.505|98.0064)
+Das 39Dorf liegt bei den koordinaten: (92.9688|94.908)
+Das 40Dorf liegt bei den koordinaten: (84.503|89.5355)
+Das 41Dorf liegt bei den koordinaten: (77.6393|82.2263)
+Das 42Dorf liegt bei den koordinaten: (72.8089|73.4399)
+Das 43Dorf liegt bei den koordinaten: (70.3154|63.7283)
+Das 44Dorf liegt bei den koordinaten: (70.3154|53.7016)
+Das 45Dorf liegt bei den koordinaten: (72.8089|43.9899)
+Das 46Dorf liegt bei den koordinaten: (77.6393|35.2035)
+Das 47Dorf liegt bei den koordinaten: (84.503|27.8944)
+Das 48Dorf liegt bei den koordinaten: (92.9688|22.5218)
+Das 49Dorf liegt bei den koordinaten: (102.505|19.4234)
+Das 50Dorf liegt bei den koordinaten: (112.512|18.7939)
+Das 51Dorf liegt bei den koordinaten: (122.361|20.6727)
+Das 52Dorf liegt bei den koordinaten: (131.433|24.9418)
+Das 53Dorf liegt bei den koordinaten: (139.159|31.333)
+Das 54Dorf liegt bei den koordinaten: (145.052|39.4448)
+Das 55Dorf liegt bei den koordinaten: (148.743|48.7673)
+Das 56Dorf liegt bei den koordinaten: (160|58.7149)
+Das 57Dorf liegt bei den koordinaten: (158.976|68.7799)
+Das 58Dorf liegt bei den koordinaten: (155.948|78.4327)
+Das 59Dorf liegt bei den koordinaten: (151.038|87.2783)
+Das 60Dorf liegt bei den koordinaten: (144.448|94.9546)
+Das 61Dorf liegt bei den koordinaten: (79.3947|98.2537)
+Das 62Dorf liegt bei den koordinaten: (72.0621|91.2836)
+Das 63Dorf liegt bei den koordinaten: (66.2827|82.98)
+Das 64Dorf liegt bei den koordinaten: (62.293|73.6831)
+Das 65Dorf liegt bei den koordinaten: (60.2565|63.7733)
+Das 66Dorf liegt bei den koordinaten: (60.2565|53.6565)
+Das 67Dorf liegt bei den koordinaten: (62.293|43.7468)
+Das 68Dorf liegt bei den koordinaten: (66.2827|34.4498)
+Das 69Dorf liegt bei den koordinaten: (72.0621|26.1463)
+Das 70Dorf liegt bei den koordinaten: (79.3947|19.1761)
+Das 71Dorf liegt bei den koordinaten: (87.9803|13.8247)
+Das 72Dorf liegt bei den koordinaten: (97.4674|10.3111)
+Das 73Dorf liegt bei den koordinaten: (107.468|8.77911)
+Das 74Dorf liegt bei den koordinaten: (117.571|9.29152)
+Das 75Dorf liegt bei den koordinaten: (127.365|11.8273)
+Das 76Dorf liegt bei den koordinaten: (136.448|16.2827)
+Das 77Dorf liegt bei den koordinaten: (144.448|22.4753)
+Das 78Dorf liegt bei den koordinaten: (151.038|30.1515)
+Das 79Dorf liegt bei den koordinaten: (155.948|38.9971)
+Das 80Dorf liegt bei den koordinaten: (158.976|48.65)
+Das 81Dorf liegt bei den koordinaten: (170|58.7149)
+Das 82Dorf liegt bei den koordinaten: (169.137|68.855)
+Das 83Dorf liegt bei den koordinaten: (166.573|78.7033)
+Das 84Dorf liegt bei den koordinaten: (162.381|87.9766)
+Das 85Dorf liegt bei den koordinaten: (156.682|96.4081)
+Das 86Dorf liegt bei den koordinaten: (60.2894|92.3134)
+Das 87Dorf liegt bei den koordinaten: (55.3263|83.429)
+Das 88Dorf liegt bei den koordinaten: (51.936|73.8336)
+Das 89Dorf liegt bei den koordinaten: (50.2162|63.8033)
+Das 90Dorf liegt bei den koordinaten: (50.2162|53.6266)
+Das 91Dorf liegt bei den koordinaten: (51.936|43.5962)
+Das 92Dorf liegt bei den koordinaten: (55.3263|34.0009)
+Das 93Dorf liegt bei den koordinaten: (60.2894|25.1164)
+Das 94Dorf liegt bei den koordinaten: (66.6826|17.1986)
+Das 95Dorf liegt bei den koordinaten: (74.322|10.4751)
+Das 96Dorf liegt bei den koordinaten: (82.9878|5.13938)
+Das 97Dorf liegt bei den koordinaten: (92.4306|1.34493)
+Das 98Dorf liegt bei den koordinaten: (122.641|0.0616177)
+Das 99Dorf liegt bei den koordinaten: (132.371|3.04159)
+Das 100Dorf liegt bei den koordinaten: (141.458|7.62318)
+Das 101Dorf liegt bei den koordinaten: (149.64|13.6746)
+Das 102Dorf liegt bei den koordinaten: (156.682|21.0217)
+Das 103Dorf liegt bei den koordinaten: (162.381|29.4532)
+Das 104Dorf liegt bei den koordinaten: (166.573|38.7265)
+Das 105Dorf liegt bei den koordinaten: (169.137|48.5749)
+Das 106Dorf liegt bei den koordinaten: (180|58.7149)
+Das 107Dorf liegt bei den koordinaten: (179.254|68.907)
+Das 108Dorf liegt bei den koordinaten: (177.032|78.8819)
+Das 109Dorf liegt bei den koordinaten: (173.381|88.4269)
+Das 110Dorf liegt bei den koordinaten: (168.38|97.3387)
+Das 111Dorf liegt bei den koordinaten: (48.9565|92.9742)
+Das 112Dorf liegt bei den koordinaten: (44.6189|83.7211)
+Das 113Dorf liegt bei den koordinaten: (41.6747|73.935)
+Das 114Dorf liegt bei den koordinaten: (40.1867|63.8246)
+Das 115Dorf liegt bei den koordinaten: (40.1867|53.6053)
+Das 116Dorf liegt bei den koordinaten: (41.6747|43.4948)
+Das 117Dorf liegt bei den koordinaten: (44.6189|33.7088)
+Das 118Dorf liegt bei den koordinaten: (48.9565|24.4557)
+Das 119Dorf liegt bei den koordinaten: (54.5952|15.9328)
+Das 120Dorf liegt bei den koordinaten: (61.4148|8.32169)
+Das 121Dorf liegt bei den koordinaten: (69.2699|1.78465)
+Das 122Dorf liegt bei den koordinaten: (154.777|4.90963)
+Das 123Dorf liegt bei den koordinaten: (162.134|12.0026)
+Das 124Dorf liegt bei den koordinaten: (168.38|20.0912)
+Das 125Dorf liegt bei den koordinaten: (173.381|29.003)
+Das 126Dorf liegt bei den koordinaten: (177.032|38.548)
+Das 127Dorf liegt bei den koordinaten: (179.254|48.5229)
+Das 128Dorf liegt bei den koordinaten: (189.369|68.7416)
+Das 129Dorf liegt bei den koordinaten: (187.487|78.6101)
+Das 130Dorf liegt bei den koordinaten: (184.382|88.1649)
+Das 131Dorf liegt bei den koordinaten: (180.105|97.2552)
+Das 132Dorf liegt bei den koordinaten: (39.8955|97.2552)
+Das 133Dorf liegt bei den koordinaten: (35.6179|88.1649)
+Das 134Dorf liegt bei den koordinaten: (32.5133|78.6101)
+Das 135Dorf liegt bei den koordinaten: (30.6308|68.7416)
+Das 136Dorf liegt bei den koordinaten: (30|58.7149)
+Das 137Dorf liegt bei den koordinaten: (30.6308|48.6883)
+Das 138Dorf liegt bei den koordinaten: (32.5133|38.8197)
+Das 139Dorf liegt bei den koordinaten: (35.6179|29.265)
+Das 140Dorf liegt bei den koordinaten: (39.8955|20.1746)
+Das 141Dorf liegt bei den koordinaten: (45.2786|11.6921)
+Das 142Dorf liegt bei den koordinaten: (51.6825|3.95116)
+Das 143Dorf liegt bei den koordinaten: (168.317|3.95116)
+Das 144Dorf liegt bei den koordinaten: (174.721|11.6921)
+Das 145Dorf liegt bei den koordinaten: (180.105|20.1746)
+Das 146Dorf liegt bei den koordinaten: (184.382|29.265)
+Das 147Dorf liegt bei den koordinaten: (187.487|38.8197)
+Das 148Dorf liegt bei den koordinaten: (189.369|48.6883)
+Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: 
+Das 149Dorf liegt bei den koordinaten: (22.5653|10.1847)
+b
+\end{verbatim}
+\subsection{\textcolor{blue}{Meine Bsp.}}
+\subsubsection{\textcolor{blue}{\texttt{meine1.txt}}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Bilder/Figure_6.png}
+    \caption{Plot meine1.txt}
+\end{figure}
+\begin{verbatim}
+Gesundheitszentrum: (-0.14534|37.3427)
+Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: 
+Das 1Dorf liegt bei den koordinaten: (9.85466|37.3427)
+Das 2Dorf liegt bei den koordinaten: (4.85466|46.003)
+Das 3Dorf liegt bei den koordinaten: (-5.14534|46.003)
+Das 4Dorf liegt bei den koordinaten: (-10.1453|37.3427)
+Das 5Dorf liegt bei den koordinaten: (-5.14534|28.6825)
+Das 6Dorf liegt bei den koordinaten: (4.85466|28.6825)
+Das 7Dorf liegt bei den koordinaten: (19.8547|37.3427)
+Das 8Dorf liegt bei den koordinaten: (17.1752|47.3427)
+Das 9Dorf liegt bei den koordinaten: (9.85466|54.6632)
+Das 10Dorf liegt bei den koordinaten: (-0.14534|57.3427)
+Das 11Dorf liegt bei den koordinaten: (-10.1453|54.6632)
+Das 12Dorf liegt bei den koordinaten: (-17.4658|47.3427)
+Das 13Dorf liegt bei den koordinaten: (-20.1453|37.3427)
+Das 14Dorf liegt bei den koordinaten: (-17.4658|27.3427)
+Das 15Dorf liegt bei den koordinaten: (-10.1453|20.0222)
+Das 16Dorf liegt bei den koordinaten: (-0.14534|17.3427)
+Das 17Dorf liegt bei den koordinaten: (9.85466|20.0222)
+Das 18Dorf liegt bei den koordinaten: (17.1752|27.3427)
+Das 19Dorf liegt bei den koordinaten: (29.8547|37.3427)
+Das 20Dorf liegt bei den koordinaten: (28.0454|47.6033)
+Das 21Dorf liegt bei den koordinaten: (22.836|56.6263)
+Das 22Dorf liegt bei den koordinaten: (14.8547|63.3235)
+Das 23Dorf liegt bei den koordinaten: (5.06411|66.887)
+Das 24Dorf liegt bei den koordinaten: (-5.35478|66.887)
+Das 25Dorf liegt bei den koordinaten: (-15.1453|63.3235)
+Das 26Dorf liegt bei den koordinaten: (-23.1267|56.6263)
+Das 27Dorf liegt bei den koordinaten: (-28.3361|47.6033)
+Das 28Dorf liegt bei den koordinaten: (-30.1453|37.3427)
+Das 29Dorf liegt bei den koordinaten: (-28.3361|27.0821)
+Das 30Dorf liegt bei den koordinaten: (-23.1267|18.0591)
+Das 31Dorf liegt bei den koordinaten: (-15.1453|11.362)
+Das 32Dorf liegt bei den koordinaten: (-5.35478|7.79849)
+Das 33Dorf liegt bei den koordinaten: (5.06411|7.79849)
+Das 34Dorf liegt bei den koordinaten: (14.8547|11.362)
+Das 35Dorf liegt bei den koordinaten: (22.836|18.0591)
+Das 36Dorf liegt bei den koordinaten: (28.0454|27.0821)
+Das 37Dorf liegt bei den koordinaten: (39.8547|37.3427)
+Das 38Dorf liegt bei den koordinaten: (38.598|47.2903)
+Das 39Dorf liegt bei den koordinaten: (34.9069|56.6129)
+Das 40Dorf liegt bei den koordinaten: (29.0134|64.7246)
+Das 41Dorf liegt bei den koordinaten: (21.2877|71.1158)
+Das 42Dorf liegt bei den koordinaten: (12.2153|75.385)
+Das 43Dorf liegt bei den koordinaten: (2.36628|77.2638)
+Das 44Dorf liegt bei den koordinaten: (-7.64059|76.6342)
+Das 45Dorf liegt bei den koordinaten: (-17.1765|73.5358)
+Das 46Dorf liegt bei den koordinaten: (-25.6423|68.1632)
+Das 47Dorf liegt bei den koordinaten: (-32.506|60.8541)
+Das 48Dorf liegt bei den koordinaten: (-37.3364|52.0677)
+Das 49Dorf liegt bei den koordinaten: (-39.8299|42.356)
+Das 50Dorf liegt bei den koordinaten: (-39.8299|32.3294)
+Das 51Dorf liegt bei den koordinaten: (-37.3364|22.6177)
+Das 52Dorf liegt bei den koordinaten: (-32.506|13.8313)
+Das 53Dorf liegt bei den koordinaten: (-25.6423|6.52219)
+Das 54Dorf liegt bei den koordinaten: (-17.1765|1.14964)
+Das 55Dorf liegt bei den koordinaten: (-7.64059|-1.94877)
+Das 56Dorf liegt bei den koordinaten: (2.36628|-2.57835)
+Das 57Dorf liegt bei den koordinaten: (12.2153|-0.699542)
+Das 58Dorf liegt bei den koordinaten: (21.2877|3.5696)
+Das 59Dorf liegt bei den koordinaten: (29.0134|9.96083)
+Das 60Dorf liegt bei den koordinaten: (34.9069|18.0726)
+Das 61Dorf liegt bei den koordinaten: (38.598|27.3951)
+Das 62Dorf liegt bei den koordinaten: (49.8547|37.3427)
+Das 63Dorf liegt bei den koordinaten: (48.8312|47.4076)
+Das 64Dorf liegt bei den koordinaten: (45.8026|57.0605)
+Das 65Dorf liegt bei den koordinaten: (40.8928|65.9061)
+Das 66Dorf liegt bei den koordinaten: (34.303|73.5824)
+Das 67Dorf liegt bei den koordinaten: (26.3029|79.7749)
+Das 68Dorf liegt bei den koordinaten: (17.2199|84.2303)
+Das 69Dorf liegt bei den koordinaten: (7.42605|86.7661)
+Das 70Dorf liegt bei den koordinaten: (-2.6778|87.2785)
+Das 71Dorf liegt bei den koordinaten: (-12.678|85.7466)
+Das 72Dorf liegt bei den koordinaten: (-22.165|82.2329)
+Das 73Dorf liegt bei den koordinaten: (-30.7506|76.8815)
+Das 74Dorf liegt bei den koordinaten: (-38.0832|69.9113)
+Das 75Dorf liegt bei den koordinaten: (-43.8627|61.6078)
+Das 76Dorf liegt bei den koordinaten: (-47.8523|52.3109)
+Das 77Dorf liegt bei den koordinaten: (-49.8888|42.4011)
+Das 78Dorf liegt bei den koordinaten: (-49.8888|32.2843)
+Das 79Dorf liegt bei den koordinaten: (-47.8523|22.3746)
+Das 80Dorf liegt bei den koordinaten: (-43.8627|13.0776)
+Das 81Dorf liegt bei den koordinaten: (-38.0832|4.77409)
+Das 82Dorf liegt bei den koordinaten: (-30.7506|-2.19607)
+Das 83Dorf liegt bei den koordinaten: (-22.165|-7.54751)
+Das 84Dorf liegt bei den koordinaten: (-12.678|-11.0611)
+Das 85Dorf liegt bei den koordinaten: (-2.6778|-12.5931)
+Das 86Dorf liegt bei den koordinaten: (7.42605|-12.0807)
+Das 87Dorf liegt bei den koordinaten: (17.2199|-9.54489)
+Das 88Dorf liegt bei den koordinaten: (26.3029|-5.08949)
+Das 89Dorf liegt bei den koordinaten: (34.303|1.10308)
+Das 90Dorf liegt bei den koordinaten: (40.8928|8.77931)
+Das 91Dorf liegt bei den koordinaten: (45.8026|17.6249)
+Das 92Dorf liegt bei den koordinaten: (48.8312|27.2778)
+Das 93Dorf liegt bei den koordinaten: (59.8547|37.3427)
+Das 94Dorf liegt bei den koordinaten: (58.9916|47.4828)
+Das 95Dorf liegt bei den koordinaten: (56.4273|57.3311)
+Das 96Dorf liegt bei den koordinaten: (52.2355|66.6044)
+Das 97Dorf liegt bei den koordinaten: (46.5368|75.0359)
+Das 98Dorf liegt bei den koordinaten: (39.4951|82.3831)
+Das 99Dorf liegt bei den koordinaten: (31.3131|88.4345)
+Das 100Dorf liegt bei den koordinaten: (22.226|93.0161)
+Das 101Dorf liegt bei den koordinaten: (12.4954|95.996)
+Das 102Dorf liegt bei den koordinaten: (2.40113|97.2887)
+Das 103Dorf liegt bei den koordinaten: (-7.76641|96.8567)
+Das 104Dorf liegt bei den koordinaten: (-17.7147|94.7127)
+Das 105Dorf liegt bei den koordinaten: (-27.1576|90.9183)
+Das 106Dorf liegt bei den koordinaten: (-35.8233|85.5825)
+Das 107Dorf liegt bei den koordinaten: (-43.4627|78.8591)
+Das 108Dorf liegt bei den koordinaten: (-49.8559|70.9412)
+Das 109Dorf liegt bei den koordinaten: (-54.819|62.0568)
+Das 110Dorf liegt bei den koordinaten: (-58.2093|52.4614)
+Das 111Dorf liegt bei den koordinaten: (-59.9292|42.4311)
+Das 112Dorf liegt bei den koordinaten: (-59.9292|32.2544)
+Das 113Dorf liegt bei den koordinaten: (-58.2093|22.224)
+Das 114Dorf liegt bei den koordinaten: (-54.819|12.6286)
+Das 115Dorf liegt bei den koordinaten: (-49.8559|3.74423)
+Das 116Dorf liegt bei den koordinaten: (-43.4627|-4.17361)
+Das 117Dorf liegt bei den koordinaten: (-35.8233|-10.8971)
+Das 118Dorf liegt bei den koordinaten: (-27.1576|-16.2328)
+Das 119Dorf liegt bei den koordinaten: (-17.7147|-20.0273)
+Das 120Dorf liegt bei den koordinaten: (-7.76641|-22.1713)
+Das 121Dorf liegt bei den koordinaten: (2.40113|-22.6032)
+Das 122Dorf liegt bei den koordinaten: (12.4954|-21.3106)
+Das 123Dorf liegt bei den koordinaten: (22.226|-18.3306)
+Das 124Dorf liegt bei den koordinaten: (31.3131|-13.749)
+Das 125Dorf liegt bei den koordinaten: (39.4951|-7.69762)
+Das 126Dorf liegt bei den koordinaten: (46.5368|-0.350481)
+Das 127Dorf liegt bei den koordinaten: (52.2355|8.08102)
+Das 128Dorf liegt bei den koordinaten: (56.4273|17.3543)
+Das 129Dorf liegt bei den koordinaten: (58.9916|27.2027)
+Das 130Dorf liegt bei den koordinaten: (69.8547|37.3427)
+Das 131Dorf liegt bei den koordinaten: (69.1087|47.5348)
+Das 132Dorf liegt bei den koordinaten: (66.8867|57.5097)
+Das 133Dorf liegt bei den koordinaten: (63.236|67.0547)
+Das 134Dorf liegt bei den koordinaten: (58.2345|75.9665)
+Das 135Dorf liegt bei den koordinaten: (51.9887|84.055)
+Das 136Dorf liegt bei den koordinaten: (44.6318|91.148)
+Das 137Dorf liegt bei den koordinaten: (36.3205|97.0942)
+Das 138Dorf liegt bei den koordinaten: (27.232|101.767)
+Das 139Dorf liegt bei den koordinaten: (17.56|105.067)
+Das 140Dorf liegt bei den koordinaten: (7.51064|106.923)
+Das 141Dorf liegt bei den koordinaten: (-2.70188|107.296)
+Das 142Dorf liegt bei den koordinaten: (-12.8599|106.178)
+Das 143Dorf liegt bei den koordinaten: (-22.747|103.594)
+Das 144Dorf liegt bei den koordinaten: (-32.1523|99.5967)
+Das 145Dorf liegt bei den koordinaten: (-40.8755|94.273)
+Das 146Dorf liegt bei den koordinaten: (-48.7305|87.736)
+Das 147Dorf liegt bei den koordinaten: (-55.5501|80.1249)
+Das 148Dorf liegt bei den koordinaten: (-61.1888|71.602)
+Das 149Dorf liegt bei den koordinaten: (-65.5265|62.3489)
+Das 150Dorf liegt bei den koordinaten: (-68.4707|52.5628)
+Das 151Dorf liegt bei den koordinaten: (-69.9586|42.4524)
+Das 152Dorf liegt bei den koordinaten: (-69.9586|32.233)
+Das 153Dorf liegt bei den koordinaten: (-68.4707|22.1226)
+Das 154Dorf liegt bei den koordinaten: (-65.5265|12.3366)
+Das 155Dorf liegt bei den koordinaten: (-61.1888|3.08347)
+Das 156Dorf liegt bei den koordinaten: (-55.5501|-5.43944)
+Das 157Dorf liegt bei den koordinaten: (-48.7305|-13.0505)
+Das 158Dorf liegt bei den koordinaten: (-40.8755|-19.5876)
+Das 159Dorf liegt bei den koordinaten: (-32.1523|-24.9112)
+Das 160Dorf liegt bei den koordinaten: (-22.747|-28.9081)
+Das 161Dorf liegt bei den koordinaten: (-12.8599|-31.4929)
+Das 162Dorf liegt bei den koordinaten: (-2.70188|-32.6106)
+Das 163Dorf liegt bei den koordinaten: (7.51064|-32.2373)
+Das 164Dorf liegt bei den koordinaten: (17.56|-30.3811)
+Das 165Dorf liegt bei den koordinaten: (27.232|-27.0815)
+Das 166Dorf liegt bei den koordinaten: (36.3205|-22.4088)
+Das 167Dorf liegt bei den koordinaten: (44.6318|-16.4626)
+Das 168Dorf liegt bei den koordinaten: (51.9887|-9.3696)
+Das 169Dorf liegt bei den koordinaten: (58.2345|-1.28102)
+Das 170Dorf liegt bei den koordinaten: (63.236|7.63075)
+Das 171Dorf liegt bei den koordinaten: (66.8867|17.1758)
+Das 172Dorf liegt bei den koordinaten: (69.1087|27.1506)
+Das 173Dorf liegt bei den koordinaten: (79.8547|37.3427)
+Das 174Dorf liegt bei den koordinaten: (79.2238|47.3694)
+Das 175Dorf liegt bei den koordinaten: (77.3413|57.2379)
+Das 176Dorf liegt bei den koordinaten: (74.2368|66.7927)
+Das 177Dorf liegt bei den koordinaten: (69.9592|75.883)
+Das 178Dorf liegt bei den koordinaten: (64.576|84.3655)
+Das 179Dorf liegt bei den koordinaten: (58.1722|92.1065)
+Das 180Dorf liegt bei den koordinaten: (50.8486|98.9838)
+Das 181Dorf liegt bei den koordinaten: (42.7208|104.889)
+Das 182Dorf liegt bei den koordinaten: (33.917|109.729)
+Das 183Dorf liegt bei den koordinaten: (24.576|113.427)
+Das 184Dorf liegt bei den koordinaten: (14.8452|115.926)
+Das 185Dorf liegt bei den koordinaten: (4.8779|117.185)
+Das 186Dorf liegt bei den koordinaten: (-5.16858|117.185)
+Das 187Dorf liegt bei den koordinaten: (-15.1358|115.926)
+Das 188Dorf liegt bei den koordinaten: (-24.8667|113.427)
+Das 189Dorf liegt bei den koordinaten: (-34.2077|109.729)
+Das 190Dorf liegt bei den koordinaten: (-43.0115|104.889)
+Das 191Dorf liegt bei den koordinaten: (-51.1393|98.9838)
+Das 192Dorf liegt bei den koordinaten: (-58.4628|92.1065)
+Das 193Dorf liegt bei den koordinaten: (-64.8667|84.3655)
+Das 194Dorf liegt bei den koordinaten: (-70.2499|75.883)
+Das 195Dorf liegt bei den koordinaten: (-74.5275|66.7927)
+Das 196Dorf liegt bei den koordinaten: (-77.632|57.2379)
+Das 197Dorf liegt bei den koordinaten: (-79.5145|47.3694)
+Das 198Dorf liegt bei den koordinaten: (-80.1453|37.3427)
+Das 199Dorf liegt bei den koordinaten: (-79.5145|27.3161)
+Das 200Dorf liegt bei den koordinaten: (-77.632|17.4475)
+Das 201Dorf liegt bei den koordinaten: (-74.5275|7.89275)
+Das 202Dorf liegt bei den koordinaten: (-70.2499|-1.19758)
+Das 203Dorf liegt bei den koordinaten: (-64.8667|-9.6801)
+Das 204Dorf liegt bei den koordinaten: (-58.4628|-17.421)
+Das 205Dorf liegt bei den koordinaten: (-51.1393|-24.2983)
+Das 206Dorf liegt bei den koordinaten: (-43.0115|-30.2035)
+Das 207Dorf liegt bei den koordinaten: (-34.2077|-35.0434)
+Das 208Dorf liegt bei den koordinaten: (-24.8667|-38.7418)
+Das 209Dorf liegt bei den koordinaten: (-15.1358|-41.2403)
+Das 210Dorf liegt bei den koordinaten: (-5.16858|-42.4994)
+Das 211Dorf liegt bei den koordinaten: (4.8779|-42.4994)
+Das 212Dorf liegt bei den koordinaten: (14.8452|-41.2403)
+Das 213Dorf liegt bei den koordinaten: (24.576|-38.7418)
+Das 214Dorf liegt bei den koordinaten: (33.917|-35.0434)
+Das 215Dorf liegt bei den koordinaten: (42.7208|-30.2035)
+Das 216Dorf liegt bei den koordinaten: (50.8486|-24.2983)
+Das 217Dorf liegt bei den koordinaten: (58.1722|-17.421)
+Das 218Dorf liegt bei den koordinaten: (64.576|-9.6801)
+Das 219Dorf liegt bei den koordinaten: (69.9592|-1.19758)
+Das 220Dorf liegt bei den koordinaten: (74.2368|7.89275)
+Das 221Dorf liegt bei den koordinaten: (77.3413|17.4475)
+Das 222Dorf liegt bei den koordinaten: (79.2238|27.3161)
+Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: 
+Das 223Dorf liegt bei den koordinaten: (99.8547|37.3427)
+Das 224Dorf liegt bei den koordinaten: (97.8077|57.4726)
+Das 225Dorf liegt bei den koordinaten: (91.7504|76.7783)
+Das 226Dorf liegt bei den koordinaten: (81.931|94.4695)
+Das 227Dorf liegt bei den koordinaten: (68.7514|109.822)
+Das 228Dorf liegt bei den koordinaten: (52.7511|122.207)
+Das 229Dorf liegt bei den koordinaten: (34.5852|131.118)
+Das 230Dorf liegt bei den koordinaten: (14.9974|136.19)
+Das 231Dorf liegt bei den koordinaten: (-5.21026|137.214)
+Das 232Dorf liegt bei den koordinaten: (-25.2106|134.15)
+Das 233Dorf liegt bei den koordinaten: (-44.1848|127.123)
+Das 234Dorf liegt bei den koordinaten: (-61.3559|116.42)
+Das 235Dorf liegt bei den koordinaten: (-76.0212|102.48)
+Das 236Dorf liegt bei den koordinaten: (-87.58|85.8729)
+Das 237Dorf liegt bei den koordinaten: (-95.5593|67.279)
+Das 238Dorf liegt bei den koordinaten: (-99.6323|47.4596)
+Das 239Dorf liegt bei den koordinaten: (-99.6323|27.2259)
+Das 240Dorf liegt bei den koordinaten: (-95.5593|7.40641)
+Das 241Dorf liegt bei den koordinaten: (-87.58|-11.1875)
+Das 242Dorf liegt bei den koordinaten: (-76.0212|-27.7945)
+Das 243Dorf liegt bei den koordinaten: (-61.3559|-41.7349)
+Das 244Dorf liegt bei den koordinaten: (-44.1848|-52.4377)
+Das 245Dorf liegt bei den koordinaten: (-25.2106|-59.465)
+Das 246Dorf liegt bei den koordinaten: (-5.21026|-62.5289)
+Das 247Dorf liegt bei den koordinaten: (14.9974|-61.5041)
+Das 248Dorf liegt bei den koordinaten: (34.5852|-56.4325)
+Das 249Dorf liegt bei den koordinaten: (52.7511|-47.5217)
+Das 250Dorf liegt bei den koordinaten: (68.7514|-35.1366)
+Das 251Dorf liegt bei den koordinaten: (81.931|-19.7841)
+Das 252Dorf liegt bei den koordinaten: (91.7504|-2.09287)
+Das 253Dorf liegt bei den koordinaten: (97.8077|17.2129)
+Das 254Dorf liegt bei den koordinaten: (119.855|37.3427)
+Das 255Dorf liegt bei den koordinaten: (118.129|57.6228)
+Das 256Dorf liegt bei den koordinaten: (113|77.3195)
+Das 257Dorf liegt bei den koordinaten: (104.616|95.8661)
+Das 258Dorf liegt bei den koordinaten: (93.219|112.729)
+Das 259Dorf liegt bei den koordinaten: (79.1356|127.423)
+Das 260Dorf liegt bei den koordinaten: (62.7715|139.526)
+Das 261Dorf liegt bei den koordinaten: (44.5974|148.689)
+Das 262Dorf liegt bei den koordinaten: (25.1362|154.649)
+Das 263Dorf liegt bei den koordinaten: (4.9476|157.235)
+Das 264Dorf liegt bei den koordinaten: (-15.3875|156.371)
+Das 265Dorf liegt bei den koordinaten: (-35.2841|152.083)
+Das 266Dorf liegt bei den koordinaten: (-54.1698|144.494)
+Das 267Dorf liegt bei den koordinaten: (-71.5013|133.822)
+Das 268Dorf liegt bei den koordinaten: (-86.7801|120.375)
+Das 269Dorf liegt bei den koordinaten: (-99.5665|104.54)
+Das 270Dorf liegt bei den koordinaten: (-109.493|86.7709)
+Das 271Dorf liegt bei den koordinaten: (-116.273|67.5801)
+Das 272Dorf liegt bei den koordinaten: (-119.713|47.5194)
+Das 273Dorf liegt bei den koordinaten: (-119.713|27.166)
+Das 274Dorf liegt bei den koordinaten: (-116.273|7.10535)
+Das 275Dorf liegt bei den koordinaten: (-109.493|-12.0854)
+Das 276Dorf liegt bei den koordinaten: (-99.5665|-29.8543)
+Das 277Dorf liegt bei den koordinaten: (-86.7801|-45.6899)
+Das 278Dorf liegt bei den koordinaten: (-71.5013|-59.1369)
+Das 279Dorf liegt bei den koordinaten: (-54.1698|-69.8084)
+Das 280Dorf liegt bei den koordinaten: (-35.2841|-77.3973)
+Das 281Dorf liegt bei den koordinaten: (-15.3875|-81.6853)
+Das 282Dorf liegt bei den koordinaten: (4.9476|-82.5492)
+Das 283Dorf liegt bei den koordinaten: (25.1362|-79.9639)
+Das 284Dorf liegt bei den koordinaten: (44.5974|-74.004)
+Das 285Dorf liegt bei den koordinaten: (62.7715|-64.8408)
+Das 286Dorf liegt bei den koordinaten: (79.1356|-52.738)
+Das 287Dorf liegt bei den koordinaten: (93.219|-38.0437)
+Das 288Dorf liegt bei den koordinaten: (104.616|-21.1807)
+Das 289Dorf liegt bei den koordinaten: (113|-2.63406)
+Das 290Dorf liegt bei den koordinaten: (118.129|17.0626)
+Das 291Dorf liegt bei den koordinaten: (139.855|37.3427)
+Das 292Dorf liegt bei den koordinaten: (138.363|57.7269)
+Das 293Dorf liegt bei den koordinaten: (133.919|77.6766)
+Das 294Dorf liegt bei den koordinaten: (126.617|96.7667)
+Das 295Dorf liegt bei den koordinaten: (116.614|114.59)
+Das 296Dorf liegt bei den koordinaten: (104.123|130.767)
+Das 297Dorf liegt bei den koordinaten: (89.4089|144.953)
+Das 298Dorf liegt bei den koordinaten: (72.7863|156.846)
+Das 299Dorf liegt bei den koordinaten: (54.6093|166.191)
+Das 300Dorf liegt bei den koordinaten: (35.2653|172.79)
+Das 301Dorf liegt bei den koordinaten: (15.1666|176.503)
+Das 302Dorf liegt bei den koordinaten: (-5.25842|177.249)
+Das 303Dorf liegt bei den koordinaten: (-25.5745|175.014)
+Das 304Dorf liegt bei den koordinaten: (-45.3486|169.844)
+Das 305Dorf liegt bei den koordinaten: (-64.1593|161.851)
+Das 306Dorf liegt bei den koordinaten: (-81.6056|151.203)
+Das 307Dorf liegt bei den koordinaten: (-97.3157|138.129)
+Das 308Dorf liegt bei den koordinaten: (-110.955|122.907)
+Das 309Dorf liegt bei den koordinaten: (-122.232|105.861)
+Das 310Dorf liegt bei den koordinaten: (-130.908|87.355)
+Das 311Dorf liegt bei den koordinaten: (-136.796|67.7829)
+Das 312Dorf liegt bei den koordinaten: (-139.772|47.5621)
+Das 313Dorf liegt bei den koordinaten: (-139.772|27.1234)
+Das 314Dorf liegt bei den koordinaten: (-136.796|6.90249)
+Das 315Dorf liegt bei den koordinaten: (-130.908|-12.6696)
+Das 316Dorf liegt bei den koordinaten: (-122.232|-31.1758)
+Das 317Dorf liegt bei den koordinaten: (-110.955|-48.2216)
+Das 318Dorf liegt bei den koordinaten: (-97.3157|-63.4438)
+Das 319Dorf liegt bei den koordinaten: (-81.6056|-76.5178)
+Das 320Dorf liegt bei den koordinaten: (-64.1593|-87.1652)
+Das 321Dorf liegt bei den koordinaten: (-45.3486|-95.1588)
+Das 322Dorf liegt bei den koordinaten: (-25.5745|-100.328)
+Das 323Dorf liegt bei den koordinaten: (-5.25842|-102.564)
+Das 324Dorf liegt bei den koordinaten: (15.1666|-101.817)
+Das 325Dorf liegt bei den koordinaten: (104.123|-56.0819)
+Das 326Dorf liegt bei den koordinaten: (116.614|-39.9048)
+Das 327Dorf liegt bei den koordinaten: (126.617|-22.0812)
+Das 328Dorf liegt bei den koordinaten: (133.919|-2.99116)
+Das 329Dorf liegt bei den koordinaten: (138.363|16.9586)
+Das 330Dorf liegt bei den koordinaten: (159.855|37.3427)
+Das 331Dorf liegt bei den koordinaten: (158.593|57.396)
+Das 332Dorf liegt bei den koordinaten: (154.828|77.1331)
+Das 333Dorf liegt bei den koordinaten: (148.619|96.2426)
+Das 334Dorf liegt bei den koordinaten: (140.064|114.423)
+Das 335Dorf liegt bei den koordinaten: (129.297|131.388)
+Das 336Dorf liegt bei den koordinaten: (116.49|146.87)
+Das 337Dorf liegt bei den koordinaten: (101.842|160.625)
+Das 338Dorf liegt bei den koordinaten: (85.5869|172.435)
+Das 339Dorf liegt bei den koordinaten: (-85.8776|172.435)
+Das 340Dorf liegt bei den koordinaten: (-102.133|160.625)
+Das 341Dorf liegt bei den koordinaten: (-116.78|146.87)
+Das 342Dorf liegt bei den koordinaten: (-155.119|77.1331)
+Das 343Dorf liegt bei den koordinaten: (-158.884|57.396)
+Das 344Dorf liegt bei den koordinaten: (-160.145|37.3427)
+Das 345Dorf liegt bei den koordinaten: (-158.884|17.2894)
+Das 346Dorf liegt bei den koordinaten: (-155.119|-2.44766)
+Das 347Dorf liegt bei den koordinaten: (-148.91|-21.5572)
+Das 348Dorf liegt bei den koordinaten: (-140.354|-39.7379)
+Das 349Dorf liegt bei den koordinaten: (-129.588|-56.7029)
+Das 350Dorf liegt bei den koordinaten: (-116.78|-72.1848)
+Das 351Dorf liegt bei den koordinaten: (-102.133|-85.9394)
+Das 352Dorf liegt bei den koordinaten: (-85.8776|-97.7497)
+Das 353Dorf liegt bei den koordinaten: (-68.27|-107.43)
+Das 354Dorf liegt bei den koordinaten: (-49.5881|-114.826)
+Das 355Dorf liegt bei den koordinaten: (-30.1263|-119.823)
+Das 356Dorf liegt bei den koordinaten: (-10.1918|-122.342)
+Das 357Dorf liegt bei den koordinaten: (148.619|-21.5572)
+Das 358Dorf liegt bei den koordinaten: (154.828|-2.44766)
+Das 359Dorf liegt bei den koordinaten: (158.593|17.2894)
+Das 360Dorf liegt bei den koordinaten: (179.855|37.3427)
+Das 361Dorf liegt bei den koordinaten: (178.723|57.4963)
+Das 362Dorf liegt bei den koordinaten: (175.342|77.3965)
+Das 363Dorf liegt bei den koordinaten: (169.754|96.7929)
+Das 364Dorf liegt bei den koordinaten: (162.029|115.442)
+Das 365Dorf liegt bei den koordinaten: (152.265|133.108)
+Das 366Dorf liegt bei den koordinaten: (140.584|149.571)
+Das 367Dorf liegt bei den koordinaten: (127.134|164.622)
+Das 368Dorf liegt bei den koordinaten: (-179.014|17.1891)
+Das 369Dorf liegt bei den koordinaten: (-175.632|-2.71105)
+Das 370Dorf liegt bei den koordinaten: (-170.044|-22.1075)
+Das 371Dorf liegt bei den koordinaten: (-162.32|-40.7564)
+Das 372Dorf liegt bei den koordinaten: (-152.556|-58.4231)
+Das 373Dorf liegt bei den koordinaten: (-140.875|-74.8854)
+Das 374Dorf liegt bei den koordinaten: (-127.425|-89.9365)
+Das 375Dorf liegt bei den koordinaten: (-112.374|-103.387)
+Das 376Dorf liegt bei den koordinaten: (-95.9111|-115.068)
+Das 377Dorf liegt bei den koordinaten: (-78.2444|-124.832)
+Das 378Dorf liegt bei den koordinaten: (-59.5956|-132.556)
+Das 379Dorf liegt bei den koordinaten: (-40.1991|-138.144)
+Das 380Dorf liegt bei den koordinaten: (175.342|-2.71105)
+Das 381Dorf liegt bei den koordinaten: (178.723|17.1891)
+Das 382Dorf liegt bei den koordinaten: (151.606|167.617)
+Das 383Dorf liegt bei den koordinaten: (-196.051|-2.91699)
+Das 384Dorf liegt bei den koordinaten: (-137.939|-107.616)
+Das 385Dorf liegt bei den koordinaten: (-122.567|-120.812)
+Das 386Dorf liegt bei den koordinaten: (-105.938|-132.386)
+Das 387Dorf liegt bei den koordinaten: (-88.2242|-142.218)
+Das 388Dorf liegt bei den koordinaten: (-69.6064|-150.208)
+Das 389Dorf liegt bei den koordinaten: (-110.145|-153.183)
+Das 390Dorf liegt bei den koordinaten: (-92.3642|-162.396)
+die Laufzeit des Programmes liegt bei: 1milliseconds
+
+\end{verbatim}
+\subsubsection{\textcolor{blue}{meine2.txt}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Bilder/Figure_7.png}
+    \caption{Plot meine1.txt}
+\end{figure}
+\begin{verbatim}
+Gesundheitszentrum: (-36.0173|42.8736)
+Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: 
+Das 1Dorf liegt bei den koordinaten: (-26.0173|42.8736)
+Das 2Dorf liegt bei den koordinaten: (-31.0173|51.5338)
+Das 3Dorf liegt bei den koordinaten: (-41.0173|51.5338)
+Das 4Dorf liegt bei den koordinaten: (-46.0173|42.8736)
+Das 5Dorf liegt bei den koordinaten: (-41.0173|34.2133)
+Das 6Dorf liegt bei den koordinaten: (-31.0173|34.2133)
+Das 7Dorf liegt bei den koordinaten: (-16.0173|42.8736)
+Das 8Dorf liegt bei den koordinaten: (-18.6968|52.8736)
+Das 9Dorf liegt bei den koordinaten: (-26.0173|60.1941)
+Das 10Dorf liegt bei den koordinaten: (-36.0173|62.8736)
+Das 11Dorf liegt bei den koordinaten: (-46.0173|60.1941)
+Das 12Dorf liegt bei den koordinaten: (-53.3378|52.8736)
+Das 13Dorf liegt bei den koordinaten: (-56.0173|42.8736)
+Das 14Dorf liegt bei den koordinaten: (-53.3378|32.8736)
+Das 15Dorf liegt bei den koordinaten: (-46.0173|25.5531)
+Das 16Dorf liegt bei den koordinaten: (-36.0173|22.8736)
+Das 17Dorf liegt bei den koordinaten: (-26.0173|25.5531)
+Das 18Dorf liegt bei den koordinaten: (-18.6968|32.8736)
+Das 19Dorf liegt bei den koordinaten: (-6.01727|42.8736)
+Das 20Dorf liegt bei den koordinaten: (-7.82649|53.1342)
+Das 21Dorf liegt bei den koordinaten: (-13.0359|62.1572)
+Das 22Dorf liegt bei den koordinaten: (-21.0173|68.8543)
+Das 23Dorf liegt bei den koordinaten: (-30.8078|72.4178)
+Das 24Dorf liegt bei den koordinaten: (-41.2267|72.4178)
+Das 25Dorf liegt bei den koordinaten: (-51.0173|68.8543)
+Das 26Dorf liegt bei den koordinaten: (-58.9986|62.1572)
+Das 27Dorf liegt bei den koordinaten: (-64.208|53.1342)
+Das 28Dorf liegt bei den koordinaten: (-66.0173|42.8736)
+Das 29Dorf liegt bei den koordinaten: (-64.208|32.613)
+Das 30Dorf liegt bei den koordinaten: (-58.9986|23.5899)
+Das 31Dorf liegt bei den koordinaten: (-51.0173|16.8928)
+Das 32Dorf liegt bei den koordinaten: (-41.2267|13.3293)
+Das 33Dorf liegt bei den koordinaten: (-30.8078|13.3293)
+Das 34Dorf liegt bei den koordinaten: (-21.0173|16.8928)
+Das 35Dorf liegt bei den koordinaten: (-13.0359|23.5899)
+Das 36Dorf liegt bei den koordinaten: (-7.82649|32.613)
+Das 37Dorf liegt bei den koordinaten: (3.98273|42.8736)
+Das 38Dorf liegt bei den koordinaten: (2.72606|52.8212)
+Das 39Dorf liegt bei den koordinaten: (-0.965004|62.1437)
+Das 40Dorf liegt bei den koordinaten: (-6.85853|70.2554)
+Das 41Dorf liegt bei den koordinaten: (-14.5842|76.6467)
+Das 42Dorf liegt bei den koordinaten: (-23.6566|80.9158)
+Das 43Dorf liegt bei den koordinaten: (-33.5057|82.7946)
+Das 44Dorf liegt bei den koordinaten: (-43.5125|82.1651)
+Das 45Dorf liegt bei den koordinaten: (-53.0484|79.0666)
+Das 46Dorf liegt bei den koordinaten: (-61.5142|73.6941)
+Das 47Dorf liegt bei den koordinaten: (-68.378|66.385)
+Das 48Dorf liegt bei den koordinaten: (-73.2083|57.5985)
+Das 49Dorf liegt bei den koordinaten: (-75.7019|47.8869)
+Das 50Dorf liegt bei den koordinaten: (-75.7019|37.8602)
+Das 51Dorf liegt bei den koordinaten: (-73.2083|28.1486)
+Das 52Dorf liegt bei den koordinaten: (-68.378|19.3622)
+Das 53Dorf liegt bei den koordinaten: (-61.5142|12.053)
+Das 54Dorf liegt bei den koordinaten: (-53.0484|6.68048)
+Das 55Dorf liegt bei den koordinaten: (-43.5125|3.58207)
+Das 56Dorf liegt bei den koordinaten: (-33.5057|2.95249)
+Das 57Dorf liegt bei den koordinaten: (-23.6566|4.8313)
+Das 58Dorf liegt bei den koordinaten: (-14.5842|9.10045)
+Das 59Dorf liegt bei den koordinaten: (-6.85853|15.4917)
+Das 60Dorf liegt bei den koordinaten: (-0.965004|23.6034)
+Das 61Dorf liegt bei den koordinaten: (2.72606|32.926)
+Das 62Dorf liegt bei den koordinaten: (13.9827|42.8736)
+Das 63Dorf liegt bei den koordinaten: (12.9592|52.9385)
+Das 64Dorf liegt bei den koordinaten: (9.93062|62.5914)
+Das 65Dorf liegt bei den koordinaten: (5.0209|71.437)
+Das 66Dorf liegt bei den koordinaten: (-1.56892|79.1132)
+Das 67Dorf liegt bei den koordinaten: (-9.56907|85.3058)
+Das 68Dorf liegt bei den koordinaten: (-18.652|89.7612)
+Das 69Dorf liegt bei den koordinaten: (-28.4459|92.297)
+Das 70Dorf liegt bei den koordinaten: (-38.5497|92.8094)
+Das 71Dorf liegt bei den koordinaten: (-48.5499|91.2774)
+Das 72Dorf liegt bei den koordinaten: (-58.037|87.7638)
+Das 73Dorf liegt bei den koordinaten: (-66.6226|82.4123)
+Das 74Dorf liegt bei den koordinaten: (-73.9552|75.4422)
+Das 75Dorf liegt bei den koordinaten: (-79.7346|67.1387)
+Das 76Dorf liegt bei den koordinaten: (-83.7242|57.8417)
+Das 77Dorf liegt bei den koordinaten: (-85.7607|47.932)
+Das 78Dorf liegt bei den koordinaten: (-85.7607|37.8151)
+Das 79Dorf liegt bei den koordinaten: (-83.7242|27.9054)
+Das 80Dorf liegt bei den koordinaten: (-79.7346|18.6085)
+Das 81Dorf liegt bei den koordinaten: (-73.9552|10.3049)
+Das 82Dorf liegt bei den koordinaten: (-66.6226|3.33478)
+Das 83Dorf liegt bei den koordinaten: (-58.037|-2.01666)
+Das 84Dorf liegt bei den koordinaten: (-48.5499|-5.53029)
+Das 85Dorf liegt bei den koordinaten: (-38.5497|-7.06226)
+Das 86Dorf liegt bei den koordinaten: (-28.4459|-6.54985)
+Das 87Dorf liegt bei den koordinaten: (-18.652|-4.01404)
+Das 88Dorf liegt bei den koordinaten: (-9.56907|0.44135)
+Das 89Dorf liegt bei den koordinaten: (-1.56892|6.63392)
+Das 90Dorf liegt bei den koordinaten: (5.0209|14.3102)
+Das 91Dorf liegt bei den koordinaten: (9.93062|23.1558)
+Das 92Dorf liegt bei den koordinaten: (12.9592|32.8086)
+Das 93Dorf liegt bei den koordinaten: (23.9827|42.8736)
+Das 94Dorf liegt bei den koordinaten: (23.1197|53.0136)
+Das 95Dorf liegt bei den koordinaten: (20.5554|62.862)
+Das 96Dorf liegt bei den koordinaten: (16.3636|72.1353)
+Das 97Dorf liegt bei den koordinaten: (10.6649|80.5668)
+Das 98Dorf liegt bei den koordinaten: (3.62321|87.9139)
+Das 99Dorf liegt bei den koordinaten: (-4.55883|93.9653)
+Das 100Dorf liegt bei den koordinaten: (-13.6459|98.5469)
+Das 101Dorf liegt bei den koordinaten: (-23.3765|101.527)
+Das 102Dorf liegt bei den koordinaten: (-33.4708|102.82)
+Das 103Dorf liegt bei den koordinaten: (-43.6383|102.388)
+Das 104Dorf liegt bei den koordinaten: (-53.5866|100.244)
+Das 105Dorf liegt bei den koordinaten: (-63.0295|96.4491)
+Das 106Dorf liegt bei den koordinaten: (-71.6953|91.1134)
+Das 107Dorf liegt bei den koordinaten: (-79.3346|84.3899)
+Das 108Dorf liegt bei den koordinaten: (-85.7278|76.472)
+Das 109Dorf liegt bei den koordinaten: (-90.691|67.5876)
+Das 110Dorf liegt bei den koordinaten: (-94.0812|57.9922)
+Das 111Dorf liegt bei den koordinaten: (-95.8011|47.9619)
+Das 112Dorf liegt bei den koordinaten: (-95.8011|37.7852)
+Das 113Dorf liegt bei den koordinaten: (-94.0812|27.7549)
+Das 114Dorf liegt bei den koordinaten: (-90.691|18.1595)
+Das 115Dorf liegt bei den koordinaten: (-85.7278|9.27508)
+Das 116Dorf liegt bei den koordinaten: (-79.3346|1.35723)
+Das 117Dorf liegt bei den koordinaten: (-71.6953|-5.36627)
+Das 118Dorf liegt bei den koordinaten: (-63.0295|-10.702)
+Das 119Dorf liegt bei den koordinaten: (-53.5866|-14.4964)
+Das 120Dorf liegt bei den koordinaten: (-43.6383|-16.6405)
+Das 121Dorf liegt bei den koordinaten: (-33.4708|-17.0724)
+Das 122Dorf liegt bei den koordinaten: (-23.3765|-15.7798)
+Das 123Dorf liegt bei den koordinaten: (-13.6459|-12.7998)
+Das 124Dorf liegt bei den koordinaten: (-4.55883|-8.21819)
+Das 125Dorf liegt bei den koordinaten: (3.62321|-2.16678)
+Das 126Dorf liegt bei den koordinaten: (10.6649|5.18036)
+Das 127Dorf liegt bei den koordinaten: (16.3636|13.6119)
+Das 128Dorf liegt bei den koordinaten: (20.5554|22.8852)
+Das 129Dorf liegt bei den koordinaten: (23.1197|32.7335)
+Das 130Dorf liegt bei den koordinaten: (33.9827|42.8736)
+Das 131Dorf liegt bei den koordinaten: (33.2368|53.0656)
+Das 132Dorf liegt bei den koordinaten: (31.0148|63.0405)
+Das 133Dorf liegt bei den koordinaten: (27.3641|72.5855)
+Das 134Dorf liegt bei den koordinaten: (22.3626|81.4973)
+Das 135Dorf liegt bei den koordinaten: (16.1168|89.5859)
+Das 136Dorf liegt bei den koordinaten: (8.75984|96.6789)
+Das 137Dorf liegt bei den koordinaten: (0.448553|102.625)
+Das 138Dorf liegt bei den koordinaten: (-8.63994|107.298)
+Das 139Dorf liegt bei den koordinaten: (-18.3119|110.597)
+Das 140Dorf liegt bei den koordinaten: (-28.3613|112.454)
+Das 141Dorf liegt bei den koordinaten: (-38.5738|112.827)
+Das 142Dorf liegt bei den koordinaten: (-48.7319|111.709)
+Das 143Dorf liegt bei den koordinaten: (-58.6189|109.124)
+Das 144Dorf liegt bei den koordinaten: (-68.0242|105.128)
+Das 145Dorf liegt bei den koordinaten: (-76.7474|99.8038)
+Das 146Dorf liegt bei den koordinaten: (-84.6025|93.2668)
+Das 147Dorf liegt bei den koordinaten: (-91.422|85.6557)
+Das 148Dorf liegt bei den koordinaten: (-97.0607|77.1328)
+Das 149Dorf liegt bei den koordinaten: (-101.398|67.8797)
+Das 150Dorf liegt bei den koordinaten: (-104.343|58.0937)
+Das 151Dorf liegt bei den koordinaten: (-105.831|47.9832)
+Das 152Dorf liegt bei den koordinaten: (-105.831|37.7639)
+Das 153Dorf liegt bei den koordinaten: (-104.343|27.6535)
+Das 154Dorf liegt bei den koordinaten: (-101.398|17.8674)
+Das 155Dorf liegt bei den koordinaten: (-97.0607|8.61431)
+Das 156Dorf liegt bei den koordinaten: (-91.422|0.0914026)
+Das 157Dorf liegt bei den koordinaten: (-84.6025|-7.51968)
+Das 158Dorf liegt bei den koordinaten: (-76.7474|-14.0567)
+Das 159Dorf liegt bei den koordinaten: (-68.0242|-19.3804)
+Das 160Dorf liegt bei den koordinaten: (-58.6189|-23.3772)
+Das 161Dorf liegt bei den koordinaten: (-48.7319|-25.962)
+Das 162Dorf liegt bei den koordinaten: (-38.5738|-27.0797)
+Das 163Dorf liegt bei den koordinaten: (-28.3613|-26.7065)
+Das 164Dorf liegt bei den koordinaten: (-18.3119|-24.8503)
+Das 165Dorf liegt bei den koordinaten: (-8.63994|-21.5507)
+Das 166Dorf liegt bei den koordinaten: (0.448553|-16.878)
+Das 167Dorf liegt bei den koordinaten: (8.75984|-10.9317)
+Das 168Dorf liegt bei den koordinaten: (16.1168|-3.83875)
+Das 169Dorf liegt bei den koordinaten: (22.3626|4.24982)
+Das 170Dorf liegt bei den koordinaten: (27.3641|13.1616)
+Das 171Dorf liegt bei den koordinaten: (31.0148|22.7066)
+Das 172Dorf liegt bei den koordinaten: (33.2368|32.6815)
+Das 173Dorf liegt bei den koordinaten: (43.9827|42.8736)
+Das 174Dorf liegt bei den koordinaten: (43.3519|52.9002)
+Das 175Dorf liegt bei den koordinaten: (41.4694|62.7688)
+Das 176Dorf liegt bei den koordinaten: (38.3648|72.3235)
+Das 177Dorf liegt bei den koordinaten: (34.0873|81.4139)
+Das 178Dorf liegt bei den koordinaten: (28.7041|89.8964)
+Das 179Dorf liegt bei den koordinaten: (22.3002|97.6373)
+Das 180Dorf liegt bei den koordinaten: (14.9766|104.515)
+Das 181Dorf liegt bei den koordinaten: (6.84887|110.42)
+Das 182Dorf liegt bei den koordinaten: (-1.95493|115.26)
+Das 183Dorf liegt bei den koordinaten: (-11.2959|118.958)
+Das 184Dorf liegt bei den koordinaten: (-21.0268|121.457)
+Das 185Dorf liegt bei den koordinaten: (-30.994|122.716)
+Das 186Dorf liegt bei den koordinaten: (-41.0405|122.716)
+Das 187Dorf liegt bei den koordinaten: (-51.0078|121.457)
+Das 188Dorf liegt bei den koordinaten: (-60.7386|118.958)
+Das 189Dorf liegt bei den koordinaten: (-70.0796|115.26)
+Das 190Dorf liegt bei den koordinaten: (-78.8834|110.42)
+Das 191Dorf liegt bei den koordinaten: (-87.0112|104.515)
+Das 192Dorf liegt bei den koordinaten: (-94.3348|97.6373)
+Das 193Dorf liegt bei den koordinaten: (-100.739|89.8964)
+Das 194Dorf liegt bei den koordinaten: (-106.122|81.4139)
+Das 195Dorf liegt bei den koordinaten: (-110.399|72.3235)
+Das 196Dorf liegt bei den koordinaten: (-113.504|62.7688)
+Das 197Dorf liegt bei den koordinaten: (-115.386|52.9002)
+Das 198Dorf liegt bei den koordinaten: (-116.017|42.8736)
+Das 199Dorf liegt bei den koordinaten: (-115.386|32.8469)
+Das 200Dorf liegt bei den koordinaten: (-113.504|22.9784)
+Das 201Dorf liegt bei den koordinaten: (-110.399|13.4236)
+Das 202Dorf liegt bei den koordinaten: (-106.122|4.33327)
+Das 203Dorf liegt bei den koordinaten: (-100.739|-4.14926)
+Das 204Dorf liegt bei den koordinaten: (-94.3348|-11.8902)
+Das 205Dorf liegt bei den koordinaten: (-87.0112|-18.7675)
+Das 206Dorf liegt bei den koordinaten: (-78.8834|-24.6727)
+Das 207Dorf liegt bei den koordinaten: (-70.0796|-29.5126)
+Das 208Dorf liegt bei den koordinaten: (-60.7386|-33.211)
+Das 209Dorf liegt bei den koordinaten: (-51.0078|-35.7094)
+Das 210Dorf liegt bei den koordinaten: (-41.0405|-36.9686)
+Das 211Dorf liegt bei den koordinaten: (-30.994|-36.9686)
+Das 212Dorf liegt bei den koordinaten: (-21.0268|-35.7094)
+Das 213Dorf liegt bei den koordinaten: (-11.2959|-33.211)
+Das 214Dorf liegt bei den koordinaten: (-1.95493|-29.5126)
+Das 215Dorf liegt bei den koordinaten: (6.84887|-24.6727)
+Das 216Dorf liegt bei den koordinaten: (14.9766|-18.7675)
+Das 217Dorf liegt bei den koordinaten: (22.3002|-11.8902)
+Das 218Dorf liegt bei den koordinaten: (28.7041|-4.14926)
+Das 219Dorf liegt bei den koordinaten: (34.0873|4.33327)
+Das 220Dorf liegt bei den koordinaten: (38.3648|13.4236)
+Das 221Dorf liegt bei den koordinaten: (41.4694|22.9784)
+Das 222Dorf liegt bei den koordinaten: (43.3519|32.8469)
+Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: 
+Das 223Dorf liegt bei den koordinaten: (63.9827|42.8736)
+Das 224Dorf liegt bei den koordinaten: (61.9357|63.0034)
+Das 225Dorf liegt bei den koordinaten: (55.8785|82.3091)
+Das 226Dorf liegt bei den koordinaten: (46.0591|100)
+Das 227Dorf liegt bei den koordinaten: (32.8794|115.353)
+Das 228Dorf liegt bei den koordinaten: (16.8791|127.738)
+Das 229Dorf liegt bei den koordinaten: (-1.28675|136.649)
+Das 230Dorf liegt bei den koordinaten: (-20.8745|141.72)
+Das 231Dorf liegt bei den koordinaten: (-41.0822|142.745)
+Das 232Dorf liegt bei den koordinaten: (-61.0825|139.681)
+Das 233Dorf liegt bei den koordinaten: (-80.0567|132.654)
+Das 234Dorf liegt bei den koordinaten: (-97.2279|121.951)
+Das 235Dorf liegt bei den koordinaten: (-111.893|108.011)
+Das 236Dorf liegt bei den koordinaten: (-123.452|91.4038)
+Das 237Dorf liegt bei den koordinaten: (-131.431|72.8099)
+Das 238Dorf liegt bei den koordinaten: (-135.504|52.9904)
+Das 239Dorf liegt bei den koordinaten: (-135.504|32.7567)
+Das 240Dorf liegt bei den koordinaten: (-131.431|12.9373)
+Das 241Dorf liegt bei den koordinaten: (-123.452|-5.65663)
+Das 242Dorf liegt bei den koordinaten: (-111.893|-22.2637)
+Das 243Dorf liegt bei den koordinaten: (-97.2279|-36.204)
+Das 244Dorf liegt bei den koordinaten: (-80.0567|-46.9069)
+Das 245Dorf liegt bei den koordinaten: (-61.0825|-53.9341)
+Das 246Dorf liegt bei den koordinaten: (-41.0822|-56.9981)
+Das 247Dorf liegt bei den koordinaten: (-20.8745|-55.9733)
+Das 248Dorf liegt bei den koordinaten: (-1.28675|-50.9017)
+Das 249Dorf liegt bei den koordinaten: (16.8791|-41.9909)
+Das 250Dorf liegt bei den koordinaten: (32.8794|-29.6057)
+Das 251Dorf liegt bei den koordinaten: (46.0591|-14.2533)
+Das 252Dorf liegt bei den koordinaten: (55.8785|3.43798)
+Das 253Dorf liegt bei den koordinaten: (61.9357|22.7437)
+Das 254Dorf liegt bei den koordinaten: (83.9827|42.8736)
+Das 255Dorf liegt bei den koordinaten: (82.2566|63.1537)
+Das 256Dorf liegt bei den koordinaten: (77.128|82.8503)
+Das 257Dorf liegt bei den koordinaten: (68.7444|101.397)
+Das 258Dorf liegt bei den koordinaten: (57.347|118.26)
+Das 259Dorf liegt bei den koordinaten: (43.2637|132.954)
+Das 260Dorf liegt bei den koordinaten: (26.8996|145.057)
+Das 261Dorf liegt bei den koordinaten: (8.72551|154.22)
+Das 262Dorf liegt bei den koordinaten: (-10.7358|160.18)
+Das 263Dorf liegt bei den koordinaten: (-30.9243|162.765)
+Das 264Dorf liegt bei den koordinaten: (-51.2594|161.902)
+Das 265Dorf liegt bei den koordinaten: (-71.156|157.614)
+Das 266Dorf liegt bei den koordinaten: (-90.0417|150.025)
+Das 267Dorf liegt bei den koordinaten: (-107.373|139.353)
+Das 268Dorf liegt bei den koordinaten: (-122.652|125.906)
+Das 269Dorf liegt bei den koordinaten: (-135.438|110.071)
+Das 270Dorf liegt bei den koordinaten: (-145.365|92.3017)
+Das 271Dorf liegt bei den koordinaten: (-152.145|73.1109)
+Das 272Dorf liegt bei den koordinaten: (-155.585|53.0503)
+Das 273Dorf liegt bei den koordinaten: (-155.585|32.6969)
+Das 274Dorf liegt bei den koordinaten: (-152.145|12.6362)
+Das 275Dorf liegt bei den koordinaten: (-145.365|-6.55459)
+Das 276Dorf liegt bei den koordinaten: (-135.438|-24.3234)
+Das 277Dorf liegt bei den koordinaten: (-122.652|-40.1591)
+Das 278Dorf liegt bei den koordinaten: (-107.373|-53.6061)
+Das 279Dorf liegt bei den koordinaten: (-90.0417|-64.2775)
+Das 280Dorf liegt bei den koordinaten: (-71.156|-71.8664)
+Das 281Dorf liegt bei den koordinaten: (-51.2594|-76.1545)
+Das 282Dorf liegt bei den koordinaten: (-30.9243|-77.0183)
+Das 283Dorf liegt bei den koordinaten: (-10.7358|-74.4331)
+Das 284Dorf liegt bei den koordinaten: (8.72551|-68.4731)
+Das 285Dorf liegt bei den koordinaten: (26.8996|-59.3099)
+Das 286Dorf liegt bei den koordinaten: (43.2637|-47.2071)
+Das 287Dorf liegt bei den koordinaten: (57.347|-32.5128)
+Das 288Dorf liegt bei den koordinaten: (68.7444|-15.6498)
+Das 289Dorf liegt bei den koordinaten: (77.128|2.89679)
+Das 290Dorf liegt bei den koordinaten: (82.2566|22.5935)
+Das 291Dorf liegt bei den koordinaten: (103.983|42.8736)
+Das 292Dorf liegt bei den koordinaten: (102.491|63.2577)
+Das 293Dorf liegt bei den koordinaten: (98.0468|83.2074)
+Das 294Dorf liegt bei den koordinaten: (90.7455|102.298)
+Das 295Dorf liegt bei den koordinaten: (80.7424|120.121)
+Das 296Dorf liegt bei den koordinaten: (68.2508|136.298)
+Das 297Dorf liegt bei den koordinaten: (53.537|150.484)
+Das 298Dorf liegt bei den koordinaten: (36.9144|162.377)
+Das 299Dorf liegt bei den koordinaten: (18.7374|171.722)
+Das 300Dorf liegt bei den koordinaten: (-0.606597|178.321)
+Das 301Dorf liegt bei den koordinaten: (-20.7053|182.034)
+Das 302Dorf liegt bei den koordinaten: (-41.1304|182.78)
+Das 303Dorf liegt bei den koordinaten: (-61.4464|180.545)
+Das 304Dorf liegt bei den koordinaten: (-81.2205|175.375)
+Das 305Dorf liegt bei den koordinaten: (-100.031|167.381)
+Das 306Dorf liegt bei den koordinaten: (-117.478|156.734)
+Das 307Dorf liegt bei den koordinaten: (-133.188|143.66)
+Das 308Dorf liegt bei den koordinaten: (-146.827|128.438)
+Das 309Dorf liegt bei den koordinaten: (-158.104|111.392)
+Das 310Dorf liegt bei den koordinaten: (-166.78|92.8859)
+Das 311Dorf liegt bei den koordinaten: (-172.668|73.3138)
+Das 312Dorf liegt bei den koordinaten: (-175.644|53.0929)
+Das 313Dorf liegt bei den koordinaten: (-175.644|32.6542)
+Das 314Dorf liegt bei den koordinaten: (-172.668|12.4333)
+Das 315Dorf liegt bei den koordinaten: (-166.78|-7.13876)
+Das 316Dorf liegt bei den koordinaten: (-158.104|-25.6449)
+Das 317Dorf liegt bei den koordinaten: (-146.827|-42.6908)
+Das 318Dorf liegt bei den koordinaten: (-133.188|-57.9129)
+Das 319Dorf liegt bei den koordinaten: (-117.478|-70.987)
+Das 320Dorf liegt bei den koordinaten: (-100.031|-81.6343)
+Das 321Dorf liegt bei den koordinaten: (-81.2205|-89.628)
+Das 322Dorf liegt bei den koordinaten: (-61.4464|-94.7976)
+Das 323Dorf liegt bei den koordinaten: (-41.1304|-97.033)
+Das 324Dorf liegt bei den koordinaten: (-20.7053|-96.2866)
+Das 325Dorf liegt bei den koordinaten: (-0.606597|-92.5742)
+Das 326Dorf liegt bei den koordinaten: (18.7374|-85.9749)
+Das 327Dorf liegt bei den koordinaten: (36.9144|-76.6295)
+Das 328Dorf liegt bei den koordinaten: (53.537|-64.737)
+Das 329Dorf liegt bei den koordinaten: (68.2508|-50.5511)
+Das 330Dorf liegt bei den koordinaten: (80.7424|-34.3739)
+Das 331Dorf liegt bei den koordinaten: (90.7455|-16.5504)
+Das 332Dorf liegt bei den koordinaten: (98.0468|2.53969)
+Das 333Dorf liegt bei den koordinaten: (102.491|22.4894)
+Das 334Dorf liegt bei den koordinaten: (123.983|42.8736)
+Das 335Dorf liegt bei den koordinaten: (122.721|62.9269)
+Das 336Dorf liegt bei den koordinaten: (118.956|82.6639)
+Das 337Dorf liegt bei den koordinaten: (112.747|101.773)
+Das 338Dorf liegt bei den koordinaten: (104.192|119.954)
+Das 339Dorf liegt bei den koordinaten: (93.4254|136.919)
+Das 340Dorf liegt bei den koordinaten: (80.6177|152.401)
+Das 341Dorf liegt bei den koordinaten: (65.9706|166.156)
+Das 342Dorf liegt bei den koordinaten: (49.715|177.966)
+Das 343Dorf liegt bei den koordinaten: (32.1074|187.646)
+Das 344Dorf liegt bei den koordinaten: (13.4254|195.043)
+Das 345Dorf liegt bei den koordinaten: (-6.03626|200.04)
+Das 346Dorf liegt bei den koordinaten: (-25.9708|202.558)
+Das 347Dorf liegt bei den koordinaten: (-46.0638|202.558)
+Das 348Dorf liegt bei den koordinaten: (-65.9983|200.04)
+Das 349Dorf liegt bei den koordinaten: (-85.46|195.043)
+Das 350Dorf liegt bei den koordinaten: (-104.142|187.646)
+Das 351Dorf liegt bei den koordinaten: (-121.75|177.966)
+Das 352Dorf liegt bei den koordinaten: (-138.005|166.156)
+Das 353Dorf liegt bei den koordinaten: (-152.652|152.401)
+Das 354Dorf liegt bei den koordinaten: (-165.46|136.919)
+Das 355Dorf liegt bei den koordinaten: (-176.226|119.954)
+Das 356Dorf liegt bei den koordinaten: (-184.782|101.773)
+Das 357Dorf liegt bei den koordinaten: (-190.991|82.6639)
+Das 358Dorf liegt bei den koordinaten: (-194.756|62.9269)
+Das 359Dorf liegt bei den koordinaten: (-196.017|42.8736)
+Das 360Dorf liegt bei den koordinaten: (-194.756|22.8202)
+Das 361Dorf liegt bei den koordinaten: (-190.991|3.08318)
+Das 362Dorf liegt bei den koordinaten: (-184.782|-16.0264)
+Das 363Dorf liegt bei den koordinaten: (-176.226|-34.207)
+Das 364Dorf liegt bei den koordinaten: (-165.46|-51.1721)
+Das 365Dorf liegt bei den koordinaten: (-152.652|-66.654)
+Das 366Dorf liegt bei den koordinaten: (-138.005|-80.4086)
+Das 367Dorf liegt bei den koordinaten: (-121.75|-92.2189)
+Das 368Dorf liegt bei den koordinaten: (-104.142|-101.899)
+Das 369Dorf liegt bei den koordinaten: (-85.46|-109.295)
+Das 370Dorf liegt bei den koordinaten: (-65.9983|-114.292)
+Das 371Dorf liegt bei den koordinaten: (-46.0638|-116.811)
+Das 372Dorf liegt bei den koordinaten: (-25.9708|-116.811)
+Das 373Dorf liegt bei den koordinaten: (-6.03626|-114.292)
+Das 374Dorf liegt bei den koordinaten: (13.4254|-109.295)
+Das 375Dorf liegt bei den koordinaten: (32.1074|-101.899)
+Das 376Dorf liegt bei den koordinaten: (49.715|-92.2189)
+Das 377Dorf liegt bei den koordinaten: (65.9706|-80.4086)
+Das 378Dorf liegt bei den koordinaten: (80.6177|-66.654)
+Das 379Dorf liegt bei den koordinaten: (93.4254|-51.1721)
+Das 380Dorf liegt bei den koordinaten: (104.192|-34.207)
+Das 381Dorf liegt bei den koordinaten: (112.747|-16.0264)
+Das 382Dorf liegt bei den koordinaten: (118.956|3.08318)
+Das 383Dorf liegt bei den koordinaten: (122.721|22.8202)
+Das 384Dorf liegt bei den koordinaten: (143.983|42.8736)
+Das 385Dorf liegt bei den koordinaten: (142.851|63.0272)
+Das 386Dorf liegt bei den koordinaten: (139.47|82.9273)
+Das 387Dorf liegt bei den koordinaten: (133.882|102.324)
+Das 388Dorf liegt bei den koordinaten: (126.157|120.973)
+Das 389Dorf liegt bei den koordinaten: (116.393|138.639)
+Das 390Dorf liegt bei den koordinaten: (104.712|155.102)
+Das 391Dorf liegt bei den koordinaten: (91.2619|170.153)
+Das 392Dorf liegt bei den koordinaten: (76.2109|183.603)
+Das 393Dorf liegt bei den koordinaten: (59.7485|195.284)
+Das 394Dorf liegt bei den koordinaten: (42.0818|205.048)
+Das 395Dorf liegt bei den koordinaten: (23.433|212.773)
+Das 396Dorf liegt bei den koordinaten: (4.0365|218.361)
+Das 397Dorf liegt bei den koordinaten: (-15.8637|221.742)
+Das 398Dorf liegt bei den koordinaten: (-36.0173|222.874)
+Das 399Dorf liegt bei den koordinaten: (-56.1709|221.742)
+Das 400Dorf liegt bei den koordinaten: (-76.071|218.361)
+Das 401Dorf liegt bei den koordinaten: (-95.4675|212.773)
+Das 402Dorf liegt bei den koordinaten: (-114.116|205.048)
+Das 403Dorf liegt bei den koordinaten: (-131.783|195.284)
+Das 404Dorf liegt bei den koordinaten: (-148.245|183.603)
+Das 405Dorf liegt bei den koordinaten: (-163.296|170.153)
+Das 406Dorf liegt bei den koordinaten: (-176.747|155.102)
+Das 407Dorf liegt bei den koordinaten: (-188.428|138.639)
+Das 408Dorf liegt bei den koordinaten: (-198.192|120.973)
+Das 409Dorf liegt bei den koordinaten: (-205.916|102.324)
+Das 410Dorf liegt bei den koordinaten: (-211.504|82.9273)
+Das 411Dorf liegt bei den koordinaten: (-214.885|63.0272)
+Das 412Dorf liegt bei den koordinaten: (-216.017|42.8736)
+Das 413Dorf liegt bei den koordinaten: (-214.885|22.72)
+Das 414Dorf liegt bei den koordinaten: (-211.504|2.81979)
+Das 415Dorf liegt bei den koordinaten: (-205.916|-16.5767)
+Das 416Dorf liegt bei den koordinaten: (-198.192|-35.2255)
+Das 417Dorf liegt bei den koordinaten: (-188.428|-52.8922)
+Das 418Dorf liegt bei den koordinaten: (-176.747|-69.3546)
+Das 419Dorf liegt bei den koordinaten: (-163.296|-84.4057)
+Das 420Dorf liegt bei den koordinaten: (-148.245|-97.8561)
+Das 421Dorf liegt bei den koordinaten: (-131.783|-109.537)
+Das 422Dorf liegt bei den koordinaten: (-114.116|-119.301)
+Das 423Dorf liegt bei den koordinaten: (-95.4675|-127.025)
+Das 424Dorf liegt bei den koordinaten: (-76.071|-132.613)
+Das 425Dorf liegt bei den koordinaten: (-56.1709|-135.995)
+Das 426Dorf liegt bei den koordinaten: (-36.0173|-137.126)
+Das 427Dorf liegt bei den koordinaten: (-15.8637|-135.995)
+Das 428Dorf liegt bei den koordinaten: (4.0365|-132.613)
+Das 429Dorf liegt bei den koordinaten: (23.433|-127.025)
+Das 430Dorf liegt bei den koordinaten: (42.0818|-119.301)
+Das 431Dorf liegt bei den koordinaten: (59.7485|-109.537)
+Das 432Dorf liegt bei den koordinaten: (76.2109|-97.8561)
+Das 433Dorf liegt bei den koordinaten: (91.2619|-84.4057)
+Das 434Dorf liegt bei den koordinaten: (104.712|-69.3546)
+Das 435Dorf liegt bei den koordinaten: (116.393|-52.8922)
+Das 436Dorf liegt bei den koordinaten: (126.157|-35.2255)
+Das 437Dorf liegt bei den koordinaten: (133.882|-16.5767)
+Das 438Dorf liegt bei den koordinaten: (139.47|2.81979)
+Das 439Dorf liegt bei den koordinaten: (142.851|22.72)
+Das 440Dorf liegt bei den koordinaten: (163.983|42.8736)
+Das 441Dorf liegt bei den koordinaten: (162.957|63.1072)
+Das 442Dorf liegt bei den koordinaten: (159.889|83.1333)
+Das 443Dorf liegt bei den koordinaten: (154.811|102.746)
+Das 444Dorf liegt bei den koordinaten: (147.774|121.745)
+Das 445Dorf liegt bei den koordinaten: (138.852|139.934)
+Das 446Dorf liegt bei den koordinaten: (128.135|157.127)
+Das 447Dorf liegt bei den koordinaten: (115.734|173.148)
+Das 448Dorf liegt bei den koordinaten: (101.776|187.832)
+Das 449Dorf liegt bei den koordinaten: (86.4039|201.029)
+Das 450Dorf liegt bei den koordinaten: (69.7755|212.602)
+Das 451Dorf liegt bei den koordinaten: (52.0616|222.434)
+Das 452Dorf liegt bei den koordinaten: (33.4438|230.424)
+Das 453Dorf liegt bei den koordinaten: (14.1132|236.489)
+Das 454Dorf liegt bei den koordinaten: (-5.73172|240.567)
+Das 455Dorf liegt bei den koordinaten: (-25.8874|242.617)
+Das 456Dorf liegt bei den koordinaten: (-46.1471|242.617)
+Das 457Dorf liegt bei den koordinaten: (-66.3028|240.567)
+Das 458Dorf liegt bei den koordinaten: (-86.1478|236.489)
+Das 459Dorf liegt bei den koordinaten: (-105.478|230.424)
+Das 460Dorf liegt bei den koordinaten: (-124.096|222.434)
+Das 461Dorf liegt bei den koordinaten: (-141.81|212.602)
+Das 462Dorf liegt bei den koordinaten: (-158.438|201.029)
+Das 463Dorf liegt bei den koordinaten: (-173.811|187.832)
+Das 464Dorf liegt bei den koordinaten: (-187.769|173.148)
+Das 465Dorf liegt bei den koordinaten: (-200.17|157.127)
+Das 466Dorf liegt bei den koordinaten: (-210.887|139.934)
+Das 467Dorf liegt bei den koordinaten: (-219.809|121.745)
+Das 468Dorf liegt bei den koordinaten: (-226.845|102.746)
+Das 469Dorf liegt bei den koordinaten: (-231.923|83.1333)
+Das 470Dorf liegt bei den koordinaten: (-234.991|63.1072)
+Das 471Dorf liegt bei den koordinaten: (-236.017|42.8736)
+Das 472Dorf liegt bei den koordinaten: (-234.991|22.6399)
+Das 473Dorf liegt bei den koordinaten: (-231.923|2.61386)
+Das 474Dorf liegt bei den koordinaten: (-226.845|-16.9991)
+Das 475Dorf liegt bei den koordinaten: (-219.809|-35.9976)
+Das 476Dorf liegt bei den koordinaten: (-210.887|-54.1868)
+Das 477Dorf liegt bei den koordinaten: (-200.17|-71.3801)
+Das 478Dorf liegt bei den koordinaten: (-187.769|-87.4009)
+Das 479Dorf liegt bei den koordinaten: (-173.811|-102.085)
+Das 480Dorf liegt bei den koordinaten: (-158.438|-115.282)
+Das 481Dorf liegt bei den koordinaten: (-141.81|-126.855)
+Das 482Dorf liegt bei den koordinaten: (-124.096|-136.687)
+Das 483Dorf liegt bei den koordinaten: (-105.478|-144.677)
+Das 484Dorf liegt bei den koordinaten: (-86.1478|-150.742)
+Das 485Dorf liegt bei den koordinaten: (-66.3028|-154.82)
+Das 486Dorf liegt bei den koordinaten: (-46.1471|-156.87)
+Das 487Dorf liegt bei den koordinaten: (-25.8874|-156.87)
+Das 488Dorf liegt bei den koordinaten: (-5.73172|-154.82)
+Das 489Dorf liegt bei den koordinaten: (14.1132|-150.742)
+Das 490Dorf liegt bei den koordinaten: (33.4438|-144.677)
+Das 491Dorf liegt bei den koordinaten: (52.0616|-136.687)
+Das 492Dorf liegt bei den koordinaten: (69.7755|-126.855)
+Das 493Dorf liegt bei den koordinaten: (159.889|2.61386)
+Das 494Dorf liegt bei den koordinaten: (162.957|22.6399)
+Das 495Dorf liegt bei den koordinaten: (183.983|42.8736)
+Das 496Dorf liegt bei den koordinaten: (183.071|62.8792)
+Das 497Dorf liegt bei den koordinaten: (180.344|82.7191)
+Das 498Dorf liegt bei den koordinaten: (175.825|102.229)
+Das 499Dorf liegt bei den koordinaten: (169.549|121.247)
+Das 500Dorf liegt bei den koordinaten: (161.571|139.615)
+Das 501Dorf liegt bei den koordinaten: (151.955|157.182)
+Das 502Dorf liegt bei den koordinaten: (140.782|173.802)
+Das 503Dorf liegt bei den koordinaten: (128.143|189.336)
+Das 504Dorf liegt bei den koordinaten: (114.144|203.657)
+Das 505Dorf liegt bei den koordinaten: (98.9014|216.646)
+Das 506Dorf liegt bei den koordinaten: (82.5404|228.195)
+Das 507Dorf liegt bei den koordinaten: (65.197|238.208)
+Das 508Dorf liegt bei den koordinaten: (47.015|246.603)
+Das 509Dorf liegt bei den koordinaten: (28.1448|253.309)
+Das 510Dorf liegt bei den koordinaten: (8.74305|258.272)
+Das 511Dorf liegt bei den koordinaten: (-11.0296|261.45)
+Das 512Dorf liegt bei den koordinaten: (-31.0094|262.817)
+Das 513Dorf liegt bei den koordinaten: (-51.0306|262.361)
+Das 514Dorf liegt bei den koordinaten: (-70.9274|260.086)
+Das 515Dorf liegt bei den koordinaten: (-90.535|256.012)
+Das 516Dorf liegt bei den koordinaten: (-109.691|250.171)
+Das 517Dorf liegt bei den koordinaten: (-128.236|242.613)
+Das 518Dorf liegt bei den koordinaten: (-146.017|233.399)
+Das 519Dorf liegt bei den koordinaten: (-162.887|222.607)
+Das 520Dorf liegt bei den koordinaten: (-178.705|210.325)
+Das 521Dorf liegt bei den koordinaten: (-193.341|196.656)
+Das 522Dorf liegt bei den koordinaten: (-206.674|181.713)
+Das 523Dorf liegt bei den koordinaten: (-218.592|165.619)
+Das 524Dorf liegt bei den koordinaten: (-228.997|148.508)
+Das 525Dorf liegt bei den koordinaten: (-237.804|130.522)
+Das 526Dorf liegt bei den koordinaten: (-244.938|111.809)
+Das 527Dorf liegt bei den koordinaten: (-250.341|92.5254)
+Das 528Dorf liegt bei den koordinaten: (-253.968|72.8302)
+Das 529Dorf liegt bei den koordinaten: (-255.789|52.8868)
+Das 530Dorf liegt bei den koordinaten: (-255.789|32.8604)
+Das 531Dorf liegt bei den koordinaten: (-253.968|12.9169)
+Das 532Dorf liegt bei den koordinaten: (-250.341|-6.77832)
+Das 533Dorf liegt bei den koordinaten: (-244.938|-26.0621)
+Das 534Dorf liegt bei den koordinaten: (-237.804|-44.7747)
+Das 535Dorf liegt bei den koordinaten: (-228.997|-62.761)
+Das 536Dorf liegt bei den koordinaten: (-218.592|-79.8719)
+Das 537Dorf liegt bei den koordinaten: (-206.674|-95.9658)
+Das 538Dorf liegt bei den koordinaten: (-193.341|-110.909)
+Das 539Dorf liegt bei den koordinaten: (-178.705|-124.578)
+Das 540Dorf liegt bei den koordinaten: (-162.887|-136.86)
+Das 541Dorf liegt bei den koordinaten: (-146.017|-147.652)
+Das 542Dorf liegt bei den koordinaten: (-128.236|-156.865)
+Das 543Dorf liegt bei den koordinaten: (-109.691|-164.424)
+Das 544Dorf liegt bei den koordinaten: (-90.535|-170.264)
+Das 545Dorf liegt bei den koordinaten: (-70.9274|-174.339)
+Das 546Dorf liegt bei den koordinaten: (-51.0306|-176.614)
+Das 547Dorf liegt bei den koordinaten: (-31.0094|-177.069)
+Das 548Dorf liegt bei den koordinaten: (-11.0296|-175.703)
+Das 549Dorf liegt bei den koordinaten: (8.74305|-172.525)
+Das 550Dorf liegt bei den koordinaten: (28.1448|-167.562)
+Das 551Dorf liegt bei den koordinaten: (47.015|-160.856)
+Das 552Dorf liegt bei den koordinaten: (203.141|62.9562)
+Das 553Dorf liegt bei den koordinaten: (200.622|82.8981)
+Das 554Dorf liegt bei den koordinaten: (196.443|102.559)
+Das 555Dorf liegt bei den koordinaten: (190.633|121.802)
+Das 556Dorf liegt bei den koordinaten: (183.234|140.49)
+Das 557Dorf liegt bei den koordinaten: (174.296|158.494)
+Das 558Dorf liegt bei den koordinaten: (163.884|175.688)
+Das 559Dorf liegt bei den koordinaten: (152.069|191.949)
+Das 560Dorf liegt bei den koordinaten: (138.935|207.165)
+Das 561Dorf liegt bei den koordinaten: (124.574|221.228)
+Das 562Dorf liegt bei den koordinaten: (109.087|234.041)
+Das 563Dorf liegt bei den koordinaten: (92.5812|245.512)
+Das 564Dorf liegt bei den koordinaten: (75.1738|255.562)
+Das 565Dorf liegt bei den koordinaten: (56.9865|264.121)
+Das 566Dorf liegt bei den koordinaten: (38.1468|271.127)
+Das 567Dorf liegt bei den koordinaten: (18.7869|276.532)
+Das 568Dorf liegt bei den koordinaten: (-0.957344|280.299)
+Das 569Dorf liegt bei den koordinaten: (-20.9475|282.4)
+Das 570Dorf liegt bei den koordinaten: (-41.0435|282.821)
+Das 571Dorf liegt bei den koordinaten: (-61.1041|281.559)
+Das 572Dorf liegt bei den koordinaten: (-80.9888|278.623)
+Das 573Dorf liegt bei den koordinaten: (-230.181|183.942)
+Das 574Dorf liegt bei den koordinaten: (-241.305|167.2)
+Das 575Dorf liegt bei den koordinaten: (-250.988|149.586)
+Das 576Dorf liegt bei den koordinaten: (-259.164|131.223)
+Das 577Dorf liegt bei den koordinaten: (-275.807|52.9237)
+Das 578Dorf liegt bei den koordinaten: (-275.807|32.8234)
+Das 579Dorf liegt bei den koordinaten: (-274.125|12.7936)
+Das 580Dorf liegt bei den koordinaten: (-270.773|-7.02524)
+Das 581Dorf liegt bei den koordinaten: (-265.774|-26.4941)
+Das 582Dorf liegt bei den koordinaten: (-259.164|-45.4763)
+Das 583Dorf liegt bei den koordinaten: (-250.988|-63.8389)
+Das 584Dorf liegt bei den koordinaten: (-241.305|-81.4529)
+Das 585Dorf liegt bei den koordinaten: (-230.181|-98.1949)
+Das 586Dorf liegt bei den koordinaten: (-217.696|-113.947)
+Das 587Dorf liegt bei den koordinaten: (-203.936|-128.6)
+Das 588Dorf liegt bei den koordinaten: (-188.999|-142.05)
+Das 589Dorf liegt bei den koordinaten: (-172.989|-154.202)
+Das 590Dorf liegt bei den koordinaten: (-156.017|-164.973)
+Das 591Dorf liegt bei den koordinaten: (-138.204|-174.285)
+Das 592Dorf liegt bei den koordinaten: (-119.675|-182.074)
+Das 593Dorf liegt bei den koordinaten: (-100.558|-188.285)
+Das 594Dorf liegt bei den koordinaten: (-80.9888|-192.875)
+Das 595Dorf liegt bei den koordinaten: (-61.1041|-195.812)
+Das 596Dorf liegt bei den koordinaten: (-41.0435|-197.074)
+Das 597Dorf liegt bei den koordinaten: (-20.9475|-196.653)
+Das 598Dorf liegt bei den koordinaten: (-0.957344|-194.552)
+Das 599Dorf liegt bei den koordinaten: (18.7869|-190.785)
+Das 600Dorf liegt bei den koordinaten: (216.974|102.834)
+Das 601Dorf liegt bei den koordinaten: (211.567|122.258)
+Das 602Dorf liegt bei den koordinaten: (204.671|141.206)
+Das 603Dorf liegt bei den koordinaten: (196.327|159.561)
+Das 604Dorf liegt bei den koordinaten: (186.586|177.215)
+Das 605Dorf liegt bei den koordinaten: (175.506|194.062)
+Das 606Dorf liegt bei den koordinaten: (163.154|209.998)
+Das 607Dorf liegt bei den koordinaten: (149.604|224.93)
+Das 608Dorf liegt bei den koordinaten: (134.938|238.767)
+Das 609Dorf liegt bei den koordinaten: (119.244|251.426)
+Das 610Dorf liegt bei den koordinaten: (102.616|262.83)
+Das 611Dorf liegt bei den koordinaten: (85.154|272.912)
+Das 612Dorf liegt bei den koordinaten: (66.9635|281.61)
+Das 613Dorf liegt bei den koordinaten: (-286.494|-26.8513)
+Das 614Dorf liegt bei den koordinaten: (-280.337|-46.0517)
+Das 615Dorf liegt bei den koordinaten: (-272.712|-64.7172)
+Das 616Dorf liegt bei den koordinaten: (-263.662|-82.7357)
+Das 617Dorf liegt bei den koordinaten: (-253.244|-99.9988)
+Das 618Dorf liegt bei den koordinaten: (-241.519|-116.403)
+Das 619Dorf liegt bei den koordinaten: (-228.559|-131.848)
+Das 620Dorf liegt bei den koordinaten: (-214.44|-146.244)
+Das 621Dorf liegt bei den koordinaten: (-199.248|-159.501)
+Das 622Dorf liegt bei den koordinaten: (-183.075|-171.542)
+Das 623Dorf liegt bei den koordinaten: (-166.017|-182.293)
+Das 624Dorf liegt bei den koordinaten: (-148.178|-191.69)
+Das 625Dorf liegt bei den koordinaten: (-129.663|-199.676)
+Das 626Dorf liegt bei den koordinaten: (-110.586|-206.204)
+Das 627Dorf liegt bei den koordinaten: (-91.0603|-211.233)
+Das 628Dorf liegt bei den koordinaten: (-71.2034|-214.735)
+Das 629Dorf liegt bei den koordinaten: (-51.1349|-216.687)
+Das 630Dorf liegt bei den koordinaten: (-30.9755|-217.078)
+Das 631Dorf liegt bei den koordinaten: (-10.8464|-215.905)
+Das 632Dorf liegt bei den koordinaten: (9.13126|-213.176)
+Das 633Dorf liegt bei den koordinaten: (232.38|122.64)
+Das 634Dorf liegt bei den koordinaten: (225.925|141.799)
+Das 635Dorf liegt bei den koordinaten: (218.104|160.443)
+Das 636Dorf liegt bei den koordinaten: (208.958|178.473)
+Das 637Dorf liegt bei den koordinaten: (198.535|195.796)
+Das 638Dorf liegt bei den koordinaten: (186.889|212.322)
+Das 639Dorf liegt bei den koordinaten: (174.081|227.965)
+Das 640Dorf liegt bei den koordinaten: (160.177|242.643)
+Das 641Dorf liegt bei den koordinaten: (145.251|256.279)
+Das 642Dorf liegt bei den koordinaten: (129.38|268.803)
+Das 643Dorf liegt bei den koordinaten: (-224.872|-163.848)
+Das 644Dorf liegt bei den koordinaten: (-209.463|-176.937)
+Das 645Dorf liegt bei den koordinaten: (-193.15|-188.879)
+Das 646Dorf liegt bei den koordinaten: (-176.017|-199.614)
+Das 647Dorf liegt bei den koordinaten: (-158.155|-209.084)
+Das 648Dorf liegt bei den koordinaten: (-139.656|-217.24)
+Das 649Dorf liegt bei den koordinaten: (-120.617|-224.04)
+Das 650Dorf liegt bei den koordinaten: (-101.136|-229.449)
+Das 651Dorf liegt bei den koordinaten: (-81.3162|-233.438)
+Das 652Dorf liegt bei den koordinaten: (-61.2601|-235.986)
+Das 653Dorf liegt bei den koordinaten: (-41.0724|-237.081)
+Das 654Dorf liegt bei den koordinaten: (-20.8584|-236.716)
+Das 655Dorf liegt bei den koordinaten: (247.383|141.281)
+Das 656Dorf liegt bei den koordinaten: (240.178|159.99)
+Das 657Dorf liegt bei den koordinaten: (231.738|178.177)
+Das 658Dorf liegt bei den koordinaten: (222.103|195.759)
+Das 659Dorf liegt bei den koordinaten: (211.315|212.658)
+Das 660Dorf liegt bei den koordinaten: (199.423|228.799)
+Das 661Dorf liegt bei den koordinaten: (186.478|244.109)
+Das 662Dorf liegt bei den koordinaten: (172.54|258.521)
+Das 663Dorf liegt bei den koordinaten: (-197.442|-209.994)
+Das 664Dorf liegt bei den koordinaten: (-180.192|-220.211)
+Das 665Dorf liegt bei den koordinaten: (-162.298|-229.254)
+Das 666Dorf liegt bei den koordinaten: (-143.84|-237.081)
+Das 667Dorf liegt bei den koordinaten: (-124.9|-243.657)
+Das 668Dorf liegt bei den koordinaten: (-105.563|-248.954)
+Das 669Dorf liegt bei den koordinaten: (-85.9161|-252.948)
+Das 670Dorf liegt bei den koordinaten: (-66.046|-255.62)
+Das 671Dorf liegt bei den koordinaten: (-46.0418|-256.959)
+Das 672Dorf liegt bei den koordinaten: (-25.9928|-256.959)
+Das 673Dorf liegt bei den koordinaten: (-172.267|-246.671)
+Das 674Dorf liegt bei den koordinaten: (-153.817|-254.655)
+Das 675Dorf liegt bei den koordinaten: (-134.903|-261.465)
+Das 676Dorf liegt bei den koordinaten: (-115.598|-267.073)
+Das 677Dorf liegt bei den koordinaten: (-95.9793|-271.458)
+Das 678Dorf liegt bei den koordinaten: (-76.1239|-274.603)
+Das 679Dorf liegt bei den koordinaten: (-56.1102|-276.495)
+Das 680Dorf liegt bei den koordinaten: (-36.0173|-277.126)
+die Laufzeit des Programmes liegt bei: 1milliseconds
+
+\end{verbatim}
 \section{\textcolor{blue}{Quellcode}}
+\subsection{\textcolor{blue}{main.cpp}}
+\begin{verbatim}
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <chrono>
+
+#include <Geometrie.h>
+#include <matplotlibcpp.h>
+
+namespace plt = matplotlibcpp;
+
+
+// Funktion um die punkte eines umfangs Berechen
+std::vector<Geometrie::Point> umfang_punkte_eins(const Geometrie::Polygon& polygon,
+	Geometrie::Point centroid, int radius){
+	std::vector<Geometrie::Point> umfang_Punkte;
+	double umfang = 2 * M_PI * radius;
+	int anzahl_punkte = static_cast<int>(umfang/20);
+
+	for(int i = 0; i < anzahl_punkte; ++i){
+		double winkel = (2*M_PI*i)/anzahl_punkte;
+		double x = centroid.getX() + radius * std::cos(winkel);
+		double y = centroid.getY() + radius * std::sin(winkel);
+		if(polygon.isInsidePolygon(Geometrie::Point(x,y))){
+			umfang_Punkte.push_back(Geometrie::Point(x, y));
+		}
+	}
+	return umfang_Punkte;
+}
+// Funktion um die letzten punkte im polygon zu bestimmen
+std::vector<Geometrie::Point> last_points(const Geometrie::Polygon& polygon,
+	const Geometrie::Point& center_point) {
+	int radius = 100;
+	std::vector<Geometrie::Point> end_points;
+	std::vector<Geometrie::Point> points = umfang_punkte_eins(polygon, center_point, radius);
+	// endet wenn der kreis so gros ist das kein punkt mehr im polygon platziert werden kann
+	while(points.size() > 0){
+		end_points.insert(end_points.end(), points.begin(), points.end());
+		radius += 20;
+		points = umfang_punkte_eins(polygon, center_point, radius);
+	}
+	return end_points;
+}
+
+// Funktion zum berechen der Punkte auf dem Umkreis eines Kreises in 10 radius abstaenden bis 85
+std::vector<Geometrie::Point> circle_Points(int distance, Geometrie::Point centroid_circle,
+	const Geometrie::Polygon& polygon){
+	std::vector<Geometrie::Point> umfang_Punkte;
+
+	for(int radius = 10; radius <= 85; radius += 10){
+		double umfang = 2 * M_PI * radius;
+		int anzahl_punkte = static_cast<int>(umfang/distance);
+
+		for(int i = 0; i < anzahl_punkte; ++i){
+			double winkel = (2*M_PI*i)/anzahl_punkte;
+			double x = centroid_circle.getX() + radius * std::cos(winkel);
+			double y = centroid_circle.getY() + radius * std::sin(winkel);
+			if(polygon.isInsidePolygon(Geometrie::Point(x,y))){
+				umfang_Punkte.push_back(Geometrie::Point(x, y));
+			}
+		}
+
+
+	}
+	return umfang_Punkte;
+}
+// Funktion zum bestimmen des Gesundheitszentrums
+Geometrie::Point gesundheitszentrum (int distance, Geometrie::Point centroid_circle,
+	const Geometrie::Polygon& polygon){
+	std::vector<Geometrie::Point> points = circle_Points(distance, centroid_circle, polygon);
+	Geometrie::Point end_point;
+	int start_value = points.size();
+	int end_value = 0;
+	Geometrie::Point centroid = centroid_circle;
+	// wir gehen gehen unsere 1 liste von punkten(doerfern) durch und schauen jeden punkt
+	// durch ob er ein besserer centroid waere
+	do{
+		for(const Geometrie::Point& p: points){
+			std::vector<Geometrie::Point> test_points = circle_Points(distance, p, polygon);
+			if(test_points.size() > start_value){
+				start_value = test_points.size();
+				centroid = p;
+				}
+				// wen der wert vom vorherigem durchlauf gleich dem 2 durchlauf ist returnen wir
+				// den vector
+			if(start_value == end_value){
+				end_point = p;
+				return p;
+			}
+			end_value = start_value;
+
+		}
+	}while(true);
+}
+
+
+int main() {
+	// start zum tracken der zeit
+	auto start = std::chrono::high_resolution_clock::now();
+
+
+	// Erstellen eines Polygon Objektes
+	Geometrie::Polygon polygon;
+
+	// Punkte aus einer .txt file einlesen
+	polygon.readPointsFromFile("../inputs/siedler5.txt");
+
+	// bestimmen des centroid
+	Geometrie::Point centroid = polygon.centroid();
+
+	// bester punkt fuer das gesundheitszentrum
+	Geometrie::Point gesundheitszent = gesundheitszentrum(10, centroid, polygon);
+	// vector mit den punkten innerhalb des radiuses von dem Gesundheitszentrum
+	std::vector<Geometrie::Point> gesundheitszentrum_Points = circle_Points(10, gesundheitszent, polygon);
+	// Restlichen punkte ausserhalb des radiuses des gesundheitszentrums
+	std::vector<Geometrie::Point> end_points = last_points(polygon, gesundheitszent);
+
+	//output
+	std::cout << "Gesundheitszentrum: " << "(" << gesundheitszent.getX() <<"|" << gesundheitszent.getY() << ")"<< std::endl;
+	std::cout << "Doerfer innerhalb des Radiuses von dem Gesundheitszentrum: " << std::endl;
+	int counter = 1;
+	for (const Geometrie::Point p : gesundheitszentrum_Points) {
+		std::cout << "Das " << counter << "Dorf liegt bei den koordinaten: " << "(" << p.getX() << "|"
+		<< p.getY() << ")" << std::endl;
+		counter++;
+	}
+	std::cout << "Restliche doerfer ausserhalb des Radiuses des gesundheitszentrums: " << std::endl;
+	for (const Geometrie::Point p : end_points) {
+		std::cout << "Das " << counter << "Dorf liegt bei den koordinaten: " << "(" << p.getX() << "|"
+		<< p.getY() << ")" << std::endl;
+		counter++;
+	}
+
+	// Endzeit bestimmen ohne plot
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
+	//std::cout << "die Laufzeit des Programmes liegt bei: " << duration.count() << "milliseconds" << std::endl;
+
+
+
+	// Zustaz Plott erstellen mit matplotlibcpp
+	std::vector<double> _x_werte;
+	std::vector<double> _y_werte;
+	for(const Geometrie::Point p : end_points){
+		_x_werte.push_back(p.getX());
+		_y_werte.push_back(p.getY());
+	}
+
+	//std::cout << "groesse ohne algo: " << test.size() << std::endl;
+	std::vector<double>x_werte;
+	std::vector<double>y_werte;
+	for(Geometrie::Point p : gesundheitszentrum_Points){
+		x_werte.push_back(p.getX());
+		y_werte.push_back(p.getY());
+	}
+
+	// Polygon plotten
+	std::vector<double> x_points;
+	std::vector<double> y_points;
+	for(const Geometrie::Point point : polygon.getPoints()){
+		x_points.push_back(point.getX());
+		y_points.push_back(point.getY());
+	}
+	x_points.push_back(x_points[0]);
+	y_points.push_back(y_points[0]);
+
+	// Plot erstellen und Polygon plotten
+	plt::plot(x_points, y_points, "r-", x_werte, y_werte
+	,"bo", _x_werte, _y_werte, "ro");
+
+	// Optional: Fülle das Polygon
+	plt::xlabel("X-Achse");
+	plt::ylabel("Y-Achse");
+
+	// Titel des Plots
+	plt::title("Polygon mit matplotlibcpp");
+
+	// Plot anzeigen
+	plt::show();
+
+	return 0;
+}
+\end{verbatim}
+\subsection{\textcolor{blue}{Geometrie.h}}
+\begin{verbatim}
+#pragma once
+
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <sstream>
+#include <fstream>
+
+namespace Geometrie{
+
+	// klasse point um ein punkt darzustellen
+	class Point{
+		private:
+			double x,y;
+		public:
+		        Point() : x(0.0), y(0.0){}
+			Point(double _x, double _y) : x(_x), y(_y){}
+
+			// funktionen zum returnen der x und y koordinaten
+			double getX() const {return x;}
+			double getY() const  {return y;}
+
+	};
+
+	// klasse Polygon
+	class Polygon{
+		private:
+			std::vector<Point> points;
+		public:
+			Polygon(){}
+
+
+			std::vector<Point> getPoints() const{
+				return points;
+			}
+
+			// Funktion um ein Punkt in das Polygon hinzuzufuegen
+			void addPoint(double x, double y){
+				points.push_back(Point(x,y));
+			}
+
+			// Funktion zum Bestimmen des Schwerpunktes oder auch Centroid des Polygons
+			Point centroid() const {
+		         double cx = 0.0, cy = 0.0;
+		         double area = 0.0;
+
+		         for (int i = 0; i < points.size(); ++i) {
+		             double xi = points[i].getX();
+		             double yi = points[i].getY();
+
+		             double xi1 = points[(i + 1) % points.size()].getX();
+		             double yi1 = points[(i + 1) % points.size()].getY();
+
+		             double common = xi * yi1 - xi1 * yi;
+		             cx += (xi + xi1) * common;
+		             cy += (yi + yi1) * common;
+		             area += common;
+		         }
+
+		         area /= 2.0;
+		         cx /= (6 * area);
+		         cy /= (6 * area);
+
+		         return Point(cx, cy);
+			}
+
+		// Funktion zum schauen ob der punkt innerhalb des polygons liegt oder nicht
+			bool isInsidePolygon(const Point& p) const {
+				int intersectioncount = 0;
+
+				for(int i = 0; i < points.size(); ++i){
+					double xi = points[i].getX();
+					double yi = points[i].getY();
+					double xi1 = points[(i + 1) % points.size()].getX();
+					double yi1 = points[(i + 1) % points.size()].getY();
+
+					if((yi > p.getY()) != (yi1 > p.getY()) && p.getX() < (xi1 - xi) *
+					 (p.getY() - yi) / (yi1 - yi) + xi){
+						intersectioncount++;
+					}
+				}
+
+				return intersectioncount % 2 == 1;
+			}
+	 // Funktion zum einlesen des Polygons von der file .txt
+	 void readPointsFromFile(const std::string& filename) {
+		 std::ifstream file(filename);
+		if (!file.is_open()) {
+			std::cerr << "Fehler beim Öffnen der Datei: " << filename << std::endl;
+				return;
+		}
+
+		std::string line;
+		while (std::getline(file, line)) {
+			std::stringstream ss(line);
+				double x, y;
+				if (ss >> x >> y) {
+						addPoint(x, y);
+				}
+		}
+
+		file.close();
+}
+	};
+};
+\end{verbatim}
 \end{document}

@@ -9,6 +9,18 @@
 \contentsline {subsection}{\numberline {1.7}\textcolor {blue}{Quellen:}}{6}{subsection.1.7}%
 \contentsline {section}{\numberline {2}\textcolor {blue}{Umsetzung}}{6}{section.2}%
 \contentsline {subsection}{\numberline {2.1}\textcolor {blue}{Algeimeine Hinweise zur Benutzung}}{6}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}\textcolor {blue}{Die datei \text {\normalsize {Geometrie.h}}}}{7}{subsection.2.2}%
-\contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{7}{section.3}%
-\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{7}{section.4}%
+\contentsline {subsection}{\numberline {2.2}\textcolor {blue}{Aufbau}}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}\textcolor {blue}{Die datei \texttt {Geometrie.h}}}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}\textcolor {blue}{Die datei \texttt {main.cpp}}}{7}{subsection.2.4}%
+\contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}\textcolor {blue}{\texttt {siedler1.txt}}}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}\textcolor {blue}{\texttt {siedler2.txt}}}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}\textcolor {blue}{\texttt {siedler3.txt}}}{16}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}\textcolor {blue}{\texttt {siedler4.txt}}}{22}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}\textcolor {blue}{\texttt {siedler5.txt}}}{27}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}\textcolor {blue}{Meine Bsp.}}{32}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}\textcolor {blue}{\texttt {meine1.txt}}}{32}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}\textcolor {blue}{meine2.txt}}{43}{subsubsection.3.6.2}%
+\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{63}{section.4}%
+\contentsline {subsection}{\numberline {4.1}\textcolor {blue}{main.cpp}}{63}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}\textcolor {blue}{Geometrie.h}}{68}{subsection.4.2}%

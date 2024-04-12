@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <chrono>
 
 #include <Geometrie.h>
 #include <matplotlibcpp.h>
@@ -93,11 +94,15 @@ Geometrie::Point gesundheitszentrum (int distance, Geometrie::Point centroid_cir
 
 
 int main() {
+	// start zum tracken der zeit
+	auto start = std::chrono::high_resolution_clock::now();
+
+
 	// Erstellen eines Polygon Objektes
 	Geometrie::Polygon polygon;
 
 	// Punkte aus einer .txt file einlesen
-	polygon.readPointsFromFile("../inputs/siedler5.txt");
+	polygon.readPointsFromFile("../inputs/meine2.txt");
 
 	// bestimmen des centroid
 	Geometrie::Point centroid = polygon.centroid();
@@ -124,6 +129,11 @@ int main() {
 		<< p.getY() << ")" << std::endl;
 		counter++;
 	}
+
+	// Endzeit bestimmen ohne plot
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end-start);
+	std::cout << "die Laufzeit des Programmes liegt bei: " << duration.count() << "milliseconds" << std::endl;
 
 
 

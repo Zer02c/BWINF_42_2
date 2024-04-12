@@ -29,21 +29,14 @@ namespace Geometrie{
 		public:
 			Polygon(){}
 
+
 			std::vector<Point> getPoints() const{
 				return points;
-			}
-
-			const Point& getPoint(int index) const{
-				return points[index];
 			}
 
 			// Funktion um ein Punkt in das Polygon hinzuzufuegen
 			void addPoint(double x, double y){
 				points.push_back(Point(x,y));
-			}
-
-			void addPointsFromVector(const std::vector<Point>& vec) {
-				points.insert(points.end(), vec.begin(), vec.end());
 			}
 
 			// Funktion zum Bestimmen des Schwerpunktes oder auch Centroid des Polygons
