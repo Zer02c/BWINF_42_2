@@ -8,5 +8,7 @@
 \contentsline {subsection}{\numberline {1.6}\textcolor {blue}{End Algorithmus idee}}{5}{subsection.1.6}%
 \contentsline {subsection}{\numberline {1.7}\textcolor {blue}{Quellen:}}{6}{subsection.1.7}%
 \contentsline {section}{\numberline {2}\textcolor {blue}{Umsetzung}}{6}{section.2}%
-\contentsline {subsection}{\numberline {2.1}\textcolor {blue}{Die End Umsetzung}}{6}{subsection.2.1}%
-\contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{6}{section.3}%
+\contentsline {subsection}{\numberline {2.1}\textcolor {blue}{Algeimeine Hinweise zur Benutzung}}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}\textcolor {blue}{Die datei \text {\normalsize {Geometrie.h}}}}{7}{subsection.2.2}%
+\contentsline {section}{\numberline {3}\textcolor {blue}{Beispiele}}{7}{section.3}%
+\contentsline {section}{\numberline {4}\textcolor {blue}{Quellcode}}{7}{section.4}%

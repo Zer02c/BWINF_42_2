@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  11 APR 2024 20:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.3.15)  12 APR 2024 14:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -366,33 +366,96 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 \Gin@req@height=\dimen166
 \Gin@req@width=\dimen167
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
+\LTleft=\skip94
+\LTright=\skip95
+\LTpre=\skip96
+\LTpost=\skip97
+\LTchunksize=\count298
+\LTcapwidth=\dimen168
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count299
+\LT@rows=\count300
+\c@LT@tables=\count301
+\c@LT@chunks=\count302
+\LT@p@ftn=\toks25
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed) + inter
+mediate FMi
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen169
+\ar@mcellbox=\box60
+\extrarowheight=\dimen170
+\NC@list=\toks26
+\extratabsurround=\skip98
+\backup@length=\skip99
+\ar@cellbox=\box61
+)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box62
+\sift@deathcycles=\count303
+\@vwid@loff=\dimen171
+\@vwid@roff=\dimen172
+)
+\c@taburow=\count304
+\tabu@nbcols=\count305
+\tabu@cnt=\count306
+\tabu@Xcol=\count307
+\tabu@alloc=\count308
+\tabu@nested=\count309
+\tabu@target=\dimen173
+\tabu@spreadtarget=\dimen174
+\tabu@naturalX=\dimen175
+\tabucolX=\dimen176
+\tabu@Xsum=\dimen177
+\extrarowdepth=\dimen178
+\abovetabulinesep=\dimen179
+\belowtabulinesep=\dimen180
+\tabustrutrule=\dimen181
+\tabu@thebody=\toks27
+\tabu@footnotes=\toks28
+\tabu@box=\box63
+\tabu@arstrutbox=\box64
+\tabu@hleads=\box65
+\tabu@vleads=\box66
+\tabu@cellskip=\skip100
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count298
-\l__pdf_internal_box=\box55
+\l__color_backend_stack_int=\count310
+\l__pdf_internal_box=\box67
 )
 (./Siedler.aux)
 \openout1 = `Siedler.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-Package hyperref Info: Link coloring OFF on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+Package hyperref Info: Link coloring OFF on input line 29.
  (./Siedler.out) (./Siedler.out)
 \@outlinefile=\write3
 \openout3 = `Siedler.out'.
@@ -432,20 +495,20 @@ Package hyperref Info: Link coloring OFF on input line 28.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count299
+\c@lstlisting=\count311
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count300
-\scratchdimen=\dimen168
-\scratchbox=\box56
-\nofMPsegments=\count301
-\nofMParguments=\count302
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count303
-\MPscratchDim=\dimen169
-\MPnumerator=\count304
-\makeMPintoPDFobject=\count305
-\everyMPtoPDFconversion=\toks26
+\scratchcounter=\count312
+\scratchdimen=\dimen182
+\scratchbox=\box68
+\nofMPsegments=\count313
+\nofMParguments=\count314
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count315
+\MPscratchDim=\dimen183
+\MPnumerator=\count316
+\makeMPintoPDFobject=\count317
+\everyMPtoPDFconversion=\toks30
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -466,45 +529,57 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.43 \newpage
+l.44 \newpage
               [1]
-<Bilder/raycasting_polygon_3.png, id=76, 484.81125pt x 399.4925pt>
+<Bilder/raycasting_polygon_3.png, id=81, 484.81125pt x 399.4925pt>
 File: Bilder/raycasting_polygon_3.png Graphic file (type png)
 <use Bilder/raycasting_polygon_3.png>
-Package pdftex.def Info: Bilder/raycasting_polygon_3.png  used on input line 97
+Package pdftex.def Info: Bilder/raycasting_polygon_3.png  used on input line 98
 .
 (pdftex.def)             Requested size: 330.42041pt x 272.28526pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 []\OT1/cmr/m/n/10 Figure 1: []Darstellung Ray-castal-go-rith-mus in-ner-halb ei
 nes Poly-gons, Quelle:
  []
 
 
-Overfull \hbox (1.56456pt too wide) in paragraph at lines 75--101
+Overfull \hbox (1.56456pt too wide) in paragraph at lines 76--102
 \OT1/cmr/m/n/12 Wenn nun die kan-nte die Hor-i-zon-tale linie schnei-det berech
 ne ich den $\OML/cmm/m/it/12 x$\OT1/cmr/m/n/12 -wert des Schnittpunkts
  []
 
 [2] [3 <./Bilder/raycasting_polygon_3.png>] [4]
-Overfull \hbox (59.01903pt too wide) in paragraph at lines 156--156
+Overfull \hbox (59.01903pt too wide) in paragraph at lines 157--157
 [] \OT1/cmtt/m/n/12 jezt nur noch schauen ob der punkt im polygon liegt wen ja 
 lass ihn in der liste wenn[] 
  []
 
-[5] [6] (./Siedler.aux)
+[5] [6]
+Overfull \hbox (5.39041pt too wide) in paragraph at lines 223--223
+[]|\OT1/cmtt/m/n/12 isInsidePolygon()|  
+ []
+
+[7] (./Siedler.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-Package rerunfilecheck Info: File `Siedler.out' has not changed.
-(rerunfilecheck)             Checksum: A705A849E00951E37C39744DA3E188D5;1609.
+
+
+Package rerunfilecheck Warning: File `Siedler.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Siedler.out':
+(rerunfilecheck)             Before: 9396439B1B969D023BA5A09AE551DEAC;1861
+(rerunfilecheck)             After:  6D7CBDF3E1DDFDB8615BFBBE87D204CE;1950.
  ) 
 Here is how much of TeX's memory you used:
- 11828 strings out of 474222
- 179197 string characters out of 5748733
+ 12710 strings out of 474222
+ 192110 string characters out of 5748733
  1937975 words of memory out of 5000000
- 33942 multiletter control sequences out of 15000+600000
+ 34806 multiletter control sequences out of 15000+600000
  564227 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,892b,597s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -520,10 +595,10 @@ amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Siedler.pdf (7 pages, 224796 bytes).
+Output written on Siedler.pdf (8 pages, 229748 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
- 20 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
 

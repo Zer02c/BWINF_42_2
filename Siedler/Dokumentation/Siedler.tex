@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{hyperref}
+\usepackage{hyperref} % Zuerst hyperref laden
 \usepackage{tocloft}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{fancyhdr}
@@ -8,7 +8,8 @@
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{listings} % Paket für Quellcode-Listings
+\usepackage{longtable}
+\usepackage{tabu} % tabu als letztes laden
 
 
 
@@ -193,8 +194,38 @@ Das Problem was ich an dieser Methode sehe ist wie oben schon angedeutet, das es
 \item[\normalsize{[4]}] \normalsize{Inkreis, https://de.wikipedia.org/wiki/Inkreis}
 \end{itemize}
 \section{\textcolor{blue}{Umsetzung}}
-
-\subsection{\textcolor{blue}{Die End Umsetzung}}
+\subsection{\textcolor{blue}{Algeimeine Hinweise zur Benutzung}}
+Das programm ist wie eben Schon angedeutet in der Programmiersprache C++ 13.2.0 implementriert, und unter Debian(linux) getestet. zum visuallisieren der Polygone und der Doerfer(punkten), Kommt hier die Libary Matplotlib zum einsatz eine uhrspruenglich fuer Python entwickelte libary. Um sie in c++ zu benutzen, benutze ich die header file matplotlibcpp.h$^1$ von Julien Gacon die durch embedded python zugriff auf diese libary bietet.
+\\
+zum Benutzen der libary ist eine instalation von Python und der libary matplotlib(sudo pip3 install matplotlib) vorauszusetzen.
+\\
+Die Eingabe erfolgt ueber die programm datei selbst indem man den path zu der gewuenschten datei setzt.Die Ausgabe wiederum erfolgt ueber das Terminal.
+\\
+ Das ware auch Gleich schon eine optimierungs idee fuer die Zukunft, das man die Ausgabe in eine datei macht und den input ueber das Termianl.
+\vspace{5pt}
+\hrule
+\begin{itemize}
+\item[$^1$] \text{https://github.com/Cryoris/matplotlib-cpp/blob/master/matplotlibcpp.h}
+\end{itemize}
+\subsection{\textcolor{blue}{Die datei \text{\normalsize{Geometrie.h}}}}
+Die Datei \texttt{Geometrie.h} enthaelt zwei klassen die Klasse Point und die Klasse Polygon. Die funktionen dieser Objekte treten recht haufig innerhalb des Quellcodes auf da sie essenzielle algorithmen wie den raycastalgorithmus enthalten. Hier eine Uebersicht ueber die Funktionen.
+\par\medskip
+\begin{center}\Large{ Polygon}\end{center}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.5cm}|p{11.5cm}|}
+\hline
+\textbf{Funktion} & \textbf{Beschreibung} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Funktion} & \textbf{Beschreibung} \\
+\hline
+\endhead
+\texttt{isInsidePolygon()} &
+Ueberprueft ob ein Punkt innerhalb des Gegebenen Polygons liegt. mithilfe eines raycastalgorihmuses. Der von einem Punkt einen strahl schiesst, und schaut wie oft er die Kanten des Polygons schneidet. Wenn die Anzahl ungrade ist liegt der Punkt innerhalb des Polygons ist die Zahl grade liegt er ausserhalb. \\
+\hline
+% Weitere Zeilen hier einfügen...
+\end{longtable}
 
 \section{\textcolor{blue}{Beispiele}}
+\section{\textcolor{blue}{Quellcode}}
 \end{document}
